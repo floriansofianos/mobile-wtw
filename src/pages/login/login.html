@@ -1,0 +1,35 @@
+<ion-content class="login-content" padding>
+  
+  <div class="login-box">
+      <ion-row class="logo-row">
+          <ion-col class="login-logo-container"><ion-img width="120" height="110" src="assets/imgs/icon.JPG" style="text-align: right;"></ion-img></ion-col>
+          <ion-col class="login-text-container">
+            <span class="logo-content">{{ 'LOGIN.TITLE' | translate}}</span>
+          </ion-col>
+        </ion-row>
+    <form (ngSubmit)="login()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col class="login-form-container">
+          <ion-list inset>
+            
+            <ion-item>
+              <ion-input type="text" placeholder="{{'LOGIN.FORM.LOGIN' | translate }}" name="email" [(ngModel)]="credentials.email" required></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-input type="password" placeholder="{{'LOGIN.FORM.PASSWORD' | translate }}" name="password" [(ngModel)]="credentials.password" required></ion-input>
+            </ion-item>
+            
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col class="login-btn-col">
+          <button ion-button class="submit-btn login-form-btn" type="submit" [disabled]="!registerForm.form.valid">{{ 'LOGIN.TITLE' | translate}}</button>
+        </ion-col>
+      </ion-row>
+      
+    </form>
+  </div>
+</ion-content>

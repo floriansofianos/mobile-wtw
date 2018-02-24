@@ -14,3 +14,13 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+  }
+
+  .content-md {
+    background: #2F3238;
+    color: #d2d2d2;
+}
