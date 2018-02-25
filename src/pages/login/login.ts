@@ -23,8 +23,8 @@ export class LoginPage {
 
   login() {
     this.auth.loginUser(this.credentials).subscribe(token => {
-      console.log('token:' + token);
-      if (token) {        
+      if (token) {
+        this.auth.setUserInSession(token.token);        
         this.navCtrl.setRoot(HomePage);
       } else {
         this.showError("Access Denied");
