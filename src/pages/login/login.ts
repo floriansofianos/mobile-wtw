@@ -25,9 +25,8 @@ export class LoginPage {
         this.navCtrl.setRoot(HomePage);
       } 
     });
-    this.statusBar.hide();
-    this.statusBar.overlaysWebView(false);
-
+    this.statusBar.styleLightContent();
+    this.statusBar.backgroundColorByHexString('#2F3238');
   }
 
   login() {
