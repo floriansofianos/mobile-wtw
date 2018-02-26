@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 import { HomePage } from '../home/home';
+import { StatusBar } from '@ionic-native/status-bar';
 
 /**
  * Generated class for the LoginPage page.
@@ -18,12 +19,15 @@ import { HomePage } from '../home/home';
 export class LoginPage {
   credentials = { email: '', password: '' };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider, private alertCtrl: AlertController, private statusBar: StatusBar) {
     this.auth.getAuthToken().then(token => { 
       if(token) {
         this.navCtrl.setRoot(HomePage);
       } 
     });
+    this.statusBar.hide();
+    this.statusBar.overlaysWebView(false);
+
   }
 
   login() {
