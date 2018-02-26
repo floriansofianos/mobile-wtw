@@ -25,4 +25,8 @@ export class AuthServiceProvider {
     this.storage.set('token', token);
   }
 
+  getAuthToken() {
+      return this.storage.get("token");
+  }
+
 }

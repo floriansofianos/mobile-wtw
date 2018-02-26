@@ -19,6 +19,11 @@ export class LoginPage {
   credentials = { email: '', password: '' };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider, private alertCtrl: AlertController) {
+    this.auth.getAuthToken().then(token => { 
+      if(token) {
+        this.navCtrl.setRoot(HomePage);
+      } 
+    });
   }
 
   login() {
