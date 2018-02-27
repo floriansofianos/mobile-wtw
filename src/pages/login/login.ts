@@ -22,7 +22,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider, private alertCtrl: AlertController, private statusBar: StatusBar) {
     this.auth.getAuthToken().then(token => { 
       if(token) {
-        this.navCtrl.setRoot(HomePage);
+        this.putUserInMemoryAndRedirect();
       } 
     });
     this.statusBar.styleLightContent();
@@ -32,8 +32,8 @@ export class LoginPage {
   login() {
     this.auth.loginUser(this.credentials).subscribe(token => {
       if (token) {
-        this.auth.setUserInSession(token.token);        
-        this.navCtrl.setRoot(HomePage);
+        this.auth.setUserInSession(token.token);
+        this.putUserInMemoryAndRedirect();
       } else {
         this.showError("Access Denied");
       }
@@ -41,6 +41,16 @@ export class LoginPage {
       error => {
         this.showError(error);
       });
+  }
+
+  putUserInMemoryAndRedirect() {
+    this.auth.getCurrentUserFromApi().subscribe(user => {
+      this.auth.setCurrentUserInMemory(user);
+      this.navCtrl.setRoot(HomePage);
+    },
+    error => {
+      this.showError(error);
+    });
   }
 
   showError(text) { 

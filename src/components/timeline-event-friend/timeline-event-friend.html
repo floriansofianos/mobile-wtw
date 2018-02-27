@@ -1,0 +1,6 @@
+<div class="card-container">
+  <span *ngIf="isCurUserYou">{{ 'TIMELINE.YOU' | translate }}{{ 'TIMELINE.ARE_FRIEND' | translate }}</span>
+  <span *ngIf="!isCurUserYou">{{ curUsername }} {{ 'TIMELINE.IS_FRIEND' | translate }}</span>
+  <span *ngIf="isFriendUserYou">{{ 'TIMELINE.YOU_LOWER_FRIEND' | translate }}</span>
+  <span *ngIf="!isFriendUserYou">{{ friendUsername }}</span>
+</div>

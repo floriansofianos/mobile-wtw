@@ -25,7 +25,7 @@ export class TimelineComponent {
     if (!this.isAllLoaded) {
       this.page++;
       this.timelineService.get(this.page).subscribe(response => {
-          let newEvents = response.json();
+          let newEvents = response;
           if (newEvents.length < 20) {
               this.isAllLoaded = true;
           }
@@ -33,6 +33,10 @@ export class TimelineComponent {
           infiniteScroll.complete();
       });
     }
+  }
+
+  getMonth(createdAt) {
+    return (new Date(createdAt)).getMonth();
   }
 
 }
