@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StarRatingModule } from 'angular-star-rating';
 import { TranslateModule } from '@ngx-translate/core';
+import { IonicModule } from 'ionic-angular';
 
 import { TimelineEventRateMovieComponent } from './timeline-event-rate-movie/timeline-event-rate-movie';
 import { TimelineEventFollowComponent } from './timeline-event-follow/timeline-event-follow';
@@ -10,7 +11,8 @@ import { TimelineEventFriendComponent } from './timeline-event-friend/timeline-e
 	declarations: [TimelineEventRateMovieComponent,
     TimelineEventFollowComponent,
     TimelineEventFriendComponent],
-    imports: [CommonModule, 
+    imports: [CommonModule,
+        IonicModule, 
         StarRatingModule,
     TranslateModule],
 	exports: [TimelineEventRateMovieComponent,

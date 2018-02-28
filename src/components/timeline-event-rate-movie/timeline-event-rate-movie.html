@@ -1,12 +1,12 @@
 <div class="card-container" *ngIf="!isLoading">
   <div class="movie-poster-container" *ngIf="!isTV">
-      <img width="150" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ movie.poster_path }}" *ngIf="movie.poster_path" />
+      <ion-img src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[3] }}{{ movie.backdrop_path }}" *ngIf="movie.backdrop_path"></ion-img>
       <div *ngIf="!movie.poster_path" class="movie-poster-placeholder" [style.width.px]="150" [style.height.px]="225">
           <i [style.font-size.px]="45" [style.margin-top.px]="90" class="fa fa-film"></i>
       </div>
   </div>
   <div class="movie-poster-container" *ngIf="isTV">
-      <img width="150" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ movie.tvShowInfo.poster_path }}" *ngIf="movie.tvShowInfo.poster_path" />
+      <ion-img src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[3] }}{{ movie.tvShowInfo.backdrop_path }}" *ngIf="movie.tvShowInfo.backdrop_path"></ion-img>
       <div *ngIf="!movie.tvShowInfo.poster_path" class="movie-poster-placeholder" [style.width.px]="150" [style.height.px]="225">
           <i [style.font-size.px]="45" [style.margin-top.px]="90" class="fa fa-film"></i>
       </div>
