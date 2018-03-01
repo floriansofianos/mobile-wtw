@@ -5,6 +5,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 import { CommonModule } from '@angular/common';
+import { VirtualScrollModule } from 'angular2-virtual-scroll';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    VirtualScrollModule,
     ComponentsModule,
     CommonModule,
     IonicModule.forRoot(MyApp),

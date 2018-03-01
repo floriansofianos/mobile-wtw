@@ -1,14 +1,18 @@
 <div class="card-container" *ngIf="!isLoading">
+  <img class="background-img" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[3] }}{{ movie.backdrop_path }}" *ngIf="!isTV && movie.backdrop_path" />
+  <img class="background-img" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[3] }}{{ movie.tvShowInfo.backdrop_path }}" *ngIf="isTV && movie.tvShowInfo.backdrop_path" />
+  <h2 *ngIf="!isTV">{{ 'TIMELINE.TITLE_RATE_MOVIE' | translate }}</h2>
+  <h2 *ngIf="isTV">{{ 'TIMELINE.TITLE_RATE_TV' | translate }}</h2>  
   <div class="movie-poster-container" *ngIf="!isTV">
-      <ion-img src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[3] }}{{ movie.backdrop_path }}" *ngIf="movie.backdrop_path"></ion-img>
+      <img height="50" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ movie.poster_path }}" *ngIf="movie.poster_path" />
       <div *ngIf="!movie.poster_path" class="movie-poster-placeholder" [style.width.px]="150" [style.height.px]="225">
-          <i [style.font-size.px]="45" [style.margin-top.px]="90" class="fa fa-film"></i>
+          <i [style.font-size.px]="15" [style.margin-top.px]="30" class="fa fa-film"></i>
       </div>
   </div>
   <div class="movie-poster-container" *ngIf="isTV">
-      <ion-img src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[3] }}{{ movie.tvShowInfo.backdrop_path }}" *ngIf="movie.tvShowInfo.backdrop_path"></ion-img>
+      <img width="50" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ movie.tvShowInfo.poster_path }}" *ngIf="movie.tvShowInfo.poster_path" />
       <div *ngIf="!movie.tvShowInfo.poster_path" class="movie-poster-placeholder" [style.width.px]="150" [style.height.px]="225">
-          <i [style.font-size.px]="45" [style.margin-top.px]="90" class="fa fa-film"></i>
+          <i [style.font-size.px]="15" [style.margin-top.px]="30" class="fa fa-film"></i>
       </div>
   </div>
   <div class="movie-right-container">
