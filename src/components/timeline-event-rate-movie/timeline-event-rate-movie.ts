@@ -15,6 +15,7 @@ export class TimelineEventRateMovieComponent {
     @Input() isTV: boolean;
     @Input() config: any;
     @Input() lang: string;
+    @Input() createdAt: any;
     curUsername: string;
     isLoading: boolean;
     movie: any;
@@ -48,5 +49,9 @@ export class TimelineEventRateMovieComponent {
     }
     
 }
+
+getMonth(createdAt) {
+    return (new Date(createdAt)).getMonth();
+  }
 
 }

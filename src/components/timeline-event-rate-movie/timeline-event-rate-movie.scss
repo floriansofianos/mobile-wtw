@@ -1,3 +1,22 @@
 timeline-event-rate-movie {
+    .card-container {
+        position: relative;
+        min-height: 200px;
+    }
+    .background-img {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        opacity: 0.5;
+    }
+    .card-content {
+        position: absolute;
+        top: 0;
+        z-index: 99;
+    }
 
+    .movie-poster {
+        height: 150px;
+        width: auto;
+    }
 }

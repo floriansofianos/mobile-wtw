@@ -8,6 +8,10 @@ timeline {
       ion-item {
         display: block;
         width: 100%;
-        height: 150px;
+        height: 350px;
+      }
+
+      ion-card {
+        min-height: 300px;
       }
 }
