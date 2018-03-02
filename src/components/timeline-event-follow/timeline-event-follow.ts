@@ -14,6 +14,7 @@ export class TimelineEventFollowComponent {
     @Input() isCurUserYou: boolean;
     @Input() isFriendUserYou: boolean;
     @Input() curUsername: string;
+    @Input() createdAt: any;
 
     ngOnInit() {
         if (!this.isFriendUserYou) {

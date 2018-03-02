@@ -1,7 +1,7 @@
 timeline-event-rate-movie {
     .card-container {
         position: relative;
-        min-height: 200px;
+        min-height: 170px;
     }
     .background-img {
         position: absolute;
@@ -13,10 +13,48 @@ timeline-event-rate-movie {
         position: absolute;
         top: 0;
         z-index: 99;
+        width: 100%;
+    }
+
+    .date {
+        background: #DE5E60;
+        display: inline-block;
+        padding: 10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #fff;
     }
 
     .movie-poster {
-        height: 150px;
+        height: 120px;
         width: auto;
+        box-shadow: 2px 2px 1px #716e6e;
+        margin-left: 8px;
+        margin-top: 8px;
+    }
+
+    .movie-right-container {
+        white-space: normal;
+        margin-top: 42px;
+    }
+
+    .movie-title-container {
+        color: #fff;
+        font-size: 22px;
+        line-height: 27px;
+        font-weight: lighter;
+        background-color: #26292e;
+    }
+
+    .movie-rating-container {
+        margin-top: 10px;
+        font-weight: 500;
+    }
+
+    star-rating-comp {
+        .rating {
+            align-items: left;
+        }
     }
 }

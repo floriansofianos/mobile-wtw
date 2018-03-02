@@ -9,9 +9,19 @@ import { VirtualScrollModule } from 'angular2-virtual-scroll';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { MoviesPage } from '../pages/movies/movies';
 import { LoginPage } from '../pages/login/login';
+import { MoviesQuestionnairePage } from '../pages/movies-questionnaire/movies-questionnaire';
+import { MoviesWatchlistPage } from '../pages/movies-watchlist/movies-watchlist';
+import { MyProfilePage } from '../pages/my-profile/my-profile';
+import { SocialPage } from '../pages/social/social';
+import { TvPage } from '../pages/tv/tv';
+import { TvQuestionnairesPage } from '../pages/tv-questionnaires/tv-questionnaires';
+import { TvWatchlistPage } from '../pages/tv-watchlist/tv-watchlist';
+import { WhatowatchPage } from '../pages/whatowatch/whatowatch';
+
 import { TimelineComponent } from '../components/timeline/timeline';
+import { SideMenuContentComponent } from '../components/side-menu-content/side-menu-content.component';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -32,8 +42,17 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
+    MoviesPage,
     LoginPage,
+    MoviesWatchlistPage,
+    MyProfilePage,
+    TvWatchlistPage,
+    SocialPage,
+    WhatowatchPage,
+    TvPage,
+    TvQuestionnairesPage,
+    MoviesQuestionnairePage,
+    SideMenuContentComponent,
     TimelineComponent
   ],
   imports: [
@@ -56,7 +75,15 @@ export function HttpLoaderFactory(http: HttpClient) {
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
+    MoviesPage,
+    WhatowatchPage,
+    MoviesWatchlistPage,
+    MyProfilePage,
+    TvWatchlistPage,
+    TvQuestionnairesPage,
+    SocialPage,
+    TvPage,
+    MoviesQuestionnairePage,
     LoginPage
   ],
   providers: [

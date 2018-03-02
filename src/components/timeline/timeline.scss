@@ -8,10 +8,19 @@ timeline {
       ion-item {
         display: block;
         width: 100%;
-        height: 350px;
+        height: 190px;
+        
+      }
+
+      .item-md {
+        background-color: #2f3238;
       }
 
       ion-card {
-        min-height: 300px;
+        min-height: 100px;
+      }
+
+      .item-inner {
+        border: none !important;
       }
 }
