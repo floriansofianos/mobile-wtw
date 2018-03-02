@@ -46,13 +46,6 @@ public options: Array<MenuOptionModel>;
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private translate: TranslateService, private menuCtrl: MenuController) {
     this.translate.setDefaultLang('en');
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Movies', component: MoviesPage }
-    ];
-
   }
 
   initializeApp() {
@@ -146,16 +139,12 @@ public options: Array<MenuOptionModel>;
 
 public selectOption(option: MenuOptionModel): void {
   this.menuCtrl.close().then(() => {
-    if (option.custom && option.custom.isLogin) {
-      this.presentAlert('You\'ve clicked the login option!');
-    } else if (option.custom && option.custom.isLogout) {
-      this.presentAlert('You\'ve clicked the logout option!');
-    } else if (option.custom && option.custom.isExternalLink) {
-      let url = option.custom.externalUrl;
-      window.open(url, '_blank');
-    } else {
+    if (option.custom && option.custom.isLogout) {
+			console.log('You\'ve clicked the logout option!');
+		}
+    else {
       // Redirect to the selected page
-      this.navCtrl.setRoot(option.component || DetailsPage, { 'title': option.displayName });
+      this.nav.setRoot(option.component || HomePage, { 'title': option.displayName });
     }
   });
 }
