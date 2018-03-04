@@ -1,5 +1,5 @@
-<ion-list>
-  <virtual-scroll [items]="timelineEvents" (update)="viewPortItems = $event">
+<ion-list> 
+  <virtual-scroll #scroll [items]="timelineEvents" (update)="viewPortItems = $event" [bufferAmount]="6" [childHeight]="170" (end)="doInfinite($event)">
       <ion-item *ngFor="let e of viewPortItems">
           <ion-card>
             <h2 *ngIf="e.type == 1">{{ 'TIMELINE.TITLE_FOLLOW' | translate }}</h2>
@@ -15,9 +15,6 @@
             </div>
           </ion-card>
         </ion-item>
-        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-            <ion-infinite-scroll-content></ion-infinite-scroll-content>
-          </ion-infinite-scroll>
   </virtual-scroll>
 </ion-list>
 

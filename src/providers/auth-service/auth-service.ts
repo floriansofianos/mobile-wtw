@@ -44,6 +44,11 @@ export class AuthServiceProvider {
     return this.currentUser;
   }
 
+  logout(): any {
+    this.storage.remove("token");
+    this.currentUser = null;
+  }
+
   handleErrors(error: Response) {
     return Observable.throw(error.status);
   }

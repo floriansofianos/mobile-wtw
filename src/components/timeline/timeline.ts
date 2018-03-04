@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { TimelineServiceProvider } from '../../providers/timeline-service/timeline-service';
 
 
@@ -15,6 +15,8 @@ export class TimelineComponent {
   @Input() config: any;
   page: number;
   isAllLoaded: boolean;
+  isLoading: boolean;
+  @ViewChild('scroll') scroll;
 
   constructor(private timelineService: TimelineServiceProvider) {
     this.page = 0;
@@ -22,6 +24,7 @@ export class TimelineComponent {
   }
 
   doInfinite(infiniteScroll) {
+    console.log(this.scroll.element.nativeElement.offsetParent.parentElement);
     if (!this.isAllLoaded) {
       this.page++;
       this.timelineService.get(this.page).subscribe(response => {
@@ -30,9 +33,10 @@ export class TimelineComponent {
               this.isAllLoaded = true;
           }
           this.timelineEvents = this.timelineEvents.concat(newEvents);
-          infiniteScroll.complete();
+          //infiniteScroll.complete();
       });
     }
+    //else infiniteScroll.complete();
   }
 
   getMonth(createdAt) {

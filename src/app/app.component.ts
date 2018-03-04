@@ -19,6 +19,8 @@ import { WhatowatchPage } from '../pages/whatowatch/whatowatch';
 import { SideMenuSettings } from '../components/side-menu-content/models/side-menu-settings';
 import { MenuOptionModel } from '../components/side-menu-content/models/menu-option-model';
 
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -43,7 +45,7 @@ export class MyApp {
 // Options to show in the SideMenuComponent
 public options: Array<MenuOptionModel>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private translate: TranslateService, private menuCtrl: MenuController) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private translate: TranslateService, private menuCtrl: MenuController, private auth: AuthServiceProvider) {
     this.translate.setDefaultLang('en');
     this.initializeApp();
   }
@@ -72,6 +74,7 @@ public options: Array<MenuOptionModel>;
     });
     
     this.options.push({
+			iconName: 'film',
 			displayName: 'What to watch',
 			component: WhatowatchPage,
 		});
@@ -79,7 +82,6 @@ public options: Array<MenuOptionModel>;
 		// Load options with nested items (with icons)
 		// -----------------------------------------------
 		this.options.push({
-			iconName: 'film',
 			displayName: 'Movies',
 			subItems: [
 				{
@@ -101,7 +103,6 @@ public options: Array<MenuOptionModel>;
     });
     
     this.options.push({
-			iconName: 'videocam',
 			displayName: 'TV Shows',
 			subItems: [
 				{
@@ -140,7 +141,8 @@ public options: Array<MenuOptionModel>;
 public selectOption(option: MenuOptionModel): void {
   this.menuCtrl.close().then(() => {
     if (option.custom && option.custom.isLogout) {
-			console.log('You\'ve clicked the logout option!');
+			this.auth.logout();
+			this.nav.setRoot(LoginPage);
 		}
     else {
       // Redirect to the selected page
