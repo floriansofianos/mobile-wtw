@@ -23,6 +23,11 @@ getTV(id: number, lang: string) {
       .catch(this.handleErrors);
 }
 
+availableOnPlex(id: number) {
+  return this.http.get(this.baseUrl + 'api/movie/plex', { params: { id: id.toString() } })
+      .catch(this.handleErrors);
+}
+
 handleErrors(error: Response) {
   return Observable.throw(error.status);
 }

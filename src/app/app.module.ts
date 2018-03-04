@@ -20,6 +20,7 @@ import { TvPage } from '../pages/tv/tv';
 import { TvQuestionnairesPage } from '../pages/tv-questionnaires/tv-questionnaires';
 import { TvWatchlistPage } from '../pages/tv-watchlist/tv-watchlist';
 import { WhatowatchPage } from '../pages/whatowatch/whatowatch';
+import { MoviePage } from '../pages/movie/movie';
 
 import { TimelineComponent } from '../components/timeline/timeline';
 import { SideMenuContentComponent } from '../components/side-menu-content/side-menu-content.component';
@@ -34,6 +35,7 @@ import { TimelineServiceProvider } from '../providers/timeline-service/timeline-
 import { JwtHttpInterceptor } from '../providers/http-interceptor/JwtHttpInterceptor';
 import { MovieDBServiceProvider } from '../providers/movie-db-service/movie-db-service';
 import { UserServiceProvider } from '../providers/user-service/user-service';
+import { MovieQuestionnaireServiceProvider } from '../providers/movie-questionnaire-service/movie-questionnaire-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -45,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomePage,
     MoviesPage,
     LoginPage,
+    MoviePage,
     MoviesWatchlistPage,
     MyProfilePage,
     TvWatchlistPage,
@@ -81,6 +84,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WhatowatchPage,
     MoviesWatchlistPage,
     MyProfilePage,
+    MoviePage,
     TvWatchlistPage,
     TvQuestionnairesPage,
     SocialPage,
@@ -100,7 +104,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthServiceProvider,
     TimelineServiceProvider,
     MovieDBServiceProvider,
-    UserServiceProvider
+    UserServiceProvider,
+    MovieQuestionnaireServiceProvider
   ]
 })
 export class AppModule {}

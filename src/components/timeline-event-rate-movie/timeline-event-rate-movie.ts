@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 import * as _ from 'underscore'
 
 import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
+import { MoviePage } from '../../pages/movie/movie';
 
 @Component({
   selector: 'timeline-event-rate-movie',
@@ -20,7 +22,7 @@ export class TimelineEventRateMovieComponent {
     isLoading: boolean;
     movie: any;
 
-  constructor(private movieDBService: MovieDBServiceProvider) {
+  constructor(private movieDBService: MovieDBServiceProvider, private nav: NavController) {
   }
 
   ngOnInit() {
@@ -52,6 +54,10 @@ export class TimelineEventRateMovieComponent {
 
 getMonth(createdAt) {
     return (new Date(createdAt)).getMonth();
+  }
+
+  goToMovie(id) {
+      this.nav.push(MoviePage, { id: id });
   }
 
 }
