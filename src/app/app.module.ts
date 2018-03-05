@@ -6,7 +6,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 import { CommonModule } from '@angular/common';
 import { VirtualScrollModule } from 'angular2-virtual-scroll';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -24,6 +23,7 @@ import { MoviePage } from '../pages/movie/movie';
 
 import { TimelineComponent } from '../components/timeline/timeline';
 import { SideMenuContentComponent } from '../components/side-menu-content/side-menu-content.component';
+import { MovieRecommandationComponent } from '../components/movie-recommandation/movie-recommandation';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -57,11 +57,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     TvQuestionnairesPage,
     MoviesQuestionnairePage,
     SideMenuContentComponent,
+    MovieRecommandationComponent,
     TimelineComponent
   ],
   imports: [
     BrowserModule,
-    InfiniteScrollModule,
     HttpClientModule,
     VirtualScrollModule,
     ComponentsModule,

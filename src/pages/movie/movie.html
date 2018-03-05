@@ -8,7 +8,5 @@
 
 
 <ion-content padding>
- <div *ngIf="movie">
-  <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[2] }}{{ movie.poster_path }}" *ngIf="movie.poster_path" />
- </div>
+ <movie-recommandation [movie]="movie" [movieQuestionnaireInit]="movieQuestionnaireInit" [availableOnPlex]="availableOnPlex" [config]="config" (notify)="movieQuestionnaireChange($event)" (notifySave)="movieQuestionnaireSave($event)" [lang]="lang" ></movie-recommandation>
 </ion-content>

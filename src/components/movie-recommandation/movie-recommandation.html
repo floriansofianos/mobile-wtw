@@ -1,0 +1,4 @@
+<img class="background-img" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[2] }}{{ movie.backdrop_path }}" *ngIf="movie && movie.backdrop_path" />
+ <div *ngIf="movie">
+  <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ movie.poster_path }}" *ngIf="movie.poster_path" />
+ </div>
