@@ -18,6 +18,7 @@ export class MoviePage {
   availableOnPlex: boolean;
   movieQuestionnaireInit: any;
   movie: any;
+  movieQuestionnaire: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loading: LoadingController, 
     private movieDBService: MovieDBServiceProvider, private auth: AuthServiceProvider,
@@ -65,5 +66,16 @@ export class MoviePage {
     });
 
   }
+
+  movieQuestionnaireChange(data) {
+    if (data.skipMovie) {
+        //this.back();
+    }
+    else this.movieQuestionnaire = data;
+}
+
+movieQuestionnaireSave(event) {
+    //this.confirm();
+}
 
 }

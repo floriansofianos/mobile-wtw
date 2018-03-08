@@ -6,6 +6,10 @@ movie-recommandation {
         top: 0;
         opacity: 0.1;
     }
+    .movie-poster {
+        width: 150px;
+        height: auto;
+    }
     .movie-information-container {
         position: absolute;
         z-index: 999;

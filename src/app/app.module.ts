@@ -36,6 +36,7 @@ import { JwtHttpInterceptor } from '../providers/http-interceptor/JwtHttpInterce
 import { MovieDBServiceProvider } from '../providers/movie-db-service/movie-db-service';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { MovieQuestionnaireServiceProvider } from '../providers/movie-questionnaire-service/movie-questionnaire-service';
+import { MovieRecommandationServiceProvider } from '../providers/movie-recommandation-service/movie-recommandation-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -105,7 +106,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TimelineServiceProvider,
     MovieDBServiceProvider,
     UserServiceProvider,
-    MovieQuestionnaireServiceProvider
+    MovieQuestionnaireServiceProvider,
+    MovieRecommandationServiceProvider
   ]
 })
 export class AppModule {}
