@@ -15,8 +15,8 @@ export class MovieRecommandationComponent {
   @Output() notifySave: EventEmitter<any> = new EventEmitter<any>();
 
 
-  constructor() {
+  constructor() {  }
 
-  }
+  
 
 }

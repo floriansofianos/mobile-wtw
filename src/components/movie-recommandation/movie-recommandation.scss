@@ -1,3 +1,15 @@
 movie-recommandation {
-
+    .background-image {
+        background-size: cover;
+        max-width: 5000px;
+        position: relative;
+        top: 0;
+        opacity: 0.1;
+    }
+    .movie-information-container {
+        position: absolute;
+        z-index: 999;
+        top: 25px;
+        left: 25px;
+    }
 }
