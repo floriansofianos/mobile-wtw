@@ -1,5 +1,25 @@
 <div *ngIf="movie" class="movie-information-container">
-    <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ movie.poster_path }}" *ngIf="movie.poster_path" />
-   </div>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-5 col-sm>
+                    <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ movie.poster_path }}" *ngIf="movie.poster_path" />
+            </ion-col>
+            <ion-col col-12 col-sm>
+                    <ion-grid>
+                            <ion-row>
+                            <!-- Place where to put all the cards: available on plex + grade -->
+                            </ion-row>
+                            <ion-row>
+                                <ion-col>
+                                        <div class="movie-genres">{{ genres }}</div>
+                                        <div class="movie-summary">{{ movie?.overview }}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    
+</div>
 <img class="background-image" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[2] }}{{ movie.backdrop_path }}" *ngIf="movie && movie.backdrop_path" />
 
