@@ -1,25 +1,78 @@
 <div *ngIf="movie" class="movie-information-container">
     <ion-grid>
         <ion-row>
-            <ion-col col-5 col-sm>
-                    <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ movie.poster_path }}" *ngIf="movie.poster_path" />
+            <ion-col class="col-180px">
+                <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ movie.poster_path }}" *ngIf="movie.poster_path"
+                />
             </ion-col>
             <ion-col col-12 col-sm>
-                    <ion-grid>
-                            <ion-row>
-                            <!-- Place where to put all the cards: available on plex + grade -->
-                            </ion-row>
-                            <ion-row>
-                                <ion-col>
-                                        <div class="movie-genres">{{ genres }}</div>
-                                        <div class="movie-summary">{{ movie?.overview }}</div>
-                                </ion-col>
-                            </ion-row>
-                        </ion-grid>
+                <ion-grid>
+                    <ion-row>
+                        <div class="top-right-container">
+                            <div *ngIf="availableOnPlex" class="plex-available-container">{{ 'MOVIE_QUESTIONNAIRE.AVAILABLE_ON_PLEX' | translate }}</div>
+                            <div class="reco-grading-container" *ngIf="gradeLoaded" [ngClass]="{ 'grade-unknown': !gradeRelevant, 'good-grade': gradeRelevant && grade > 60, 'bad-grade': gradeRelevant && grade < 60 }"
+                                tooltip="{{ 'WTW.GRADE_HELP' | translate }}" positionH="left">
+                                {{ gradeRelevant ? grade + '%' : '?' }}
+                            </div>
+                            <div *ngIf="!gradeLoaded">
+                                Loading....
+                            </div>
+                            <div class="grade-reasons" *ngIf="gradeComments?.length > 0">
+                                <div [ngClass]="{ 'good-reason': c.isGood, 'bad-reason': !c.isGood }" *ngFor="let c of gradeComments">
+                                    <ion-icon name="checkmark" *ngIf="c.isGood"></ion-icon>
+                                    <ion-icon name="close" *ngIf="!c.isGood"></ion-icon>
+                                    <span>{{ c.text | translate }} {{c.name}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <div class="movie-genres">{{ genres }}</div>
+                            <div class="movie-summary">{{ movie?.overview }}</div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12 col-sm>
+                <div class="questions-container">
+                    <div class="movie-question">
+                        <div class="movie-question-text">{{ 'MOVIE_QUESTIONNAIRE.QUESTION_SEEN' | translate }}</div>
+                        <span class="switch-answer">{{ 'FORM.NO' | translate }}</span>
+                        <ion-toggle [color]="'#08073c'" [(ngModel)]="movieSeen" (ngModelChange)="onChange()"></ion-toggle>
+                        <span class="switch-answer">{{ 'FORM.YES' | translate }}</span>
+                    </div>
+                    <div *ngIf="movieSeen" class="movie-question">
+                        <div class="movie-question-text">{{ 'MOVIE_QUESTIONNAIRE.HOW_RATE' | translate }}</div>
+                        <star-rating-comp (onRatingChange)="onRatingChange($event)" [rating]="seenValue" [hoverEnabled]="true" [step]="1" [starType]="'icon'"
+                            [numOfStars]="5" [labelPosition]="'bottom'" [labelText]="labelRating" [size]="'medium'"></star-rating-comp>
+                        <div class="btn-margin-60">
+                            <button ion-button class="submit-btn login-form-btn" (click)="movieSkip()" *ngIf="!saving">{{ 'FORM.DONT_KNOW' | translate }}</button>
+                        </div>
+                    </div>
+                    <div *ngIf="!movieSeen" class="movie-question">
+                        <div class="movie-question-text">{{ 'MOVIE_QUESTIONNAIRE.WOULD_LIKE_SEE' | translate }}</div>
+                        <span class="switch-answer">{{ 'FORM.NO' | translate }}</span>
+                        <ion-toggle [color]="'#08073c'" [(ngModel)]="wantToWatch" (ngModelChange)="onChange()"></ion-toggle>
+                        <span class="switch-answer">{{ 'FORM.YES' | translate }}</span>
+                        <div class="btn-margin-25">
+                            <button ion-button class="submit-btn login-form-btn" (click)="movieSkip()" *ngIf="!saving">{{ 'FORM.DONT_KNOW' | translate }}</button>
+                        </div>
+                    </div>
+                    <div class="btn-save-container">
+                        <button ion-button class="submit-btn login-form-btn" (click)="clickSave()" *ngIf="!saving">{{ 'FORM.SAVE' | translate }}</button>
+                    </div>
+
+                </div>
+            </ion-col>
+            <ion-col>
+                <!-- Youtube Player -->
             </ion-col>
         </ion-row>
     </ion-grid>
-    
-</div>
-<img class="background-image" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[2] }}{{ movie.backdrop_path }}" *ngIf="movie && movie.backdrop_path" />
 
+</div>
+<img class="background-image" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[2] }}{{ movie.backdrop_path }}"
+    *ngIf="movie && movie.backdrop_path" />

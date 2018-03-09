@@ -16,4 +16,154 @@ movie-recommandation {
         top: 25px;
         left: 25px;
     }
+
+    .movie-genres {
+        padding-bottom: 5px;
+        border-bottom: 1px solid #fff;
+        font-size: 16px;
+    }
+
+    .movie-summary {
+        margin-top: 10px;
+    }
+
+    .col-180px {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 180px;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 180px;
+        -ms-flex: 0 0 180px;
+        flex: 0 0 180px;
+        max-width: 180px; 
+    }
+
+    .top-right-container {
+        width: 100%;
+        .plex-available-container {
+            padding: 2px 5px;
+            background-color: #222222;
+            color: white;
+            float: left;
+            border-radius: 4px;
+        }
+
+        .grade-reasons {
+            text-align: left;
+            padding: 6px;
+            border-left: 1px solid #DE5E60;
+            font-weight: bold;
+            font-size: 9px;
+            margin-top: 35px;
+        
+            .good-reason {
+                margin-bottom: 5px;
+                ion-icon {
+                    color: #6fb76f;
+                    margin-right: 5px;
+                }
+            }
+        
+            .bad-reason {
+                margin-bottom: 5px;
+                ion-icon {
+                    color: #DE5E60;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .reco-grading-container {
+            padding: 8px;
+            border-radius: 65px;
+            font-weight: bold;
+            font-size: 14px;
+            float: right;
+            margin-right: 10px;
+        }
+    
+        .good-grade {
+            background-color: #0b630b;
+        }
+    
+        .bad-grade {
+            background-color: #DE5E60;
+        }
+    
+        .grade-unknown {
+            background-color: #222222;
+            width: 35px;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width:575px) {
+        .top-right-container {
+            position: absolute;
+            right: 0;
+            top: -260px;
+            max-width: 140px;
+            font-size: 10px;
+        }
+    }
+
+    @media (min-width:576px) {
+        .grade-reasons {
+            font-size: 13px !important;
+        }
+        .movie-genres {
+            margin-top: 15px;
+        }
+    }
+
+    @media (min-width: 400px) and (max-width:575px) {
+        .top-right-container {
+            max-width: 180px;
+        }
+    }
+
+    .questions-container {
+        border-left: 2px solid #DE5E60;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        ion-toggle {
+            display: inline-flex;
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+    }
+
+    .movie-question {
+        margin-bottom: 10px;
+    }
+    
+    .movie-question-text {
+        text-decoration: underline;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    
+    .switch-answer {
+        vertical-align: super;
+    }
+
+    star-rating-comp {
+        float: left;
+    }
+
+    .btn-margin-60 {
+        margin-left: 155px;
+    }
+
+    .btn-margin-25 {
+        margin-left: 25px;
+        display: inline-block;
+    }
+
+    .btn-save-container {
+        margin-top: 20px;
+    }
+    
 }

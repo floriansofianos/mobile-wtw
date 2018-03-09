@@ -6,6 +6,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 import { CommonModule } from '@angular/common';
 import { VirtualScrollModule } from 'angular2-virtual-scroll';
+import { TooltipsModule } from 'ionic-tooltips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StarRatingModule } from 'angular-star-rating';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -65,6 +68,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     HttpClientModule,
     VirtualScrollModule,
+    BrowserAnimationsModule,
+    StarRatingModule,
+    TooltipsModule,
     ComponentsModule,
     CommonModule,
     IonicModule.forRoot(MyApp),
