@@ -23,10 +23,13 @@ import { TvQuestionnairesPage } from '../pages/tv-questionnaires/tv-questionnair
 import { TvWatchlistPage } from '../pages/tv-watchlist/tv-watchlist';
 import { WhatowatchPage } from '../pages/whatowatch/whatowatch';
 import { MoviePage } from '../pages/movie/movie';
+import { CastPage } from '../pages/cast/cast'; 
+
 
 import { TimelineComponent } from '../components/timeline/timeline';
 import { SideMenuContentComponent } from '../components/side-menu-content/side-menu-content.component';
 import { MovieRecommandationComponent } from '../components/movie-recommandation/movie-recommandation';
+import { CastMemberComponent } from '../components/cast-member/cast-member';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -56,6 +59,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MyProfilePage,
     TvWatchlistPage,
     SocialPage,
+    CastPage,
+    CastMemberComponent,
     WhatowatchPage,
     TvPage,
     TvQuestionnairesPage,
@@ -88,6 +93,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MyApp,
     HomePage,
     MoviesPage,
+    CastPage,
     WhatowatchPage,
     MoviesWatchlistPage,
     MyProfilePage,

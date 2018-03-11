@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{castMember?.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img *ngIf="isImgProfile(castMember.profile_path)" width="150" src="{{ config.images.base_url }}{{ config.images.profile_sizes[1] }}{{ castMember.profile_path }}"
+        />
+      </ion-col>
+      <ion-col class="cast-title-container">
+        <span *ngIf="this.crewType < 2">{{'CAST.ALSO_KNOWN' | translate}}</span>
+        <span *ngIf="this.crewType >= 2">{{'CAST.ALSO_SEEN' | translate}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="moviesFiltered">
+      <ion-col>
+        <div class="poster-container" *ngFor="let m of moviesFiltered" (click)="goToMovie(m.id)">
+          <div class="movie-poster-container">
+            <img width="110" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ m.poster_path }}" *ngIf="m.poster_path"
+            />
+            <div class="movie-poster-placeholder" *ngIf="!m.poster_path">
+              <ion-icon name="film"></ion-icon>
+            </div>
+            <div class="modal-movie-title">{{m.media_type == 'movie' ? m.title : m.name}}</div>
+            <div class="modal-movie-job">{{crewType == 2 ? m.character : job}}</div>
+          </div>
+        </div>
+        <div *ngIf="moviesFiltered.length < 1">
+          {{'CAST.NO_RESULTS' | translate}}
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

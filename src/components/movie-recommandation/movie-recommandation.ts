@@ -3,7 +3,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { MovieRecommandationServiceProvider } from '../../providers/movie-recommandation-service/movie-recommandation-service';
 
+import { CastPage } from '../../pages/cast/cast';
+
 import * as _ from 'underscore';
+import { NavController } from 'ionic-angular';
 
 @Component({
     selector: 'movie-recommandation',
@@ -35,7 +38,8 @@ export class MovieRecommandationComponent {
     gradeCommentsLevels = ['WTW.HATE_', 'WTW.DISLIKE_', '', 'WTW.LIKE_', 'WTW.LOVE_'];
 
 
-    constructor(private domSanitizer: DomSanitizer, private translate: TranslateService, private movieRecommandationService: MovieRecommandationServiceProvider) { }
+    constructor(private domSanitizer: DomSanitizer, private translate: TranslateService, private movieRecommandationService: MovieRecommandationServiceProvider,
+         public nav: NavController) { }
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.movieSeen || changes.wantToWatch) {
@@ -120,6 +124,22 @@ export class MovieRecommandationComponent {
         })
     }
 
+    isVideoPlayerDisplayed() {
+        let trailers = this.getAllTrailers();
+        if (trailers) {
+            return trailers.length > 0;
+        }
+        else return false;
+    }
 
+    clickSave() {
+        this.notifySave.emit({
+            clickSave: true
+        });
+    }
+
+    goToCast(member: any, crewType: any, job: any) {
+        this.nav.push(CastPage, { config: this.config, currentMovieId: this.movie.id, castMember: member, crewType: crewType, job: job });
+    }
 
 }

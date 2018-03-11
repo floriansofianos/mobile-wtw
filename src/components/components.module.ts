@@ -12,7 +12,8 @@ import { TimelineEventFriendComponent } from './timeline-event-friend/timeline-e
 @NgModule({
 	declarations: [TimelineEventRateMovieComponent,
     TimelineEventFollowComponent,
-    TimelineEventFriendComponent],
+    TimelineEventFriendComponent,
+    ],
     imports: [CommonModule,
         VirtualScrollModule,
         IonicModule, 
@@ -20,6 +21,7 @@ import { TimelineEventFriendComponent } from './timeline-event-friend/timeline-e
     TranslateModule],
 	exports: [TimelineEventRateMovieComponent,
     TimelineEventFollowComponent,
-    TimelineEventFriendComponent]
+    TimelineEventFriendComponent,
+    ]
 })
 export class ComponentsModule {}

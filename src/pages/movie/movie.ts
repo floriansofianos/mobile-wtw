@@ -6,76 +6,93 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { MovieQuestionnaireServiceProvider } from '../../providers/movie-questionnaire-service/movie-questionnaire-service';
 
 @Component({
-  selector: 'page-movie',
-  templateUrl: 'movie.html',
+    selector: 'page-movie',
+    templateUrl: 'movie.html',
 })
 export class MoviePage {
 
-  loadingWindow: Loading;
-  config: any;
-  id: number;
-  lang: any;
-  availableOnPlex: boolean;
-  movieQuestionnaireInit: any;
-  movie: any;
-  movieQuestionnaire: any;
+    loadingWindow: Loading;
+    config: any;
+    id: number;
+    lang: any;
+    availableOnPlex: boolean;
+    movieQuestionnaireInit: any;
+    movie: any;
+    movieQuestionnaire: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loading: LoadingController, 
-    private movieDBService: MovieDBServiceProvider, private auth: AuthServiceProvider,
-    private movieQuestionnaireService: MovieQuestionnaireServiceProvider) {
-    this.loadingWindow = this.loading.create();
-    this.loadingWindow.present();
+    constructor(public navCtrl: NavController, public navParams: NavParams, private loading: LoadingController,
+        private movieDBService: MovieDBServiceProvider, private auth: AuthServiceProvider,
+        private movieQuestionnaireService: MovieQuestionnaireServiceProvider) {
+        this.loadingWindow = this.loading.create();
+        this.loadingWindow.present();
 
-    this.movieDBService.getMovieDBConfiguration().subscribe(response => {
-      this.config = response;
-      this.id = this.navParams.get('id');
-      this.lang = this.auth.getCurrentUser().lang;
+        this.movieDBService.getMovieDBConfiguration().subscribe(response => {
+            this.config = response;
+            this.id = this.navParams.get('id');
+            this.lang = this.auth.getCurrentUser().lang;
 
-      if(this.auth.getCurrentUser().plexServerId) {
-        this.movieDBService.availableOnPlex(this.id).subscribe(response => {
-          this.availableOnPlex = response.available;
-      },
-          error => {
-              console.log(error);
-          });
-      }
+            if (this.auth.getCurrentUser().plexServerId) {
+                this.movieDBService.availableOnPlex(this.id).subscribe(response => {
+                    this.availableOnPlex = response.available;
+                },
+                    error => {
+                        console.log(error);
+                    });
+            }
 
-      // load existing data regarding this movie for the current user
-      this.movieQuestionnaireService.get(this.id).subscribe(
-        data => {
-            this.movieQuestionnaireInit = data;
-            this.movieDBService.getMovie(this.id, this.lang).subscribe(
+            // load existing data regarding this movie for the current user
+            this.movieQuestionnaireService.get(this.id).subscribe(
                 data => {
-                    this.movie = data;
-                    this.loadingWindow.dismiss();
+                    this.movieQuestionnaireInit = data;
+                    this.movieDBService.getMovie(this.id, this.lang).subscribe(
+                        data => {
+                            this.movie = data;
+                            this.loadingWindow.dismiss();
+                        },
+                        error => {
+                            console.log(error);
+                        }
+                    );
                 },
                 error => {
                     console.log(error);
                 }
             );
+
+
         },
-        error => {
-          console.log(error);
-        }
-    );
+            error => {
+                console.log(error);
+            });
 
-
-    },
-    error => { 
-      console.log(error);
-    });
-
-  }
-
-  movieQuestionnaireChange(data) {
-    if (data.skipMovie) {
-        //this.back();
     }
-    else this.movieQuestionnaire = data;
-}
 
-movieQuestionnaireSave(event) {
-    //this.confirm();
-}
+    movieQuestionnaireChange(data) {
+        if (data.skipMovie) {
+            this.back();
+        }
+        else this.movieQuestionnaire = data;
+    }
+
+    movieQuestionnaireSave(event) {
+        this.confirm();
+    }
+
+    confirm() {
+        // Add the questionnaire to DB
+        //this.loadingWindow.present();
+        // Save data in DB
+        if (this.movieQuestionnaire) this.movieQuestionnaireService.create(this.movieQuestionnaire).subscribe(response => {
+            //this.loadingWindow.dismiss();
+            this.back();
+        },
+            error => {
+                console.log(error);
+            });
+    }
+
+    back() {
+        this.navCtrl.pop();
+    }
 
 }

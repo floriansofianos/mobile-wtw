@@ -1,0 +1,35 @@
+page-cast {
+    .movie-poster-container {
+        margin-right: 10px;
+        display: inline-block;
+        margin-bottom: 15px;
+        max-width: 110px;
+        margin-top: 10px;
+        vertical-align: top;
+    }
+
+    .movie-poster-placeholder {
+        width: 110px;
+        height: 140px;
+
+        ion-icon {
+            margin-top: 80px;
+        }
+    }
+
+    .modal-movie-title {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: 3px;
+    }
+
+    .poster-container {
+        display: inline-block;
+    }
+
+    .cast-title-container {
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
