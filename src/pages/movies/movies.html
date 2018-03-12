@@ -1,13 +1,35 @@
 <ion-header>
-    <ion-navbar color="dark">
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>{{'TOP_MENU.MOVIES' | translate}}</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{'TOP_MENU.MOVIE_SEARCH' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
 
 
 <ion-content padding>
+  <div class="search-container">
+    <form (ngSubmit)="search()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col class="search-form-container">
+          <ion-list inset>
+            <ion-item>
+              <ion-label floating>{{ 'FORM.SEARCH' | translate }}</ion-label>
+              <ion-input type="text" [(ngModel)]="searchTxt" name="search" (keydown)="keyDownFunction($event)"></ion-input>
+            </ion-item>
+            <ion-item></ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="login-btn-col">
+          <button ion-button class="submit-btn login-form-btn" type="submit">{{ 'FORM.OK' | translate }}</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+  </div>
 
 </ion-content>
