@@ -22,7 +22,7 @@
               <ion-col col-8>
                     <div class="movie-right-container">
                             <span class="movie-title-container" *ngIf="!isTV" (click)="goToMovie(movie.id)">{{ movie.title }}</span>
-                            <span class="movie-title-container" *ngIf="isTV">{{ movie.tvShowInfo.name }}</span>
+                            <span class="movie-title-container" *ngIf="isTV" (click)="goToTv(movie.tvShowInfo.id)">{{ movie.tvShowInfo.name }}</span>
                             <div class="movie-rating-container">
                                 <span *ngIf="isCurUserYou">{{ 'TIMELINE.YOU' | translate }}</span>
                                 <span *ngIf="!isCurUserYou">{{ curUsername }}</span>

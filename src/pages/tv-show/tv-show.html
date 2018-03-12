@@ -7,12 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>TVShow</ion-title>
+    <ion-title>{{tv?.tvShowInfo?.name}}  ({{ tv?.tvShowInfo?.first_air_date?.substring(0, 4) }})</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <tv-recommandation *ngIf="tv" [tv]="tv" [tvQuestionnaireInit]="tvQuestionnaireInit" [availableOnPlex]="availableOnPlex" [config]="config" (notify)="tvQuestionnaireChange($event)" (notifySave)="tvQuestionnaireSave($event)" [lang]="lang" ></tv-recommandation>
 </ion-content>

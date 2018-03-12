@@ -24,11 +24,13 @@ import { TvWatchlistPage } from '../pages/tv-watchlist/tv-watchlist';
 import { WhatowatchPage } from '../pages/whatowatch/whatowatch';
 import { MoviePage } from '../pages/movie/movie';
 import { CastPage } from '../pages/cast/cast'; 
+import { TvShowPage } from '../pages/tv-show/tv-show';
 
 
 import { TimelineComponent } from '../components/timeline/timeline';
 import { SideMenuContentComponent } from '../components/side-menu-content/side-menu-content.component';
 import { MovieRecommandationComponent } from '../components/movie-recommandation/movie-recommandation';
+import { TvRecommandationComponent } from '../components/tv-recommandation/tv-recommandation';
 import { CastMemberComponent } from '../components/cast-member/cast-member';
 
 import { ComponentsModule } from '../components/components.module';
@@ -43,6 +45,8 @@ import { MovieDBServiceProvider } from '../providers/movie-db-service/movie-db-s
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { MovieQuestionnaireServiceProvider } from '../providers/movie-questionnaire-service/movie-questionnaire-service';
 import { MovieRecommandationServiceProvider } from '../providers/movie-recommandation-service/movie-recommandation-service';
+import { TvQuestionnaireServiceProvider } from '../providers/tv-questionnaire-service/tv-questionnaire-service';
+import { TvRecommandationServiceProvider } from '../providers/tv-recommandation-service/tv-recommandation-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -63,10 +67,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     CastMemberComponent,
     WhatowatchPage,
     TvPage,
+    TvShowPage,
     TvQuestionnairesPage,
     MoviesQuestionnairePage,
     SideMenuContentComponent,
     MovieRecommandationComponent,
+    TvRecommandationComponent,
     TimelineComponent
   ],
   imports: [
@@ -98,6 +104,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MoviesWatchlistPage,
     MyProfilePage,
     MoviePage,
+    TvShowPage,
     TvWatchlistPage,
     TvQuestionnairesPage,
     SocialPage,
@@ -117,9 +124,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthServiceProvider,
     TimelineServiceProvider,
     MovieDBServiceProvider,
+    TvRecommandationServiceProvider,
     UserServiceProvider,
     MovieQuestionnaireServiceProvider,
-    MovieRecommandationServiceProvider
+    MovieRecommandationServiceProvider,
+    TvQuestionnaireServiceProvider
   ]
 })
 export class AppModule {}
