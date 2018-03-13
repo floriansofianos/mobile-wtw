@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
 })
 export class MovieWallElementComponent {
 
-  @Input() movie: Array<number>;
+  @Input() movie: any;
   @Input() config: any;
   @Input() width: number;
   height: number;

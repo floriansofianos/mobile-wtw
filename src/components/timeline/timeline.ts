@@ -24,7 +24,6 @@ export class TimelineComponent {
   }
 
   doInfinite(infiniteScroll) {
-    console.log(this.scroll.element.nativeElement.offsetParent.parentElement);
     if (!this.isAllLoaded) {
       this.page++;
       this.timelineService.get(this.page).subscribe(response => {

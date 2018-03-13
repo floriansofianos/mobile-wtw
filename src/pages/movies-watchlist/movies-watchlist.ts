@@ -28,8 +28,10 @@ export class MoviesWatchlistPage {
       this.lang = this.auth.getCurrentUser().lang;
 
       this.movieQuestionnaireService.getWatchlist().subscribe(data => {
-        this.movieIds = _.map(data, (d) => { return d.movieDBId.toString() });
         this.loadingWindow.dismiss();
+        this.movieIds = _.map(data, (d) => { return d.movieDBId.toString() });
+        console.log(this.movieIds);
+        
     },
         error => {
             console.log(error);

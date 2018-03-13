@@ -7,7 +7,7 @@ import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-d
 })
 export class MovieWallComponent {
 
-  @Input() movieIds: Array<number>;
+  @Input() movieIds: Array<string>;
   @Input() lang: string;
   @Input() config: any;
   @Input() width: number;
