@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
   <div *ngIf="timelineEvents">
     <timeline [timelineEvents]="timelineEvents" [friends]="allFriends" [currentUserId]="currentUserId" [lang]="lang" [config]="config"></timeline>
   </div>

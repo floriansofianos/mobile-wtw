@@ -23,6 +23,11 @@ export class MovieDBServiceProvider {
       .catch(this.handleErrors);
   }
 
+  searchTV(s: string, lang: string) {
+    return this.http.get(this.baseUrl + 'api/movieDBSearchTV', { params: { search: s, lang: lang } })
+      .catch(this.handleErrors);
+  }
+
   getTV(id: number, lang: string) {
     return this.http.get(this.baseUrl + 'api/tvshow', { params: { id: id.toString(), lang: lang } })
       .catch(this.handleErrors);

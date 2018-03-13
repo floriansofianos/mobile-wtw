@@ -1,18 +1,46 @@
-<!--
-  Generated template for the TvPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>TV</ion-title>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{'TOP_MENU.TV_SEARCH' | translate}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+  <div class="search-container">
+    <form (ngSubmit)="search()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col class="search-form-container">
+          <ion-list inset>
+            <ion-item>
+              <ion-label floating>{{ 'FORM.SEARCH' | translate }}</ion-label>
+              <ion-input type="text" [(ngModel)]="searchTxt" name="search" (keydown)="keyDownFunction($event)"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="login-btn-col">
+          <button ion-button class="submit-btn login-form-btn" type="submit">{{ 'FORM.OK' | translate }}</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+    <div class="search-result" *ngFor="let result of searchResults">
+      <div class="search-result-poster">
+        <img width="100" *ngIf="result.poster_path" (click)="goToTV(result.id)" src="{{ configuration.images.base_url }}{{ configuration.images.poster_sizes[3] }}{{ result.poster_path }}"
+        />
+        <div *ngIf="!result.poster_path" (click)="goToTV(result.id)" class="movie-poster-placeholder" style="width: 100px; height: 175px;">
+          <ion-icon name="film"></ion-icon>
+        </div>
+      </div>
+      <div class="search-result-title" (click)="goToTV(result.id)">{{ result.name }}</div>
+      <div class="search-result-year">{{ result.first_air_date?.substring(0, 4)}}</div>
+      <div class="search-result-overview">{{ result.overview }}</div>
+    </div>
+  </div>
 
 </ion-content>

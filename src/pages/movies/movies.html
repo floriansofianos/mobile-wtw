@@ -18,7 +18,6 @@
               <ion-label floating>{{ 'FORM.SEARCH' | translate }}</ion-label>
               <ion-input type="text" [(ngModel)]="searchTxt" name="search" (keydown)="keyDownFunction($event)"></ion-input>
             </ion-item>
-            <ion-item></ion-item>
           </ion-list>
         </ion-col>
       </ion-row>
@@ -30,6 +29,18 @@
       </ion-row>
 
     </form>
+    <div class="search-result" *ngFor="let result of searchResults">
+      <div class="search-result-poster">
+        <img width="100" *ngIf="result.poster_path" (click)="goToMovie(result.id)" src="{{ configuration.images.base_url }}{{ configuration.images.poster_sizes[3] }}{{ result.poster_path }}"
+        />
+        <div *ngIf="!result.poster_path" (click)="goToMovie(result.id)" class="movie-poster-placeholder" style="width: 100px; height: 175px;">
+          <ion-icon name="film"></ion-icon>
+        </div>
+      </div>
+      <div class="search-result-title" (click)="goToMovie(result.id)">{{ result.title }}</div>
+      <div class="search-result-year">{{ result.release_date?.substring(0, 4)}}</div>
+      <div class="search-result-overview">{{ result.overview }}</div>
+    </div>
   </div>
 
 </ion-content>

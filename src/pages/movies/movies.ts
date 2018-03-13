@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
+import { MoviePage } from '../movie/movie';
 
 @Component({
   selector: 'page-movies',
@@ -44,6 +45,10 @@ export class MoviesPage {
         }
       );
     }
+  }
+
+  goToMovie(id) {
+    this.navCtrl.push(MoviePage, { id: id });
   }
 
   keyDownFunction(event) {

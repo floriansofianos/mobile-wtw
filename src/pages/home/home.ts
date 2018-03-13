@@ -18,7 +18,7 @@ export class HomePage {
   lang: any;
   currentUserId: any;
 
-  constructor(public navCtrl: NavController, private timelineService: TimelineServiceProvider, private statusBar: StatusBar, 
+  constructor(public navCtrl: NavController, private timelineService: TimelineServiceProvider, private statusBar: StatusBar,
     private loadingController: LoadingController, private movieDBService: MovieDBServiceProvider, private userService: UserServiceProvider,
     private auth: AuthServiceProvider) {
     this.statusBar.styleLightContent();
@@ -26,10 +26,10 @@ export class HomePage {
 
     this.lang = this.auth.getCurrentUser().lang;
     this.currentUserId = this.auth.getCurrentUser().id;
-    
+
     let loading = this.loadingController.create();
     loading.present();
-    
+
     this.movieDBService.getMovieDBConfiguration().subscribe(response => {
       this.config = response;
       this.userService.getAllFriends().subscribe(response => {
@@ -37,13 +37,23 @@ export class HomePage {
         this.timelineService.get(0).subscribe(data => {
           this.timelineEvents = data;
           loading.dismiss();
-      },
+        },
+          error => {
+            console.log(error);
+          });
+      });
+    });
+
+  }
+
+  doRefresh(refresher) {
+    this.timelineService.get(0).subscribe(data => {
+      this.timelineEvents = data;
+      refresher.complete();
+    },
       error => {
         console.log(error);
       });
-      });
-    });
-    
   }
 
 
