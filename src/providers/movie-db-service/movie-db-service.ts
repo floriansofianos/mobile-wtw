@@ -38,6 +38,11 @@ export class MovieDBServiceProvider {
       .catch(this.handleErrors);
   }
 
+  getMovies(movieIds: Array<any>, lang: string) {
+    return this.http.get(this.baseUrl + 'api/movie', { params: { movieIds: movieIds, lang: lang } })
+      .catch(this.handleErrors);
+  }
+
   handleErrors(error: Response) {
     return Observable.throw(error.status);
   }

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
+import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { MovieQuestionnaireServiceProvider } from '../../providers/movie-questionnaire-service/movie-questionnaire-service';
 
-/**
- * Generated class for the MoviesWatchlistPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import * as _ from 'underscore';
+import { MoviePage } from '../movie/movie';
 
 @Component({
   selector: 'page-movies-watchlist',
@@ -14,11 +13,41 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MoviesWatchlistPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  loadingWindow: Loading;
+  lang: string;
+  configuration: any;
+  movieIds: Array<string>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loading: LoadingController, 
+    private movieDBService: MovieDBServiceProvider, private auth: AuthServiceProvider, private movieQuestionnaireService: MovieQuestionnaireServiceProvider) {
+    this.loadingWindow = this.loading.create();
+    this.loadingWindow.present();
+
+    this.movieDBService.getMovieDBConfiguration().subscribe(response => {
+      this.configuration = response;
+      this.lang = this.auth.getCurrentUser().lang;
+
+      this.movieQuestionnaireService.getWatchlist().subscribe(data => {
+        this.movieIds = _.map(data, (d) => { return d.movieDBId.toString() });
+        this.loadingWindow.dismiss();
+    },
+        error => {
+            console.log(error);
+        }
+    );
+
+    },
+    error => {
+      console.log(error);
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MoviesWatchlistPage');
+  onClickMovie(event) {
+    if(event.movieId) {
+      this.navCtrl.push(MoviePage, { id: event.movieId })
+    }
   }
+
+
 
 }

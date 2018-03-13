@@ -32,6 +32,8 @@ import { SideMenuContentComponent } from '../components/side-menu-content/side-m
 import { MovieRecommandationComponent } from '../components/movie-recommandation/movie-recommandation';
 import { TvRecommandationComponent } from '../components/tv-recommandation/tv-recommandation';
 import { CastMemberComponent } from '../components/cast-member/cast-member';
+import { MovieWallComponent } from '../components/movie-wall/movie-wall';
+import { MovieWallElementComponent } from '../components/movie-wall-element/movie-wall-element';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -72,7 +74,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MoviesQuestionnairePage,
     SideMenuContentComponent,
     MovieRecommandationComponent,
+    MovieWallElementComponent,
     TvRecommandationComponent,
+    MovieWallComponent,
     TimelineComponent
   ],
   imports: [

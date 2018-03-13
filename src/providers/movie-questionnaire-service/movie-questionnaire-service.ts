@@ -8,12 +8,17 @@ export class MovieQuestionnaireServiceProvider {
   constructor(public http: HttpClient) { }
 
   get(id: number) {
-    return this.http.get(this.baseUrl + '/api/movieQuestionnaire/' + id)
+    return this.http.get(this.baseUrl + 'api/movieQuestionnaire/' + id)
+      .catch(this.handleErrors);
+  }
+
+  getWatchlist() {
+    return this.http.get(this.baseUrl + 'api/movieQuestionnaire/watchlist')
       .catch(this.handleErrors);
   }
 
   create(movieQuestionnaire: any): Observable<any> {
-    return this.http.post(this.baseUrl + '/api/movieQuestionnaire', movieQuestionnaire)
+    return this.http.post(this.baseUrl + 'api/movieQuestionnaire', movieQuestionnaire)
       .catch(this.handleErrors);
   }
 
@@ -24,7 +29,7 @@ export class MovieQuestionnaireServiceProvider {
     if (actorId) params.actorId = actorId;
     if (creatorId) params.creatorId = creatorId;
     params.lang = lang;
-    return this.http.get(this.baseUrl + '/api/cast', { params: params })
+    return this.http.get(this.baseUrl + 'api/cast', { params: params })
       .catch(this.handleErrors);
   }
 

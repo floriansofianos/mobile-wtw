@@ -1,0 +1,3 @@
+<div class="movie-wall-container" *ngIf="dataLoaded">
+  <movie-wall-element *ngFor="let m of movies" [movie]="m" [config]="config" [width]="width" (click)="showQuestionnaire(m.id)"></movie-wall-element>
+</div>
