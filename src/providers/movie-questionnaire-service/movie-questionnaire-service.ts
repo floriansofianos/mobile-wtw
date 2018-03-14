@@ -33,6 +33,11 @@ export class MovieQuestionnaireServiceProvider {
       .catch(this.handleErrors);
   }
 
+  getAll(): Observable<any> {
+    return this.http.get(this.baseUrl + 'api/movieQuestionnaire')
+      .catch(this.handleErrors);
+  }
+
   handleErrors(error: Response) {
     return Observable.throw(error.status);
   }

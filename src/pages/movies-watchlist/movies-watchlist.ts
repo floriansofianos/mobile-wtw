@@ -30,7 +30,6 @@ export class MoviesWatchlistPage {
       this.movieQuestionnaireService.getWatchlist().subscribe(data => {
         this.loadingWindow.dismiss();
         this.movieIds = _.map(data, (d) => { return d.movieDBId.toString() });
-        console.log(this.movieIds);
         
     },
         error => {
