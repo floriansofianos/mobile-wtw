@@ -2,10 +2,10 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
 
 @Component({
-  selector: 'movie-wall',
-  templateUrl: 'movie-wall.html'
+  selector: 'tv-wall',
+  templateUrl: 'tv-wall.html'
 })
-export class MovieWallComponent {
+export class TVWallComponent {
 
   @Input() movieIds: any;
   @Input() lang: string;
@@ -22,7 +22,7 @@ export class MovieWallComponent {
   ngOnInit() {
     if (!this.width) this.width = 100;
     this.dataLoaded = false;
-    this.movieDBService.getMovies(this.movieIds, this.lang).subscribe(data => {
+    this.movieDBService.getTVShows(this.movieIds, this.lang).subscribe(data => {
       this.movies = data;
       this.dataLoaded = true;
     },

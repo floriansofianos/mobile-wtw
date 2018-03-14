@@ -43,6 +43,11 @@ export class MovieDBServiceProvider {
       .catch(this.handleErrors);
   }
 
+  getTVShows(movieIds: Array<any>, lang: string) {
+    return this.http.get(this.baseUrl + 'api/tvshow', { params: { movieIds: movieIds, lang: lang } })
+      .catch(this.handleErrors);
+  }
+
   handleErrors(error: Response) {
     return Observable.throw(error.status);
   }

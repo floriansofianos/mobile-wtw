@@ -18,6 +18,11 @@ export class TvQuestionnaireServiceProvider {
       .catch(this.handleErrors);
   }
 
+  getWatchlist(): Observable<any> {
+    return this.http.get(this.baseUrl + 'api/tvQuestionnaire/watchlist')
+      .catch(this.handleErrors);
+  }
+
   handleErrors(error: Response) {
     return Observable.throw(error.status);
   }

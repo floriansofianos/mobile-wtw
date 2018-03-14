@@ -67,6 +67,8 @@
         "HOME": "Accueil",
         "MOVIE_SEARCH": "Recherche Film",
         "TV_SEARCH": "Recherche Série",
+        "MOVIE_WATCHLIST": "A Voir",
+        "TV_WATCHLIST": "A Voir",
         "MOVIES": "Films",
         "TVSHOWS": "Séries TV",
         "SOCIAL": "Social",

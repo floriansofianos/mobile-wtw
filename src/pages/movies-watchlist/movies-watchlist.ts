@@ -16,7 +16,7 @@ export class MoviesWatchlistPage {
   loadingWindow: Loading;
   lang: string;
   configuration: any;
-  movieIds: Array<string>;
+  movieIds: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loading: LoadingController, 
     private movieDBService: MovieDBServiceProvider, private auth: AuthServiceProvider, private movieQuestionnaireService: MovieQuestionnaireServiceProvider) {

@@ -1,22 +1,22 @@
-
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>{{ 'TOP_MENU.MOVIE_WATCHLIST' | translate }}</ion-title>
-  </ion-navbar>
-
+    <ion-navbar color="dark">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'TOP_MENU.MOVIE_WATCHLIST' | translate }}</ion-title>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <div class="inner-content-container">
-    <div class="start-questionnaire-container">
-        <div class="category-movie-wall" *ngIf="movieIds && movieIds.length > 0">
-            <movie-wall [movieIds]="movieIds" [lang]="lang" [config]="configuration" (notify)="onClickMovie($event)"></movie-wall>
-        </div>
-        <div class="category-movie-wall" *ngIf="movieIds && movieIds.length < 1">
-            {{ 'CAST.NO_RESULTS' | translate }}
+    <div class="inner-content-container">
+        <div class="start-questionnaire-container">
+            <div class="category-movie-wall" *ngIf="movieIds && movieIds.length && movieIds.length > 0">
+                <movie-wall [movieIds]="movieIds" [lang]="lang" [config]="configuration" (notify)="onClickMovie($event)"></movie-wall>
+            </div>
+            <div class="category-movie-wall" *ngIf="movieIds && movieIds.length && movieIds.length < 1">
+                {{ 'CAST.NO_RESULTS' | translate }}
+            </div>
         </div>
     </div>
-</div>
 </ion-content>

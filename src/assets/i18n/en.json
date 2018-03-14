@@ -68,8 +68,8 @@
         "MOVIES": "Movies",
         "MOVIE_SEARCH": "Movie Search",
         "TV_SEARCH": "TV Search",
-        "MOVIE_WATCHLIST": "Movie Watchlist",
-        "TV_WATCHLIST": "TV Watchlist",
+        "MOVIE_WATCHLIST": "Your Movie Watchlist",
+        "TV_WATCHLIST": "Your TV Watchlist",
         "TVSHOWS": "TV Shows",
         "SOCIAL": "Social",
         "USERPROFILE": "My Profile"

@@ -34,6 +34,8 @@ import { TvRecommandationComponent } from '../components/tv-recommandation/tv-re
 import { CastMemberComponent } from '../components/cast-member/cast-member';
 import { MovieWallComponent } from '../components/movie-wall/movie-wall';
 import { MovieWallElementComponent } from '../components/movie-wall-element/movie-wall-element';
+import { TVWallComponent } from '../components/tv-wall/tv-wall';
+import { TVWallElementComponent } from '../components/tv-wall-element/tv-wall-element';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -76,6 +78,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MovieRecommandationComponent,
     MovieWallElementComponent,
     TvRecommandationComponent,
+    TVWallComponent,
+    TVWallElementComponent,
     MovieWallComponent,
     TimelineComponent
   ],

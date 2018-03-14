@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'movie-wall-element',
-  templateUrl: 'movie-wall-element.html'
+  selector: 'tv-wall-element',
+  templateUrl: 'tv-wall-element.html'
 })
-export class MovieWallElementComponent {
+export class TVWallElementComponent {
 
   @Input() movie: any;
   @Input() config: any;

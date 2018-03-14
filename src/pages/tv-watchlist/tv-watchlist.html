@@ -1,18 +1,22 @@
-<!--
-  Generated template for the TvWatchlistPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>TVWatchlist</ion-title>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'TOP_MENU.TV_WATCHLIST' | translate }}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-
+  <div class="inner-content-container">
+    <div class="start-questionnaire-container">
+      <div class="category-movie-wall" *ngIf="movieIds && movieIds.length && movieIds.length > 0">
+        <tv-wall [movieIds]="movieIds" [lang]="lang" [config]="configuration" (notify)="onClickMovie($event)"></tv-wall>
+      </div>
+      <div class="category-movie-wall" *ngIf="movieIds && movieIds.length && movieIds.length < 1">
+        {{ 'CAST.NO_RESULTS' | translate }}
+      </div>
+    </div>
+  </div>
 </ion-content>
