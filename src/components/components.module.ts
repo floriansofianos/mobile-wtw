@@ -9,10 +9,11 @@ import { TimelineEventRateMovieComponent } from './timeline-event-rate-movie/tim
 import { TimelineEventFollowComponent } from './timeline-event-follow/timeline-event-follow';
 import { TimelineEventFriendComponent } from './timeline-event-friend/timeline-event-friend';
 
+
 @NgModule({
 	declarations: [TimelineEventRateMovieComponent,
     TimelineEventFollowComponent,
-    TimelineEventFriendComponent
+    TimelineEventFriendComponent,
     ],
     imports: [CommonModule,
         VirtualScrollModule,

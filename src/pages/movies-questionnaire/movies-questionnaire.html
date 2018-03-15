@@ -29,6 +29,6 @@
     </div>
   </div>
   <div *ngIf="startNewClicked && !loadingState && !selectedMovie">
-    <!-- <movie-questionnaire [isFirstQuestionnaire]="false"></movie-questionnaire> -->
+    <questionnaire [isFirstQuestionnaire]="false" [lang]="lang" [config]="configuration"></questionnaire>
   </div>
 </ion-content>

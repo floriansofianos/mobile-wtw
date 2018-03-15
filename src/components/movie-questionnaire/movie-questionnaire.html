@@ -1,0 +1,74 @@
+<div *ngIf="movie" class="movie-information-container">
+    <div class="background-image" *ngIf="movie && movie.backdrop_path" [style]="getBackgroundImage()"></div>
+    <ion-grid>
+        <ion-row>
+            <ion-col class="col-180px">
+                <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ movie.poster_path }}" *ngIf="movie.poster_path"
+                />
+            </ion-col>
+            <ion-col col-12 col-sm>
+                <ion-grid>
+                    <ion-row><div class="top-right-container">{{ movie.title }}</div></ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <div class="movie-genres">{{ genres }}</div>
+                            <div class="movie-summary">{{ movie?.overview }}</div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12 col-sm>
+                <div class="questions-container">
+                    <div class="movie-question">
+                        <div class="movie-question-text">{{ 'MOVIE_QUESTIONNAIRE.QUESTION_SEEN' | translate }}</div>
+                        <span class="switch-answer">{{ 'FORM.NO' | translate }}</span>
+                        <ion-toggle [color]="'#08073c'" [(ngModel)]="movieSeen" (ngModelChange)="onChange()"></ion-toggle>
+                        <span class="switch-answer">{{ 'FORM.YES' | translate }}</span>
+                    </div>
+                    <div *ngIf="movieSeen" class="movie-question">
+                        <div class="movie-question-text">{{ 'MOVIE_QUESTIONNAIRE.HOW_RATE' | translate }}</div>
+                        <star-rating-comp (onRatingChange)="onRatingChange($event)" [rating]="seenValue" [hoverEnabled]="true" [step]="1" [starType]="'icon'"
+                            [numOfStars]="5" [labelPosition]="'bottom'" [labelText]="labelRating" [size]="'medium'"></star-rating-comp>
+                    </div>
+                    <div *ngIf="!movieSeen" class="movie-question">
+                        <div class="movie-question-text">{{ 'MOVIE_QUESTIONNAIRE.WOULD_LIKE_SEE' | translate }}</div>
+                        <span class="switch-answer">{{ 'FORM.NO' | translate }}</span>
+                        <ion-toggle [color]="'#08073c'" [(ngModel)]="wantToWatch" (ngModelChange)="onChange()"></ion-toggle>
+                        <span class="switch-answer">{{ 'FORM.YES' | translate }}</span>
+                    </div>
+                    <div class="btn-margin-60">
+                        <button ion-button class="submit-btn login-form-btn" (click)="movieSkip()" *ngIf="!saving">{{ 'FORM.DONT_KNOW' | translate }}</button>
+                    </div>
+                </div>
+            </ion-col>
+            <ion-col>
+                <div class="video-wrapper" *ngIf="isVideoPlayerDisplayed()">
+                    <iframe [src]="trailerUrl" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <div class="middle-section-title">{{ 'MOVIE_QUESTIONNAIRE.CAST' | translate }}</div>
+                <div class="cast-row" [ngClass]="{ 'flex-cast-row': movie.directors.length > 2 }">
+                    <div class="cast-card" *ngFor="let director of movie.directors">
+                        <cast-member [config]="config" [castMember]="director" [job]="jobDirector" [crewType]="0" [currentMovieId]="movie?.id" [lang]="lang" (click)="goToCast(director,0,jobDirector)"></cast-member>
+                    </div>
+                </div>
+                <div class="cast-row" [ngClass]="{ 'flex-cast-row': movie.writers.length > 2 }">
+                    <div class="cast-card" *ngFor="let writer of movie.writers">
+                        <cast-member [config]="config" [castMember]="writer" [job]="jobWriter" [crewType]="1" [currentMovieId]="movie?.id" [lang]="lang" (click)="goToCast(writer,1,jobWriter)"></cast-member>
+                    </div>
+                </div>
+                <div class="cast-row" [ngClass]="{ 'flex-cast-row': movie.actors.length > 2 }">
+                    <div class="cast-card" *ngFor="let actor of movie.actors">
+                        <cast-member [config]="config" [castMember]="actor" [job]="actor.character" [crewType]="2" [currentMovieId]="movie?.id" [lang]="lang" (click)="goToCast(actor,2,actor.character)"></cast-member>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</div>

@@ -20,7 +20,7 @@ export class AuthServiceProvider {
 
   loginUser(credentials: any): Observable<any> {
     return this.http.post(this.baseUrl + 'auth/token', 'email=' + credentials.email + '&password=' + credentials.password, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-                    .catch(this.handleErrors);
+      .catch(this.handleErrors);
   }
 
   setUserInSession(token: string) {
@@ -28,7 +28,7 @@ export class AuthServiceProvider {
   }
 
   getAuthToken() {
-      return this.storage.get("token");
+    return this.storage.get("token");
   }
 
   setCurrentUserInMemory(user) {
@@ -37,7 +37,7 @@ export class AuthServiceProvider {
 
   getCurrentUserFromApi() {
     return this.http.get(this.baseUrl + 'auth/current')
-            .catch(this.handleErrors);
+      .catch(this.handleErrors);
   }
 
   getCurrentUser(): any {
@@ -47,6 +47,14 @@ export class AuthServiceProvider {
   logout(): any {
     this.storage.remove("token");
     this.currentUser = null;
+  }
+
+  setUserProperty(prop: string, value: any) {
+    this.currentUser[prop] = value;
+    let requestBody = {}
+    requestBody[prop] = value
+    return this.http.put(this.baseUrl + 'auth/current', requestBody)
+      .catch(this.handleErrors);
   }
 
   handleErrors(error: Response) {

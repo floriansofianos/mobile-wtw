@@ -36,6 +36,9 @@ import { MovieWallComponent } from '../components/movie-wall/movie-wall';
 import { MovieWallElementComponent } from '../components/movie-wall-element/movie-wall-element';
 import { TVWallComponent } from '../components/tv-wall/tv-wall';
 import { TVWallElementComponent } from '../components/tv-wall-element/tv-wall-element';
+import { MovieQuestionnaireComponent } from '../components/movie-questionnaire/movie-questionnaire';
+import { QuestionnaireComponent } from '../components/questionnaire/questionnaire';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -51,6 +54,9 @@ import { MovieQuestionnaireServiceProvider } from '../providers/movie-questionna
 import { MovieRecommandationServiceProvider } from '../providers/movie-recommandation-service/movie-recommandation-service';
 import { TvQuestionnaireServiceProvider } from '../providers/tv-questionnaire-service/tv-questionnaire-service';
 import { TvRecommandationServiceProvider } from '../providers/tv-recommandation-service/tv-recommandation-service';
+import { QuestionnaireServiceProvider } from '../providers/questionnaire-service/questionnaire-service';
+import { UserQuestionnaireServiceProvider } from '../providers/user-questionnaire-service/user-questionnaire-service';
+import { CountriesServiceProvider } from '../providers/countries-service/countries-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -78,6 +84,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MovieRecommandationComponent,
     MovieWallElementComponent,
     TvRecommandationComponent,
+    MovieQuestionnaireComponent,
+    QuestionnaireComponent,
+    ProgressBarComponent,
     TVWallComponent,
     TVWallElementComponent,
     MovieWallComponent,
@@ -136,7 +145,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserServiceProvider,
     MovieQuestionnaireServiceProvider,
     MovieRecommandationServiceProvider,
-    TvQuestionnaireServiceProvider
+    TvQuestionnaireServiceProvider,
+    QuestionnaireServiceProvider,
+    UserQuestionnaireServiceProvider,
+    CountriesServiceProvider
   ]
 })
 export class AppModule {}
