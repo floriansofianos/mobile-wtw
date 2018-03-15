@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MovieQuestionnaireServiceProvider } from '../../providers/movie-questionnaire-service/movie-questionnaire-service';
 import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
@@ -37,7 +37,7 @@ export class QuestionnaireComponent {
     private movieQuestionnaireService: MovieQuestionnaireServiceProvider,
     private movieDBService: MovieDBServiceProvider, private userQuestionnaireService: UserQuestionnaireServiceProvider, 
     private countriesService: CountriesServiceProvider, private loading: LoadingController,
-    private authService: AuthServiceProvider) {
+    private authService: AuthServiceProvider, private ref: ChangeDetectorRef) {
 
   }
 
@@ -144,6 +144,8 @@ export class QuestionnaireComponent {
   }
 
   moviePrevious() {
+    this.movie = null;
+    this.ref.detectChanges();
     this.loadingWindow = this.loading.create();
     this.loadingWindow.present();
     this.movieIndex--;
@@ -211,6 +213,7 @@ export class QuestionnaireComponent {
     this.loadingWindow.present();
     this.movieQuestionnaire.isSkipped = true;
     this.storePreviousMovie(false);
+    this.movie = null;
     // Save data in DB
     if (this.movieQuestionnaire) this.movieQuestionnaireService.create(this.movieQuestionnaire).subscribe(response => {
       this.loadingWindow.dismiss();
@@ -238,6 +241,7 @@ export class QuestionnaireComponent {
     this.loadingWindow = this.loading.create();
     this.loadingWindow.present();
     this.storePreviousMovie(false);
+    this.movie = null;
     // Save data in DB
     if (this.movieQuestionnaire) this.movieQuestionnaireService.create(this.movieQuestionnaire).subscribe(response => {
       this.questionAnswered++;
@@ -252,10 +256,11 @@ export class QuestionnaireComponent {
             });
         }
         else {
-
+          this.loadingWindow.dismiss();
         }
       }
       else {
+        this.loadingWindow.dismiss();
         this.showNextMovie();
       }
     },

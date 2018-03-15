@@ -41,7 +41,7 @@
           <button ion-button class="submit-btn login-form-btn" (click)="ageConfirm()">{{ 'FORM.NEXT' | translate }}</button>
       </div>
   </div>
-  <div class="question-block width95" *ngIf="movieIndex % 2 == 0 && states[2] && questionAnswered < questionsToAnswer">
+  <div class="question-block width95" *ngIf="states[2] && questionAnswered < questionsToAnswer && movie">
       <movie-questionnaire [movie]="movie" [movieQuestionnaireInit]="movieQuestionnaireInit" [config]="config" (notify)="movieQuestionnaireChange($event)" [lang]="lang"></movie-questionnaire>
       <div class="button-line" *ngIf="!showSpinner">
           <button ion-button class="submit-btn login-form-btn" (click)="moviePrevious()" *ngIf="!isFirstQuestionnaire && movieIndex != 0">{{ 'FORM.PREVIOUS' | translate }}</button>
