@@ -1,0 +1,18 @@
+<div class="top-right">
+    <div class="progress-bar-container"><progress-bar [progress]="(questionAnswered / questionsToAnswer) * 100"></progress-bar></div>
+    <div class="text-centered">{{ questionAnswered }}/{{questionsToAnswer}}</div>
+  </div>
+  <div class="questionnaire-container">
+    <div class="question-block width95" *ngIf="states[2] && questionAnswered < questionsToAnswer && movie">
+        <tv-questionnaire-element [lang]="lang" [movie]="movie" [movieQuestionnaireInit]="movieQuestionnaireInit" [config]="config" (notify)="movieQuestionnaireChange($event)" [lang]="lang"></tv-questionnaire-element>
+        <div class="button-line" *ngIf="!showSpinner">
+            <button ion-button class="submit-btn login-form-btn" (click)="moviePrevious()" *ngIf="movieIndex != 0">{{ 'FORM.PREVIOUS' | translate }}</button>
+            <button ion-button class="submit-btn login-form-btn" (click)="movieSkip()">{{ 'FORM.SKIP' | translate }}</button>
+            <button ion-button class="submit-btn login-form-btn" (click)="movieConfirm()">{{ 'FORM.NEXT' | translate }}</button>
+        </div>
+    </div>
+    <div class="question-block thank-you-block" *ngIf="states[2] && questionAnswered >= questionsToAnswer">
+        <h1><i class="fa fa-check-circle-o" aria-hidden="true"></i>{{ 'FIRST_QUESTIONNAIRE.DONE' | translate }}</h1>
+        <div><button ion-button class="submit-btn login-form-btn" (click)="refreshPage()">{{ 'FIRST_QUESTIONNAIRE.CONTINUE' | translate }}</button></div>
+    </div>
+  </div>

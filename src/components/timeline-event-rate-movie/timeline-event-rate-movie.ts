@@ -65,4 +65,30 @@ export class TimelineEventRateMovieComponent {
         this.nav.push(TvShowPage, { id: id });
     }
 
+    getFontSize(title: string) {
+        if(title.length < 20) {
+            return '22px';
+        }
+        else if(title.length < 35) {
+            return '20px';
+        }
+        else if(title.length < 50) {
+            return '16px';
+        }
+        else return '14px'; 
+    }
+
+    getLineHeight(title: string) {
+        if(title.length < 20) {
+            return '27px';
+        }
+        else if(title.length < 35) {
+            return '25px';
+        }
+        else if(title.length < 50) {
+            return '21px';
+        }
+        else return '19px'; 
+    }
+
 }

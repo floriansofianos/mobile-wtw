@@ -1,21 +1,18 @@
 import { Component, Input, ChangeDetectorRef } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { MovieQuestionnaireServiceProvider } from '../../providers/movie-questionnaire-service/movie-questionnaire-service';
-import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
 import { Loading, LoadingController, NavController } from 'ionic-angular';
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { QuestionnaireServiceProvider } from '../../providers/questionnaire-service/questionnaire-service';
-import { UserQuestionnaireServiceProvider } from '../../providers/user-questionnaire-service/user-questionnaire-service';
+import { TranslateService } from '@ngx-translate/core';
+import { TvQuestionnaireServiceProvider } from '../../providers/tv-questionnaire-service/tv-questionnaire-service';
+import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
 import { CountriesServiceProvider } from '../../providers/countries-service/countries-service';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { TvUserQuestionnaireServiceProvider } from '../../providers/tv-user-questionnaire-service/tv-user-questionnaire-service';
 import { HomePage } from '../../pages/home/home';
 
 @Component({
-  selector: 'questionnaire',
-  templateUrl: 'questionnaire.html'
+  selector: 'tv-questionnaire',
+  templateUrl: 'tv-questionnaire.html'
 })
-export class QuestionnaireComponent {
-
-  @Input() isFirstQuestionnaire: boolean;
+export class TvQuestionnaireComponent {
   @Input() lang: any;
   @Input() config: any;
 
@@ -34,11 +31,10 @@ export class QuestionnaireComponent {
   age: number;
   loadingWindow: Loading;
 
-  constructor(private translate: TranslateService, private firstQuestionnaireService: QuestionnaireServiceProvider, 
-    private movieQuestionnaireService: MovieQuestionnaireServiceProvider,
-    private movieDBService: MovieDBServiceProvider, private userQuestionnaireService: UserQuestionnaireServiceProvider, 
-    private countriesService: CountriesServiceProvider, private loading: LoadingController,
-    private authService: AuthServiceProvider, private ref: ChangeDetectorRef,
+  constructor(private translate: TranslateService, 
+    private tvQuestionnaireService: TvQuestionnaireServiceProvider,
+    private movieDBService: MovieDBServiceProvider, private userQuestionnaireService: TvUserQuestionnaireServiceProvider,
+    private loading: LoadingController, private authService: AuthServiceProvider, private ref: ChangeDetectorRef,
   private navCtrl: NavController) {
 
   }
@@ -48,89 +44,12 @@ export class QuestionnaireComponent {
     if (currentUser.yearOfBirth) this.yearOfBirth = currentUser.yearOfBirth;
     else this.yearOfBirth = 1980;
     if (currentUser.country) this.selectedCountry = currentUser.country;
-    this.questionsToAnswer = this.isFirstQuestionnaire ? 12 : 10;
+    this.questionsToAnswer = 10;
     this.welcomeMessage = true;
     this.movieIndex = -1;
     this.questionAnswered = 0;
     this.lang = this.translate.currentLang;
-    if (currentUser.firstQuestionnaireCompleted && this.isFirstQuestionnaire) {
-      this.questionAnswered = this.questionsToAnswer;
-      this.setStateActive(2);
-    }
-    if (!this.isFirstQuestionnaire) {
-      this.getNextAgeStep();
-    }
-  }
-
-
-
-  welcomeMessageOK() {
-    this.welcomeMessage = false;
-  }
-
-  setTranslation(lang: string) {
-    this.translate.use(lang);
-    this.lang = lang;
-  }
-
-  isTranslation(lang: string) {
-    return this.translate.currentLang === lang;
-  }
-
-  langSkip() {
-    this.setStateActive(1);
-    this.questionAnswered++;
-  }
-
-  ageSkip() {
     this.getNextAgeStep();
-  }
-
-  langConfirm() {
-    this.loadingWindow = this.loading.create();
-    this.loadingWindow.present();
-    // Save data in DB
-    this.authService.setUserProperty('lang', this.translate.currentLang).subscribe(response => {
-      this.countriesService.getAll().subscribe(response => {
-        this.countriesList = response.countries;
-        this.setStateActive(1);
-        this.loadingWindow.dismiss();
-        this.questionAnswered++;
-      },
-        error => {
-          console.log(error);
-        });
-    },
-      error => {
-        console.log(error);
-      });
-  }
-
-  agePrevious() {
-    this.setStateActive(0);
-    this.questionAnswered--;
-  }
-
-  ageConfirm() {
-    this.loadingWindow = this.loading.create();
-    this.loadingWindow.present();
-    // Save data in DB
-    if (this.yearOfBirth) this.authService.setUserProperty('yearOfBirth', this.yearOfBirth).subscribe(response => {
-      if (this.selectedCountry) this.authService.setUserProperty('country', this.selectedCountry).subscribe(response => {
-        this.loadingWindow.dismiss();
-        this.getNextAgeStep();
-      },
-        error => {
-          console.log(error);
-        });
-      else {
-        this.loadingWindow.dismiss();
-        this.getNextAgeStep();
-      }
-    },
-      error => {
-        console.log(error);
-      });
   }
 
   getNextAgeStep() {
@@ -171,20 +90,7 @@ export class QuestionnaireComponent {
       if (this.movieIndex === 0) this.setStateActive(2);
     }
     else {
-      if (this.isFirstQuestionnaire) {
-        this.loadingWindow = this.loading.create();
-        this.loadingWindow.present();
-        this.firstQuestionnaireService.getFirstQuestionnaireMovie(this.translate.currentLang).subscribe(response => {
-          this.loadingWindow.dismiss();
-          this.showMovieFromAPIResponse(response);
-        },
-          error => {
-            console.log(error);
-          });
-      }
-      else {
-        this.getMovieQuestionnaireFromUserQuestionnaire();
-      }
+      this.getMovieQuestionnaireFromUserQuestionnaire();
     }
   }
 
@@ -217,7 +123,7 @@ export class QuestionnaireComponent {
     this.storePreviousMovie(false);
     this.movie = null;
     // Save data in DB
-    if (this.movieQuestionnaire) this.movieQuestionnaireService.create(this.movieQuestionnaire).subscribe(response => {
+    if (this.movieQuestionnaire) this.tvQuestionnaireService.create(this.movieQuestionnaire).subscribe(response => {
       this.loadingWindow.dismiss();
       this.showNextMovie();
     },
@@ -245,21 +151,11 @@ export class QuestionnaireComponent {
     this.storePreviousMovie(false);
     this.movie = null;
     // Save data in DB
-    if (this.movieQuestionnaire) this.movieQuestionnaireService.create(this.movieQuestionnaire).subscribe(response => {
+    if (this.movieQuestionnaire) this.tvQuestionnaireService.create(this.movieQuestionnaire).subscribe(response => {
       this.questionAnswered++;
       // Check if we need to show more movies
       if (this.questionAnswered >= this.questionsToAnswer) {
-        if (this.isFirstQuestionnaire) {
-          this.authService.setUserProperty('firstQuestionnaireCompleted', true).subscribe(response => {
-            this.loadingWindow.dismiss();
-          },
-            error => {
-              console.log(error);
-            });
-        }
-        else {
-          this.loadingWindow.dismiss();
-        }
+        this.loadingWindow.dismiss();
       }
       else {
         this.loadingWindow.dismiss();
@@ -288,5 +184,4 @@ export class QuestionnaireComponent {
   refreshPage() {
     this.navCtrl.setRoot(this.navCtrl.getActive().component);
   }
-
 }

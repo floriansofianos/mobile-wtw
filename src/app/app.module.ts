@@ -39,6 +39,8 @@ import { TVWallElementComponent } from '../components/tv-wall-element/tv-wall-el
 import { MovieQuestionnaireComponent } from '../components/movie-questionnaire/movie-questionnaire';
 import { QuestionnaireComponent } from '../components/questionnaire/questionnaire';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+import { TvQuestionnaireComponent } from '../components/tv-questionnaire/tv-questionnaire';
+import { TvQuestionnaireElementComponent } from '../components/tv-questionnaire-element/tv-questionnaire-element';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -57,6 +59,7 @@ import { TvRecommandationServiceProvider } from '../providers/tv-recommandation-
 import { QuestionnaireServiceProvider } from '../providers/questionnaire-service/questionnaire-service';
 import { UserQuestionnaireServiceProvider } from '../providers/user-questionnaire-service/user-questionnaire-service';
 import { CountriesServiceProvider } from '../providers/countries-service/countries-service';
+import { TvUserQuestionnaireServiceProvider } from '../providers/tv-user-questionnaire-service/tv-user-questionnaire-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -75,6 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SocialPage,
     CastPage,
     CastMemberComponent,
+    TvQuestionnaireComponent,
     WhatowatchPage,
     TvPage,
     TvShowPage,
@@ -82,6 +86,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MoviesQuestionnairePage,
     SideMenuContentComponent,
     MovieRecommandationComponent,
+    TvQuestionnaireElementComponent,
     MovieWallElementComponent,
     TvRecommandationComponent,
     MovieQuestionnaireComponent,
@@ -148,7 +153,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TvQuestionnaireServiceProvider,
     QuestionnaireServiceProvider,
     UserQuestionnaireServiceProvider,
-    CountriesServiceProvider
+    CountriesServiceProvider,
+    TvUserQuestionnaireServiceProvider
   ]
 })
 export class AppModule {}

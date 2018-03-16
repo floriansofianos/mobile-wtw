@@ -21,8 +21,8 @@
               </ion-col>
               <ion-col col-8>
                     <div class="movie-right-container">
-                            <span class="movie-title-container" *ngIf="!isTV" (click)="goToMovie(movie.id)">{{ movie.title }}</span>
-                            <span class="movie-title-container" *ngIf="isTV" (click)="goToTv(movie.tvShowInfo.id)">{{ movie.tvShowInfo.name }}</span>
+                            <span class="movie-title-container" *ngIf="!isTV" (click)="goToMovie(movie.id)" [style.font-size]="getFontSize(movie.title)" [style.line-height]="getLineHeight(movie.title)">{{ movie.title }}</span>
+                            <span class="movie-title-container" *ngIf="isTV" (click)="goToTv(movie.tvShowInfo.id)" [style.font-size]="getFontSize(movie.tvShowInfo.name)" [style.line-height]="getLineHeight(movie.tvShowInfo.name)">{{ movie.tvShowInfo.name }}</span>
                             <div class="movie-rating-container">
                                 <span *ngIf="isCurUserYou">{{ 'TIMELINE.YOU' | translate }}</span>
                                 <span *ngIf="!isCurUserYou">{{ curUsername }}</span>

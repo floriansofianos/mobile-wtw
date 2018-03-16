@@ -28,6 +28,7 @@ export class MoviesQuestionnairePage {
     this.movieDBService.getMovieDBConfiguration().subscribe(response => {
       this.categoriesNotLoaded = true;
       this.configuration = response;
+      console.log(this.auth.getCurrentUser());
       this.lang = this.auth.getCurrentUser().lang;
 
       this.movieQuestionnaireService.getAll().subscribe(data => {

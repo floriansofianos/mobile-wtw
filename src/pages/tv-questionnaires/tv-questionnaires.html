@@ -1,18 +1,34 @@
-<!--
-  Generated template for the TvQuestionnairesPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>TVQuestionnaires</ion-title>
-  </ion-navbar>
-
-</ion-header>
+    <ion-navbar color="dark">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{'TOP_MENU.TV_QUESTIONNAIRE' | translate}}</ion-title>
+    </ion-navbar>
+  </ion-header>
 
 
 <ion-content padding>
-
+    <div class="start-questionnaire-container" *ngIf="!startNewClicked && !loadingState && !selectedMovie">
+        <button ion-button class="submit-btn login-form-btn" (click)="startNewQuestionnaire()">{{ 'QUESTIONNAIRE.START_NEW' | translate }}</button>
+        <h2>{{'QUESTIONNAIRE.HISTORY' | translate }}</h2>
+        <div class="categories-placeholder" *ngIf="categoriesNotLoaded">
+          Loading...
+        </div>
+        <div *ngFor="let category of categories" class="category-container">
+          <div class="questionnaire-separator"></div>
+          <div class="category-title" *ngIf="category.values && category.values.length > 0">
+            <span *ngIf="category.type == 'text'">{{ category.name | translate }}</span>
+            <span *ngIf="category.type == 'star'">
+              <star-rating-comp [rating]="category.name" [readOnly]="true" [step]="1" [starType]="'icon'" [numOfStars]="5" [size]="'medium'"></star-rating-comp>
+            </span>
+          </div>
+          <div class="category-movie-wall" *ngIf="category.values && category.values.length > 0">
+            <tv-wall [movieIds]="category.values" [lang]="lang" [config]="configuration" (notify)="onClickMovie($event)"></tv-wall>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="startNewClicked && !loadingState && !selectedMovie">
+        <tv-questionnaire [lang]="lang" [config]="configuration"></tv-questionnaire>
+      </div>
 </ion-content>
