@@ -1,18 +1,202 @@
-<!--
-  Generated template for the WhatowatchPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Whatowatch</ion-title>
-  </ion-navbar>
-
+    <ion-navbar color="dark">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>WTW</ion-title>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-
+    <div class="wtw-container" *ngIf="isMovie && !isLoading">
+        <div class="login-form-container" style="width: 500px;margin: 0;">
+            <h1 class="wtw-title-container">
+                {{ 'WTW.WTW' | translate }}
+            </h1>
+            <div class="tv-movie-switch">
+                <span class="switch-answer">{{ 'FORM.TVSHOW' | translate }}</span>
+                <ion-toggle [color]="'#08073c'" [(ngModel)]="isMovie"></ion-toggle>
+                <span class="switch-answer">{{ 'FORM.MOVIE' | translate }}</span>
+            </div>
+            <div class="wtw-form-content">
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label floating>{{ 'WTW.MIN_RELEASE' | translate }}</ion-label>
+                        <ion-input type="number" min="1900" [(ngModel)]="formWTW.minRelease" name="movieMinRelease"></ion-input>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label floating>{{ 'WTW.MAX_RELEASE' | translate }}</ion-label>
+                        <ion-input type="number" min="1900" [(ngModel)]="formWTW.maxRelease" name="movieMaxRelease" [max]="maxReleaseYear"></ion-input>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>Genre</ion-label>
+                        <ion-select [(ngModel)]="formWTW.genreSelectValue">
+                            <ion-option *ngFor="let g of genres" [value]="g.id">{{ g.name }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.LANGUAGE' | translate }}</ion-label>
+                        <ion-select [(ngModel)]="formWTW.countrySelectValue">
+                            <ion-option *ngFor="let c of languages" [value]="c.code">{{ c.code }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.RUNTIME_LIMIT' | translate }}</ion-label>
+                        <ion-checkbox [(ngModel)]="formWTW.isRuntimeChecked"></ion-checkbox>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container" *ngIf="formWTW.isRuntimeChecked">
+                    <ion-item>
+                        <ion-range min="90" max="150" step="1" [(ngModel)]="formWTW.runtimeLimit" color="secondary">
+                            <ion-label range-left>90</ion-label>
+                            <ion-label range-right>150</ion-label>
+                        </ion-range>
+                    </ion-item>
+                    <div class="wtw-form-runtime-restriction">{{ 'WTW.RUNTIME_LIMIT_EXPLANATION' | translate }}</div>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.INCLUDE_WATCHLIST' | translate }}</ion-label>
+                        <ion-checkbox [(ngModel)]="formWTW.isWatchlistChecked"></ion-checkbox>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.ONLY_NOW_PLAYING' | translate }}</ion-label>
+                        <ion-checkbox [(ngModel)]="formWTW.isNowPlayingChecked"></ion-checkbox>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container" *ngIf="showPlex">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.ONLY_PLEX_MOVIES' | translate }}</ion-label>
+                        <ion-checkbox [(ngModel)]="formWTW.usePlex"></ion-checkbox>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.WATCH_WITH_FRIEND' | translate }}</ion-label>
+                        <ion-checkbox [(ngModel)]="formWTW.watchWithFriend"></ion-checkbox>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container" *ngIf="formWTW.watchWithFriend">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.FRIEND' | translate }}</ion-label>
+                        <ion-select [(ngModel)]="formWTW.withFriend">
+                            <ion-option *ngFor="let f of friends" [value]="f.id">{{ c.username }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </div>
+                <div *ngIf="noResults" class="wtw-error">{{ 'CAST.NO_RESULTS' | translate }}</div>
+                <div *ngIf="notValidReleaseDates" class="wtw-error">{{ 'WTW.NOT_VALID_RELEASE_DATES' | translate }}</div>
+                <button ion-button class="submit-btn login-form-btn" (click)="clickSearch()">{{ 'FORM.OK' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="wtw-container" *ngIf="!isMovie && !isLoading">
+        <div class="login-form-container" style="width: 500px;margin: 0;">
+            <h1 class="wtw-title-container">
+                {{ 'WTW.WTW' | translate }}
+            </h1>
+            <div class="tv-movie-switch">
+                <span class="switch-answer">{{ 'FORM.TVSHOW' | translate }}</span>
+                <ion-toggle [color]="'#08073c'" [(ngModel)]="isMovie"></ion-toggle>
+                <span class="switch-answer">{{ 'FORM.MOVIE' | translate }}</span>
+            </div>
+            <div class="wtw-form-content">
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label floating>{{ 'WTW.MIN_RELEASE' | translate }}</ion-label>
+                        <ion-input type="number" min="1900" [(ngModel)]="formTVWTW.minRelease" name="movieMinRelease"></ion-input>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label floating>{{ 'WTW.MAX_RELEASE' | translate }}</ion-label>
+                        <ion-input type="number" min="1900" [(ngModel)]="formTVWTW.maxRelease" name="movieMaxRelease" [max]="maxReleaseYear"></ion-input>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>Genre</ion-label>
+                        <ion-select [(ngModel)]="formTVWTW.genreSelectValue">
+                            <ion-option *ngFor="let g of genres" [value]="g.id">{{ g.name }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.LANGUAGE' | translate }}</ion-label>
+                        <ion-select [(ngModel)]="formTVWTW.countrySelectValue">
+                            <ion-option *ngFor="let c of languages" [value]="c.code">{{ c.code }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.RUNTIME_LIMIT' | translate }}</ion-label>
+                        <ion-checkbox [(ngModel)]="formTVWTW.isRuntimeChecked"></ion-checkbox>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container" *ngIf="formTVWTW.isRuntimeChecked">
+                    <ion-item>
+                        <ion-range min="5" max="60" step="1" [(ngModel)]="formTVWTW.runtimeLimit" color="secondary">
+                            <ion-label range-left>90</ion-label>
+                            <ion-label range-right>150</ion-label>
+                        </ion-range>
+                    </ion-item>
+                    <div class="wtw-form-runtime-restriction">{{ 'WTW.RUNTIME_LIMIT_TV_EXPLANATION' | translate }}</div>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.INCLUDE_WATCHLIST' | translate }}</ion-label>
+                        <ion-checkbox [(ngModel)]="formTVWTW.isWatchlistChecked"></ion-checkbox>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container" *ngIf="showPlex">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.ONLY_PLEX_MOVIES' | translate }}</ion-label>
+                        <ion-checkbox [(ngModel)]="formTVWTW.usePlex"></ion-checkbox>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.WATCH_WITH_FRIEND' | translate }}</ion-label>
+                        <ion-checkbox [(ngModel)]="formTVWTW.watchWithFriend"></ion-checkbox>
+                    </ion-item>
+                </div>
+                <div class="wtw-form-field-container" *ngIf="formTVWTW.watchWithFriend">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.FRIEND' | translate }}</ion-label>
+                        <ion-select [(ngModel)]="formTVWTW.withFriend">
+                            <ion-option *ngFor="let f of friends" [value]="f.id">{{ c.username }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </div>
+                <div *ngIf="noTVResults" class="wtw-error">{{ 'CAST.NO_RESULTS' | translate }}</div>
+                <div *ngIf="notValidTVReleaseDates" class="wtw-error">{{ 'WTW.NOT_VALID_RELEASE_DATES' | translate }}</div>
+                <button ion-button class="submit-btn login-form-btn" (click)="clickTVSearch()">{{ 'FORM.OK' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="personal-recommandations-container" *ngIf="recommandationIds && !movie && !isLoading">
+        <div class="personal-recommandations-title">
+            {{ 'WTW.PERSONAL_RECO' | translate }}
+        </div>
+        <movie-wall [movieIds]="recommandationIds" [lang]="lang" [config]="configuration" [width]="150" (notify)="onClickMovie($event)"></movie-wall>
+    </div>
+    <div class="personal-recommandations-container" *ngIf="recommandationTVIds && !isLoading">
+        <div class="personal-recommandations-title">
+            {{ 'WTW.PERSONAL_RECO_TV' | translate }}
+        </div>
+        <tv-wall [movieIds]="recommandationTVIds" [lang]="lang" [config]="configuration" [width]="150" (notify)="onClickTV($event)"></tv-wall>
+    </div>
 </ion-content>

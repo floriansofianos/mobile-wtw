@@ -48,7 +48,6 @@ export class TvQuestionnaireComponent {
     this.welcomeMessage = true;
     this.movieIndex = -1;
     this.questionAnswered = 0;
-    this.lang = this.translate.currentLang;
     this.getNextAgeStep();
   }
 
@@ -97,7 +96,7 @@ export class TvQuestionnaireComponent {
   getMovieQuestionnaireFromUserQuestionnaire() {
     this.loadingWindow = this.loading.create();
     this.loadingWindow.present();
-    this.userQuestionnaireService.get(this.translate.currentLang).subscribe(response => {
+    this.userQuestionnaireService.get(this.lang).subscribe(response => {
       this.loadingWindow.dismiss();
       if (response.reload) {
         this.getMovieQuestionnaireFromUserQuestionnaire();

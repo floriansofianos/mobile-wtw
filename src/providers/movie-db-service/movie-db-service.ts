@@ -43,6 +43,11 @@ export class MovieDBServiceProvider {
       .catch(this.handleErrors);
   }
 
+  getAllGenres() {
+    return this.http.get(this.baseUrl + 'api/movieDBGenres')
+      .catch(this.handleErrors);
+  }
+
   getTVShows(movieIds: Array<any>, lang: string) {
     return this.http.get(this.baseUrl + 'api/tvshow', { params: { movieIds: movieIds, lang: lang } })
       .catch(this.handleErrors);
@@ -54,6 +59,20 @@ export class MovieDBServiceProvider {
 
   tvAvailableOnPlex(id: number) {
     return this.http.get(this.baseUrl + 'api/tvshow/plex', { params: { id: id.toString() } })
+      .catch(this.handleErrors);
+  }
+
+  wtw(lang: string, genreId: number, useWatchlist: boolean, useRuntimeLimit: boolean, runtimeLimit: number, minRelease: number, maxRelease: number, nowPlaying: boolean, languageSelected: boolean, friendId: number, usePlex: boolean) {
+    return this.http.get(this.baseUrl + 'api/movieDBSearch/wtw', { params: { lang: lang, genreId: genreId.toString(), useWatchlist: useWatchlist.toString(), 
+      useRuntimeLimit: useRuntimeLimit.toString(), runtimeLimit: runtimeLimit.toString(), minRelease: minRelease.toString(), maxRelease: maxRelease.toString(), 
+      nowPlaying: nowPlaying.toString(), languageSelected: languageSelected.toString(), friendId: friendId.toString(), usePlex: usePlex.toString() } })
+      .catch(this.handleErrors);
+  }
+
+  wtwTV(lang: string, genreId: number, useWatchlist: boolean, useRuntimeLimit: boolean, runtimeLimit: number, minRelease: number, maxRelease: number, languageSelected: boolean, friendId: number, usePlex: boolean) {
+    return this.http.get(this.baseUrl + 'api/movieDBSearchTV/wtw', { params: { lang: lang, genreId: genreId.toString(), useWatchlist: useWatchlist.toString(),
+       useRuntimeLimit: useRuntimeLimit.toString(), runtimeLimit: runtimeLimit.toString(), minRelease: minRelease.toString(), maxRelease: maxRelease.toString(), 
+       languageSelected: languageSelected.toString(), friendId: friendId.toString(), usePlex: usePlex.toString() } })
       .catch(this.handleErrors);
   }
 

@@ -10,7 +10,12 @@ export class MovieRecommandationServiceProvider {
 
   getScore(id: number): Observable<any> {
     return this.http.get(this.baseUrl + 'api/movieRecommandation/score', { params: { id: id.toString() } })
-        .catch(this.handleErrors);
+      .catch(this.handleErrors);
+  }
+
+  getAll(): Observable<any> {
+    return this.http.get(this.baseUrl + 'api/movieRecommandation')
+      .catch(this.handleErrors);
   }
 
   handleErrors(error: Response) {

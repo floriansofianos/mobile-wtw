@@ -60,6 +60,8 @@ import { QuestionnaireServiceProvider } from '../providers/questionnaire-service
 import { UserQuestionnaireServiceProvider } from '../providers/user-questionnaire-service/user-questionnaire-service';
 import { CountriesServiceProvider } from '../providers/countries-service/countries-service';
 import { TvUserQuestionnaireServiceProvider } from '../providers/tv-user-questionnaire-service/tv-user-questionnaire-service';
+import { LanguagesServiceProvider } from '../providers/languages-service/languages-service';
+import { SocialServiceProvider } from '../providers/social-service/social-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -154,7 +156,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     QuestionnaireServiceProvider,
     UserQuestionnaireServiceProvider,
     CountriesServiceProvider,
-    TvUserQuestionnaireServiceProvider
+    TvUserQuestionnaireServiceProvider,
+    LanguagesServiceProvider,
+    SocialServiceProvider
   ]
 })
 export class AppModule {}

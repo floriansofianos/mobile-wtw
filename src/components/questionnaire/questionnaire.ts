@@ -52,7 +52,7 @@ export class QuestionnaireComponent {
     this.welcomeMessage = true;
     this.movieIndex = -1;
     this.questionAnswered = 0;
-    this.lang = this.translate.currentLang;
+    //this.lang = this.translate.currentLang;
     if (currentUser.firstQuestionnaireCompleted && this.isFirstQuestionnaire) {
       this.questionAnswered = this.questionsToAnswer;
       this.setStateActive(2);
@@ -174,7 +174,7 @@ export class QuestionnaireComponent {
       if (this.isFirstQuestionnaire) {
         this.loadingWindow = this.loading.create();
         this.loadingWindow.present();
-        this.firstQuestionnaireService.getFirstQuestionnaireMovie(this.translate.currentLang).subscribe(response => {
+        this.firstQuestionnaireService.getFirstQuestionnaireMovie(this.lang).subscribe(response => {
           this.loadingWindow.dismiss();
           this.showMovieFromAPIResponse(response);
         },
@@ -191,7 +191,7 @@ export class QuestionnaireComponent {
   getMovieQuestionnaireFromUserQuestionnaire() {
     this.loadingWindow = this.loading.create();
     this.loadingWindow.present();
-    this.userQuestionnaireService.get(this.translate.currentLang).subscribe(response => {
+    this.userQuestionnaireService.get(this.lang).subscribe(response => {
       this.loadingWindow.dismiss();
       if (response.reload) {
         this.getMovieQuestionnaireFromUserQuestionnaire();

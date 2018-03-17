@@ -4,6 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { NavController } from 'ionic-angular';
 import { CastPage } from '../../pages/cast/cast';
 
+import * as _ from 'underscore';
+
 @Component({
   selector: 'tv-questionnaire-element',
   templateUrl: 'tv-questionnaire-element.html'
@@ -47,6 +49,11 @@ export class TvQuestionnaireElementComponent {
     this.genres = this.movie.tvShowInfo.genres ? (this.movie.tvShowInfo.genres.length > 0 ? this.movie.tvShowInfo.genres.map(a => a.name).reduce((a, b) => a + ', ' + b) : '') : '';
     this.movieSeen = this.movieQuestionnaireInit ? this.movieQuestionnaireInit.isSeen : false;
     this.seenValue = this.movieQuestionnaireInit ? this.movieQuestionnaireInit.rating : 3;
+    // Get writers and actors from tv show
+    var allWriters = _.filter(this.movie.tvShowCredits.crew, function (m) { return m.job === 'Screenplay' || m.job === 'Writer'; });
+    var allActors = this.movie.tvShowCredits.cast;
+    this.movie.writers = _.sortBy(allWriters, 'numberOfEpisodes').reverse().slice(0, Math.min(allWriters.length, 5));
+    this.movie.actors = allActors.slice(0, Math.min(allActors.length, 6));
     this.getLabelRating();
     this.wantToWatch = this.movieQuestionnaireInit ? this.movieQuestionnaireInit.wantToSee : false;
     this.onChange();
@@ -77,7 +84,7 @@ export class TvQuestionnaireElementComponent {
 
   getAllTrailers() {
     if (this.movie.trailers) {
-      let trailers = this.movie.trailers.filter(
+      let trailers = this.movie.trailers.results.filter(
         t => t.type === 'Trailer' && t.site === 'YouTube');
       return trailers;
     }
@@ -87,7 +94,7 @@ export class TvQuestionnaireElementComponent {
   onChange() {
     this.notify.emit({
       isSeen: this.movieSeen,
-      movieDBId: this.movie.id,
+      movieDBId: this.movie.tvShowInfo.id,
       rating: this.seenValue,
       wantToSee: this.wantToWatch
     });

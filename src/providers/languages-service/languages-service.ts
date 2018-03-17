@@ -3,18 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class TvRecommandationServiceProvider {
+export class LanguagesServiceProvider {
+
   baseUrl = 'https://app.whatowatch.net/';
+
   constructor(public http: HttpClient) {
   }
 
-  getScore(id: number): Observable<any> {
-    return this.http.get(this.baseUrl + 'api/tvRecommandation/score', { params: { id: id.toString() } })
-      .catch(this.handleErrors);
-  }
-
   getAll(): Observable<any> {
-    return this.http.get(this.baseUrl + 'api/tvRecommandation')
+    return this.http.get(this.baseUrl + 'api/languages')
       .catch(this.handleErrors);
   }
 

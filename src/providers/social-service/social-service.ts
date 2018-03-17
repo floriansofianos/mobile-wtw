@@ -2,19 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+
 @Injectable()
-export class TvRecommandationServiceProvider {
+export class SocialServiceProvider {
+
   baseUrl = 'https://app.whatowatch.net/';
   constructor(public http: HttpClient) {
   }
 
-  getScore(id: number): Observable<any> {
-    return this.http.get(this.baseUrl + 'api/tvRecommandation/score', { params: { id: id.toString() } })
+  getAllFriends(): Observable<any> {
+    return this.http.get(this.baseUrl + 'api/friend/')
       .catch(this.handleErrors);
   }
 
-  getAll(): Observable<any> {
-    return this.http.get(this.baseUrl + 'api/tvRecommandation')
+  getUserProfiles(ids: Array<string>): Observable<any> {
+    return this.http.get(this.baseUrl + 'api/user/profiles', { params: { userIds: ids } })
       .catch(this.handleErrors);
   }
 
