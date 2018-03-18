@@ -145,6 +145,7 @@
         "NOT_VALID_RELEASE_DATES": "The selected release years are not correct: the minimum should be smaller than the maximum.",
         "ONLY_NOW_PLAYING": "Only show movies now playing in theaters",
         "FRIEND": "Friend",
+        "MINUTES": "minutes",
         "WATCH_WITH_FRIEND": "Watch this movie with a friend",
         "WATCH_TV_WITH_FRIEND": "Watch this tv show with a friend",
         "ONLY_PLEX_MOVIES": "Only show movies available on Plex",

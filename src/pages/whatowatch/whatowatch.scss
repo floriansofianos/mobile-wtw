@@ -1,3 +1,30 @@
 page-whatowatch {
-
+    .login-form-container {
+        width: 400px;
+        margin: auto;
+        border-left: 2px solid #DE5E60;
+        background-color: #26292e;
+        text-align: left;
+        padding: 20px;
+    }
+    .tv-movie-switch {
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+    ion-item {
+        background-color: #26292e !important;
+        color: #fff !important;
+        border-bottom: none !important;
+    }
+    .toggle-md {
+        display: inline-block;
+    }
+    .switch-answer {
+        vertical-align: top;
+        display: inline-block;
+        margin-top:10px;
+    }
+    .checkbox-md {
+        margin: 9px 15px 9px 4px !important;
+    }
 }
