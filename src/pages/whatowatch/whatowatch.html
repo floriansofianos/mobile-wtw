@@ -169,7 +169,7 @@
                         </ion-label>
                     </ion-item>
                 </div>
-                <div class="wtw-form-field-container">
+                <div class="wtw-form-field-container font-12">
                     <ion-item>
                         <ion-label>{{ 'WTW.INCLUDE_TV_WATCHLIST' | translate }}</ion-label>
                         <ion-checkbox [(ngModel)]="formTVWTW.isWatchlistChecked"></ion-checkbox>
@@ -181,7 +181,7 @@
                         <ion-checkbox [(ngModel)]="formTVWTW.usePlex"></ion-checkbox>
                     </ion-item>
                 </div>
-                <div class="wtw-form-field-container">
+                <div class="wtw-form-field-container" *ngIf="friends">
                     <ion-item>
                         <ion-label>{{ 'WTW.WATCH_TV_WITH_FRIEND' | translate }}</ion-label>
                         <ion-checkbox [(ngModel)]="formTVWTW.watchWithFriend"></ion-checkbox>
@@ -205,12 +205,12 @@
         <div class="personal-recommandations-title">
             {{ 'WTW.PERSONAL_RECO' | translate }}
         </div>
-        <movie-wall [movieIds]="recommandationIds" [lang]="lang" [config]="configuration" [width]="150" (notify)="onClickMovie($event)"></movie-wall>
+        <movie-wall [movieIds]="recommandationIds" [lang]="lang" [config]="configuration" [width]="120" (notify)="onClickMovie($event)"></movie-wall>
     </div>
     <div class="personal-recommandations-container" *ngIf="recommandationTVIds && !isLoading">
         <div class="personal-recommandations-title">
             {{ 'WTW.PERSONAL_RECO_TV' | translate }}
         </div>
-        <tv-wall [movieIds]="recommandationTVIds" [lang]="lang" [config]="configuration" [width]="150" (notify)="onClickTV($event)"></tv-wall>
+        <tv-wall [movieIds]="recommandationTVIds" [lang]="lang" [config]="configuration" [width]="120" (notify)="onClickTV($event)"></tv-wall>
     </div>
 </ion-content>

@@ -9,12 +9,12 @@ page-whatowatch {
     }
     .tv-movie-switch {
         padding-top: 10px;
-        padding-bottom: 20px;
     }
     ion-item {
         background-color: #26292e !important;
         color: #fff !important;
         border-bottom: none !important;
+        padding-left: 0px !important;
     }
     .toggle-md {
         display: inline-block;
@@ -25,6 +25,37 @@ page-whatowatch {
         margin-top:10px;
     }
     .checkbox-md {
-        margin: 9px 15px 9px 4px !important;
+        margin: 9px 9px 9px 4px !important;
+    }
+    .personal-recommandations-container {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .personal-recommandations-title {
+        margin-bottom: 7px;
+    }
+
+    .login-form-btn {
+        margin-top: 20px;
+    }
+
+    .wtw-title-container {
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+
+    .item-md {
+        min-height: 0px;
+    }
+
+    .item-checkbox {
+        .item-inner {
+            font-size: 12px;
+            padding-right: 0px;
+        }
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 0px !important;
     }
 }

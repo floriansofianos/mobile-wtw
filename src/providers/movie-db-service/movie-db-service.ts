@@ -83,9 +83,21 @@ export class MovieDBServiceProvider {
   }
 
   wtwTV(lang: string, genreId: number, useWatchlist: boolean, useRuntimeLimit: boolean, runtimeLimit: number, minRelease: number, maxRelease: number, languageSelected: boolean, friendId: number, usePlex: boolean) {
-    return this.http.get(this.baseUrl + 'api/movieDBSearchTV/wtw', { params: { lang: lang, genreId: genreId.toString(), useWatchlist: useWatchlist.toString(),
-       useRuntimeLimit: useRuntimeLimit.toString(), runtimeLimit: runtimeLimit.toString(), minRelease: minRelease.toString(), maxRelease: maxRelease.toString(), 
-       languageSelected: languageSelected.toString(), friendId: friendId.toString(), usePlex: usePlex.toString() } })
+    let params:any = {
+      lang: lang
+    }
+
+    if(genreId) params.genreId = genreId.toString();
+    if(useWatchlist) params.useWatchlist = useWatchlist.toString();
+    if(useRuntimeLimit) params.useRuntimeLimit = useRuntimeLimit.toString();
+    if(runtimeLimit) params.runtimeLimit = runtimeLimit.toString();
+    if(minRelease) params.minRelease = minRelease.toString();
+    if(maxRelease) params.maxRelease = maxRelease.toString();
+    if(languageSelected) params.languageSelected = languageSelected.toString();
+    if(friendId) params.friendId = friendId.toString();
+    if(usePlex) params.usePlex = usePlex.toString();
+    
+    return this.http.get(this.baseUrl + 'api/movieDBSearchTV/wtw', { params: params })
       .catch(this.handleErrors);
   }
 
