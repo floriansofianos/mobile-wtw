@@ -11,7 +11,12 @@ export class UserServiceProvider {
 
   getAllFriends(): Observable<any> {
     return this.http.get(this.baseUrl + 'api/user/friends/')
-        .catch(this.handleErrors);
+      .catch(this.handleErrors);
+  }
+
+  getAvatar(userId: number, size: string): Observable<any> {
+    return this.http.get(this.baseUrl + 'api/user/avatar/' + userId, { params: { size: size } })
+      .catch(this.handleErrors);
   }
 
   handleErrors(error: Response) {

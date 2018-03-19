@@ -25,6 +25,7 @@ import { WhatowatchPage } from '../pages/whatowatch/whatowatch';
 import { MoviePage } from '../pages/movie/movie';
 import { CastPage } from '../pages/cast/cast'; 
 import { TvShowPage } from '../pages/tv-show/tv-show';
+import { UserPage } from '../pages/user/user';
 
 
 import { TimelineComponent } from '../components/timeline/timeline';
@@ -41,6 +42,7 @@ import { QuestionnaireComponent } from '../components/questionnaire/questionnair
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { TvQuestionnaireComponent } from '../components/tv-questionnaire/tv-questionnaire';
 import { TvQuestionnaireElementComponent } from '../components/tv-questionnaire-element/tv-questionnaire-element';
+import { AlsoLikeComponent } from '../components/also-like/also-like';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -82,6 +84,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CastMemberComponent,
     TvQuestionnaireComponent,
     WhatowatchPage,
+    UserPage,
     TvPage,
     TvShowPage,
     TvQuestionnairesPage,
@@ -89,6 +92,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SideMenuContentComponent,
     MovieRecommandationComponent,
     TvQuestionnaireElementComponent,
+    AlsoLikeComponent,
     MovieWallElementComponent,
     TvRecommandationComponent,
     MovieQuestionnaireComponent,
@@ -124,6 +128,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomePage,
     MoviesPage,
     CastPage,
+    UserPage,
     WhatowatchPage,
     MoviesWatchlistPage,
     MyProfilePage,
