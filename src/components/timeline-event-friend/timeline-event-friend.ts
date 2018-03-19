@@ -16,9 +16,13 @@ export class TimelineEventFriendComponent {
   @Input() createdAt: any;
 
   ngOnInit() {
-      if (!this.isFriendUserYou) {
-          var curUserId = this.friendUserId;
-          this.friendUsername = _.find(this.friends, function (f) { return f.userId == curUserId }).username;
-      }
+    if (!this.isFriendUserYou) {
+      var curUserId = this.friendUserId;
+      this.friendUsername = _.find(this.friends, function (f) { return f.userId == curUserId }).username;
+    }
+  }
+
+  getMonth(createdAt) {
+    return (new Date(createdAt)).getMonth();
   }
 }

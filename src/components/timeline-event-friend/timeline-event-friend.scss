@@ -1,3 +1,29 @@
 timeline-event-friend {
-
+    .date {
+        background: #DE5E60;
+        display: inline-block;
+        padding: 10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #fff;
+    }
+    .card-container {
+        position: relative;
+        min-height: 170px;
+        background-color: #26292e;
+        color: #fff;
+    }
+    .card-content {
+        position: absolute;
+        top: 0;
+        z-index: 99;
+        width: 100%;
+        padding-top: 50px;
+        padding-left: 15px;
+        
+    }
+    .card-text {
+        font-size: 18px;
+    }
 }

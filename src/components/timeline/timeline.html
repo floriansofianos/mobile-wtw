@@ -2,8 +2,6 @@
   <virtual-scroll #scroll [items]="timelineEvents" (update)="viewPortItems = $event" [bufferAmount]="6" [childHeight]="170" (end)="doInfinite($event)">
       <ion-item *ngFor="let e of viewPortItems">
           <ion-card>
-            <h2 *ngIf="e.type == 1">{{ 'TIMELINE.TITLE_FOLLOW' | translate }}</h2>
-            <h2 *ngIf="e.type == 2">{{ 'TIMELINE.TITLE_FRIEND' | translate }}</h2>
             <div *ngIf="e.type == 0">
               <timeline-event-rate-movie [createdAt]="e.createdAt" [friends]="friends" [curUserId]="e.userId" [isCurUserYou]="e.userId == currentUserId" [config]="config" [questionnaire]="e.variables.questionnaire" [isTV]="e.variables.isTV" [lang]="lang"></timeline-event-rate-movie>
             </div>

@@ -23,4 +23,8 @@ export class TimelineEventFollowComponent {
         }
     }
 
+    getMonth(createdAt) {
+        return (new Date(createdAt)).getMonth();
+    }
+
 }

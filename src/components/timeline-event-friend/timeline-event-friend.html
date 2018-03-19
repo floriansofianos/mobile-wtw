@@ -1,7 +1,9 @@
 <div class="card-container">
-  <div class="date">{{ createdAt | date:'dd' }} {{ 'MONTHS.' + getMonth(createdAt) | translate }} {{ 'TIME.AT' | translate }} {{ createdAt | date:'HH:mm' }}</div> 
-  <span *ngIf="isCurUserYou">{{ 'TIMELINE.YOU' | translate }}{{ 'TIMELINE.ARE_FRIEND' | translate }}</span>
-  <span *ngIf="!isCurUserYou">{{ curUsername }} {{ 'TIMELINE.IS_FRIEND' | translate }}</span>
-  <span *ngIf="isFriendUserYou">{{ 'TIMELINE.YOU_LOWER_FRIEND' | translate }}</span>
-  <span *ngIf="!isFriendUserYou">{{ friendUsername }}</span>
+    <div class="card-content">
+        <div class="date">{{ createdAt | date:'dd' }} {{ 'MONTHS.' + getMonth(createdAt) | translate }} {{ 'TIME.AT' | translate }} {{ createdAt | date:'HH:mm' }}</div> 
+        <span class="card-text" *ngIf="isCurUserYou">{{ 'TIMELINE.YOU' | translate }}{{ 'TIMELINE.ARE_FRIEND' | translate }}</span>
+        <span class="card-text" *ngIf="!isCurUserYou">{{ curUsername }} {{ 'TIMELINE.IS_FRIEND' | translate }}</span>
+        <span class="card-text" *ngIf="isFriendUserYou">{{ 'TIMELINE.YOU_LOWER_FRIEND' | translate }}</span>
+        <span class="card-text" *ngIf="!isFriendUserYou">{{ friendUsername }}</span>
+    </div>
 </div>

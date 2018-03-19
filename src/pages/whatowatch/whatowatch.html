@@ -65,7 +65,7 @@
                             <ion-label range-left>90</ion-label>
                             <ion-label range-right>150</ion-label>
                         </ion-range>
-                        <ion-label>
+                        <ion-label class="runtime-explanation">
                             {{ 'WTW.RUNTIME_LIMIT_EXPLANATION' | translate }}
                         </ion-label>
                     </ion-item>
@@ -164,7 +164,7 @@
                             <ion-label range-left>20</ion-label>
                             <ion-label range-right>60</ion-label>
                         </ion-range>
-                        <ion-label>
+                        <ion-label class="runtime-explanation">
                             {{ 'WTW.RUNTIME_LIMIT_TV_EXPLANATION' | translate }}
                         </ion-label>
                     </ion-item>
@@ -205,12 +205,12 @@
         <div class="personal-recommandations-title">
             {{ 'WTW.PERSONAL_RECO' | translate }}
         </div>
-        <movie-wall [movieIds]="recommandationIds" [lang]="lang" [config]="configuration" [width]="120" (notify)="onClickMovie($event)"></movie-wall>
+        <movie-wall [movieIds]="recommandationIds" [lang]="lang" [config]="configuration" [width]="110" (notify)="onClickMovie($event)"></movie-wall>
     </div>
     <div class="personal-recommandations-container" *ngIf="recommandationTVIds && !isLoading">
         <div class="personal-recommandations-title">
             {{ 'WTW.PERSONAL_RECO_TV' | translate }}
         </div>
-        <tv-wall [movieIds]="recommandationTVIds" [lang]="lang" [config]="configuration" [width]="120" (notify)="onClickTV($event)"></tv-wall>
+        <tv-wall [movieIds]="recommandationTVIds" [lang]="lang" [config]="configuration" [width]="110" (notify)="onClickTV($event)"></tv-wall>
     </div>
 </ion-content>
