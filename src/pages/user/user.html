@@ -18,20 +18,20 @@
             </div>
             <div class="profile-information-container">
                 <h2>{{ user.username }}</h2>
+                <div class="grade-column" *ngIf="averageDistance && !isCurrentUser">
+                    <ion-badge class="reco-grading-container" [ngClass]="{ 'good-grade': averageDistance > 60, 'bad-grade': averageDistance < 60 }" tooltip="{{ 'WTW.GRADE_HELP' | translate }}">
+                        {{averageDistance | number:'1.0-1'}} %
+                    </ion-badge>
+                </div>
                 <div class="country-container">{{ userCountry?.name }}</div>
                 <div class="social-buttons-container" *ngIf="!isLoading && !isCurrentUser">
-                    <div class="button" *ngIf="!isPendingFriend && (!isFriend || !friendship.isFriend)" (click)="requestFriend()">{{ 'USER_PAGE.REQUEST_FRIEND' | translate }}</div>
-                    <div class="button activated-button" *ngIf="!isPendingFriend && isFriend && friendship.isFriend" (click)="unfriend()">{{ 'USER_PAGE.UNFRIEND' | translate }}</div>
-                    <div class="button" *ngIf="!isPendingFriend && (!isFriend || !friendship.following)" (click)="follow()">{{ 'USER_PAGE.FOLLOW' | translate }}</div>
-                    <div class="button activated-button" *ngIf="!isPendingFriend && isFriend && friendship.following" (click)="unfollow()">{{ 'USER_PAGE.UNFOLLOW' | translate }}</div>
-                    <div class="button not-clickable" *ngIf="isPendingFriend && !isPendingFriendForMe">{{ 'USER_PAGE.WAITING_RESPONSE' | translate }}</div>
-                    <div class="button" *ngIf="isPendingFriend && isPendingFriendForMe" (click)="acceptFriendship()">{{ 'USER_PAGE.ACCEPT_FRIEND' | translate }}</div>
+                    <button ion-button *ngIf="!isPendingFriend && (!isFriend || !friendship.isFriend)" (click)="requestFriend()">{{ 'USER_PAGE.REQUEST_FRIEND' | translate }}</button>
+                    <button ion-button *ngIf="!isPendingFriend && isFriend && friendship.isFriend" (click)="unfriend()">{{ 'USER_PAGE.UNFRIEND' | translate }}</button>
+                    <button ion-button *ngIf="!isPendingFriend && (!isFriend || !friendship.following)" (click)="follow()">{{ 'USER_PAGE.FOLLOW' | translate }}</button>
+                    <button ion-button *ngIf="!isPendingFriend && isFriend && friendship.following" (click)="unfollow()">{{ 'USER_PAGE.UNFOLLOW' | translate }}</button>
+                    <button ion-button color="light" *ngIf="isPendingFriend && !isPendingFriendForMe">{{ 'USER_PAGE.WAITING_RESPONSE' | translate }}</button>
+                    <button ion-button *ngIf="isPendingFriend && isPendingFriendForMe" (click)="acceptFriendship()">{{ 'USER_PAGE.ACCEPT_FRIEND' | translate }}</button>
                 </div>
-            </div>
-        </div>
-        <div class="grade-column" *ngIf="averageDistance && !isCurrentUser">
-            <div class="reco-grading-container" [ngClass]="{ 'good-grade': averageDistance > 60, 'bad-grade': averageDistance < 60 }" tooltip="{{ 'WTW.GRADE_HELP' | translate }}">
-                {{averageDistance | number:'1.0-1'}} %
             </div>
         </div>
         <div class="like-dislike-container" *ngIf="!isLoading">
