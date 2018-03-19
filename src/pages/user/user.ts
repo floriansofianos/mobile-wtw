@@ -109,6 +109,7 @@ export class UserPage {
         this.photoData = data.data;
       }
       else this.photoData = null;
+      this.loadingWindow.dismiss();
       this.isLoading = false;
     },
       error => {
@@ -136,14 +137,13 @@ export class UserPage {
         }
         else {
           this.socialService.getFriend(this.id).subscribe(data => {
-            if (data) {
-              this.friendship = data;
-              this.isFriend = this.friendship != undefined;
-              this.isPendingFriend = false;
-              this.isPendingFriendForMe = false;
-              this.updatePhoto();
-            }
-            else console.log('error!!');
+
+            this.friendship = data;
+            this.isFriend = this.friendship != undefined;
+            this.isPendingFriend = false;
+            this.isPendingFriendForMe = false;
+            this.updatePhoto();
+
           },
             error => {
               console.log(error);
