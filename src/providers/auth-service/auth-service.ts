@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Rx';
 
 import { Storage } from '@ionic/storage';
 
+import * as _ from 'underscore';
+
 /*
   Generated class for the AuthServiceProvider provider.
 
@@ -54,6 +56,13 @@ export class AuthServiceProvider {
     let requestBody = {}
     requestBody[prop] = value
     return this.http.put(this.baseUrl + 'auth/current', requestBody)
+      .catch(this.handleErrors);
+  }
+
+  setUserProperties(values: any) {
+    let currentUser = this.currentUser;
+    _.each(values, function (value, key, obj) { currentUser[key] = value; });
+    return this.http.put(this.baseUrl + 'auth/current', values)
       .catch(this.handleErrors);
   }
 

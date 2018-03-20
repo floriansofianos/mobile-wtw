@@ -19,6 +19,11 @@ export class UserServiceProvider {
       .catch(this.handleErrors);
   }
 
+  deleteAvatar(): Observable<any> {
+    return this.http.delete(this.baseUrl + 'api/user/avatar')
+      .catch(this.handleErrors);
+  }
+
   handleErrors(error: Response) {
     return Observable.throw(error.status);
   }

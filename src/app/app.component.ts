@@ -127,6 +127,12 @@ public options: Array<MenuOptionModel>;
 			iconName: 'contacts',
 			displayName: 'Social',
 			component: SocialPage,
+		});
+		
+		this.options.push({
+			iconName: 'person',
+			displayName: 'My Profile',
+			component: MyProfilePage,
     });
 
     this.options.push({

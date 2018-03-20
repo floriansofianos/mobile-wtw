@@ -65,6 +65,11 @@ import { TvUserQuestionnaireServiceProvider } from '../providers/tv-user-questio
 import { LanguagesServiceProvider } from '../providers/languages-service/languages-service';
 import { SocialServiceProvider } from '../providers/social-service/social-service';
 
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -149,7 +154,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       provide: HTTP_INTERCEPTORS, 
       useClass: JwtHttpInterceptor, 
       multi: true 
-    }, 
+    },
+    File,
+    Transfer,
+    FilePath,
+    Camera, 
     AuthServiceProvider,
     TimelineServiceProvider,
     MovieDBServiceProvider,

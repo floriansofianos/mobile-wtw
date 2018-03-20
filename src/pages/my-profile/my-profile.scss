@@ -1,3 +1,45 @@
 page-my-profile {
+    .profile-picture-container {
+        display: inline-block;
+        background-color: #26292E;
+        padding: 6px;
+    
+        input {
+            width: 150px;
+        }
+    
+        .profile-picture {
+            border: 4px solid #26292E;
+    
+            ion-icon {
+                position: absolute;
+                color: #DE5E60;
+                display: block;
+                font-size: 20px;
+            }
+        }
+    
+        .no-picture-container {
+            font-size: 50px;
+            text-align: center;
+            padding: 10px;
+        }
+    }
 
+    .login-form-container {
+        margin: auto;
+        border-left: 2px solid #DE5E60;
+        background-color: #26292e;
+        text-align: left;
+        padding: 20px;
+
+        ion-item {
+            background-color: #26292e;
+            color: #fff;
+        }
+    }
+
+    .profile-name-container {
+        margin-top: 10px;
+    }
 }

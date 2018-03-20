@@ -9,13 +9,6 @@ import * as _ from 'underscore';
 import { MoviePage } from '../movie/movie';
 import { TvShowPage } from '../tv-show/tv-show';
 
-/**
- * Generated class for the UserPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @Component({
   selector: 'page-user',
   templateUrl: 'user.html',
