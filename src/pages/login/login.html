@@ -1,5 +1,5 @@
 <ion-content class="login-content" padding>
-  <ion-row class="login-container-center" justify-content-center>
+  <ion-row class="login-container-center" *ngIf="!isLoading" justify-content-center>
     <div class="login-box">
     <ion-row class="logo-row">
         <ion-col class="login-logo-container"><ion-img width="120" height="110" src="assets/imgs/icon.JPG" style="text-align: right;"></ion-img></ion-col>
