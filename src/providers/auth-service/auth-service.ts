@@ -66,6 +66,11 @@ export class AuthServiceProvider {
       .catch(this.handleErrors);
   }
 
+  verifyEmail(email: string): Observable<any> {
+    return this.http.get(this.baseUrl + 'auth/checkEmail?email=' + email)
+        .catch(this.handleErrors);
+}
+
   handleErrors(error: Response) {
     return Observable.throw(error.status);
   }

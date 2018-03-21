@@ -4,6 +4,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 import { HomePage } from '../home/home';
 import { StatusBar } from '@ionic-native/status-bar';
+import { SignUpPage } from '../sign-up/sign-up';
 
 @Component({
   selector: 'page-login',
@@ -14,7 +15,9 @@ export class LoginPage {
   loadingWindow: Loading;
   isLoading: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider, private alertCtrl: AlertController, private statusBar: StatusBar, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private auth: AuthServiceProvider, private alertCtrl: AlertController, private statusBar: StatusBar, 
+    private loadingCtrl: LoadingController) {
     this.isLoading = true;
     this.loadingWindow = this.loadingCtrl.create();
     this.loadingWindow.present();
@@ -68,6 +71,10 @@ export class LoginPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  signUp() {
+    this.navCtrl.setRoot(SignUpPage);
   }
 
 }

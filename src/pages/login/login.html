@@ -10,25 +10,34 @@
   <form (ngSubmit)="login()" #registerForm="ngForm">
     <ion-row>
       <ion-col class="login-form-container">
-        <ion-list inset>
+        <ion-list inset class="login-list-no-margin">
           
             <ion-item>
                 <ion-label floating>{{'LOGIN.FORM.LOGIN' | translate }}</ion-label>
                 <ion-input type="email" [(ngModel)]="credentials.email" name="email"></ion-input>
               </ion-item>
           
-          <ion-item>
+          <ion-item class="login-small-font">
               <ion-label floating>{{'LOGIN.FORM.PASSWORD' | translate }}</ion-label>
               <ion-input type="password" [(ngModel)]="credentials.password" name="password"></ion-input>
           </ion-item>
-          <ion-item></ion-item>
+          <ion-item class="login-small-font"></ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
-    
     <ion-row>
       <ion-col class="login-btn-col">
         <button ion-button class="submit-btn login-form-btn" type="submit">{{ 'LOGIN.TITLE' | translate}}</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="login-form-padding">
+        {{ 'LOGIN.FORM.SIGNUP' | translate }}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="login-btn-col">
+        <button ion-button class="submit-btn login-form-btn" (click)="signUp()">{{ 'SIGNUP.TITLE' | translate}}</button>
       </ion-col>
     </ion-row>
     

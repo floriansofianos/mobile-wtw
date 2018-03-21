@@ -4,7 +4,6 @@ page-login {
         background-color: #26292e;
         width: 90%;
         padding-bottom: 25px;
-        padding-top: 10px;
 
         .logo-content {
             font-size: 25px;
@@ -20,7 +19,6 @@ page-login {
         }
 
         .login-form-container {
-            padding: 15px;
         }
 
         .login-form-btn {
@@ -40,6 +38,18 @@ page-login {
 
     .login-container-center {
         width: 100%;
-        padding-top: 25px;
+    }
+
+    .login-form-padding {
+        padding-left: 15px;
+        padding-top: 30px;
+    }
+
+    .login-small-font {
+        margin-bottom: 0px !important;
+    }
+
+    .login-list-no-margin {
+        margin-bottom: 0px !important;
     }
 }
