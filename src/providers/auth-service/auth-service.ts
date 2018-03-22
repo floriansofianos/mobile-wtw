@@ -51,6 +51,21 @@ export class AuthServiceProvider {
     this.currentUser = null;
   }
 
+  verifyUsername(username: string): Observable<any> {
+    return this.http.get(this.baseUrl + 'auth/checkUsername?username=' + username)
+      .catch(this.handleErrors);
+  }
+
+  signUp(newUserForm: any): Observable<any> {
+    newUserForm.password = newUserForm.passwordGroup.password;
+    return this.http.post(this.baseUrl + 'auth/signup', newUserForm)
+      .catch(this.handleSignUpErrors);
+  }
+
+  handleSignUpErrors(error: Response) {
+    return Observable.throw(error.text());
+  }
+
   setUserProperty(prop: string, value: any) {
     this.currentUser[prop] = value;
     let requestBody = {}
@@ -68,8 +83,8 @@ export class AuthServiceProvider {
 
   verifyEmail(email: string): Observable<any> {
     return this.http.get(this.baseUrl + 'auth/checkEmail?email=' + email)
-        .catch(this.handleErrors);
-}
+      .catch(this.handleErrors);
+  }
 
   handleErrors(error: Response) {
     return Observable.throw(error.status);
