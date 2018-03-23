@@ -86,6 +86,16 @@ export class AuthServiceProvider {
       .catch(this.handleErrors);
   }
 
+  sendWelcomeEmail(email: string): Observable<any> {
+    return this.http.get(this.baseUrl + 'auth/sendWelcomeEmail', { params: { email: email } })
+      .catch(this.handleErrors);
+  }
+
+  sendForgotPasswordEmail(email: string): Observable<any> {
+    return this.http.get(this.baseUrl + 'auth/forgotPassword', { params: { email: email } })
+      .catch(this.handleErrors);
+  }
+
   handleErrors(error: Response) {
     return Observable.throw(error.status);
   }

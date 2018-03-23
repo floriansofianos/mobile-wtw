@@ -14,9 +14,10 @@ export class LoginPage {
   credentials = { email: '', password: '' };
   loadingWindow: Loading;
   isLoading: boolean;
+  showSendWelcomeEmail: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private auth: AuthServiceProvider, private alertCtrl: AlertController, private statusBar: StatusBar, 
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private auth: AuthServiceProvider, private alertCtrl: AlertController, private statusBar: StatusBar,
     private loadingCtrl: LoadingController) {
     this.isLoading = true;
     this.loadingWindow = this.loadingCtrl.create();
@@ -46,7 +47,10 @@ export class LoginPage {
       }
     },
       error => {
-        this.showError(error);
+        this.isLoading = false;
+        this.loadingWindow.dismiss();
+        if (error == 401) this.showError(error);
+        else this.showSendWelcomeEmail = true;
       });
   }
 
@@ -58,19 +62,31 @@ export class LoginPage {
       this.navCtrl.setRoot(HomePage);
     },
       error => {
+        this.isLoading = false;
+        this.loadingWindow.dismiss();
         this.showError(error);
       });
   }
 
   showError(text) {
-    this.isLoading = false;
-    this.loadingWindow.dismiss();
     let alert = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  resendWelcomeEmail() {
+    this.loadingWindow = this.loadingCtrl.create();
+    this.loadingWindow.present();
+    this.auth.sendWelcomeEmail(this.credentials.email).subscribe(response => {
+      this.loadingWindow.dismiss();
+      this.showSendWelcomeEmail = false;
+    },
+      error => {
+        console.log(error);
+      });
   }
 
   signUp() {

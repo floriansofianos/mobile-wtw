@@ -27,6 +27,7 @@ import { CastPage } from '../pages/cast/cast';
 import { TvShowPage } from '../pages/tv-show/tv-show';
 import { UserPage } from '../pages/user/user';
 import { SignUpPage } from '../pages/sign-up/sign-up';
+import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 
 
 import { TimelineComponent } from '../components/timeline/timeline';
@@ -93,6 +94,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WhatowatchPage,
     UserPage,
     SignUpPage,
+    ForgotPasswordPage,
     TvPage,
     TvShowPage,
     TvQuestionnairesPage,
@@ -142,6 +144,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WhatowatchPage,
     MoviesWatchlistPage,
     MyProfilePage,
+    ForgotPasswordPage,
     MoviePage,
     TvShowPage,
     TvWatchlistPage,

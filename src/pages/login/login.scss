@@ -52,4 +52,20 @@ page-login {
     .login-list-no-margin {
         margin-bottom: 0px !important;
     }
+
+    .login-error {
+        margin-top: 10px;
+        color: #de5e60;
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    .login-error-clickable {
+        padding: 10px;
+        color: #fff;
+        background-color: #de5e60;
+        width: 50%;
+        margin: auto;
+        margin-top: 10px;
+    }
 }
