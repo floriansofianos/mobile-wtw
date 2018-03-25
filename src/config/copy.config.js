@@ -23,7 +23,7 @@ module.exports = {
       dest: '{{BUILD}}'
     },
     copyCkEditorCss: {
-        src: ['{{ROOT}}/src/style/star-rating.min.css'],
+        src: ['{{ROOT}}/src/style/star-rating.min.css', '{{ROOT}}/src/style/flag-icon.min.css'],
         dest: '{{BUILD}}/skins'
     }
   }

@@ -1,4 +1,5 @@
 <div *ngIf="movie" class="movie-information-container">
+    <div class="background-image" *ngIf="movie && movie.backdrop_path" [style]="getBackgroundImage()"></div>
     <ion-grid>
         <ion-row>
             <ion-col class="col-180px">
@@ -78,17 +79,20 @@
                 <div class="middle-section-title">{{ 'MOVIE_QUESTIONNAIRE.CAST' | translate }}</div>
                 <div class="cast-row" [ngClass]="{ 'flex-cast-row': movie.directors.length > 2 }">
                     <div class="cast-card" *ngFor="let director of movie.directors">
-                        <cast-member [config]="config" [castMember]="director" [job]="jobDirector" [crewType]="0" [currentMovieId]="movie?.id" [lang]="lang" (click)="goToCast(director,0,jobDirector)"></cast-member>
+                        <cast-member [config]="config" [castMember]="director" [job]="jobDirector" [crewType]="0" [currentMovieId]="movie?.id" [lang]="lang"
+                            (click)="goToCast(director,0,jobDirector)"></cast-member>
                     </div>
                 </div>
                 <div class="cast-row" [ngClass]="{ 'flex-cast-row': movie.writers.length > 2 }">
                     <div class="cast-card" *ngFor="let writer of movie.writers">
-                        <cast-member [config]="config" [castMember]="writer" [job]="jobWriter" [crewType]="1" [currentMovieId]="movie?.id" [lang]="lang" (click)="goToCast(writer,1,jobWriter)"></cast-member>
+                        <cast-member [config]="config" [castMember]="writer" [job]="jobWriter" [crewType]="1" [currentMovieId]="movie?.id" [lang]="lang"
+                            (click)="goToCast(writer,1,jobWriter)"></cast-member>
                     </div>
                 </div>
                 <div class="cast-row" [ngClass]="{ 'flex-cast-row': movie.actors.length > 2 }">
                     <div class="cast-card" *ngFor="let actor of movie.actors">
-                        <cast-member [config]="config" [castMember]="actor" [job]="actor.character" [crewType]="2" [currentMovieId]="movie?.id" [lang]="lang" (click)="goToCast(actor,2,actor.character)"></cast-member>
+                        <cast-member [config]="config" [castMember]="actor" [job]="actor.character" [crewType]="2" [currentMovieId]="movie?.id" [lang]="lang"
+                            (click)="goToCast(actor,2,actor.character)"></cast-member>
                     </div>
                 </div>
             </ion-col>
@@ -96,5 +100,3 @@
     </ion-grid>
 
 </div>
-<img class="background-image" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[2] }}{{ movie.backdrop_path }}"
-    *ngIf="movie && movie.backdrop_path" />

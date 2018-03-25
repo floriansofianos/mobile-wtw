@@ -23,6 +23,7 @@
                 <ion-label floating>{{'LOGIN.FORM.PASSWORD' | translate }}</ion-label>
                 <ion-input type="password" [(ngModel)]="credentials.password" name="password"></ion-input>
               </ion-item>
+              <div class="forgot-password-container" (click)="goToForgotPassword()">{{ 'LOGIN.FORM.I_FORGOT_MY_PASSWORD' | translate }}</div>
               <ion-item class="login-small-font"></ion-item>
             </ion-list>
           </ion-col>

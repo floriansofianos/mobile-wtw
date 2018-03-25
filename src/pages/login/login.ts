@@ -5,6 +5,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SignUpPage } from '../sign-up/sign-up';
+import { ForgotPasswordPage } from '../forgot-password/forgot-password';
 
 @Component({
   selector: 'page-login',
@@ -91,6 +92,10 @@ export class LoginPage {
 
   signUp() {
     this.navCtrl.setRoot(SignUpPage);
+  }
+
+  goToForgotPassword() {
+    this.navCtrl.push(ForgotPasswordPage);
   }
 
 }

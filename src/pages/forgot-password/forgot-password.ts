@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
 
 @Component({
   selector: 'page-forgot-password',
@@ -17,6 +18,13 @@ export class ForgotPasswordPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private loadingCtrl: LoadingController, private authService: AuthServiceProvider) {
   }
+
+  ngOnInit(): void {
+
+    this.forgotPasswordForm = new FormGroup({
+        email: new FormControl(null, [Validators.required, CustomValidators.email])
+    });
+}
 
   forgotPassword(formValues: any) {
     this.loadingWindow = this.loadingCtrl.create();

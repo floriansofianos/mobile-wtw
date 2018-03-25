@@ -1,8 +1,9 @@
 movie-recommandation {
     .background-image {
-        background-size: cover;
         max-width: 5000px;
-        position: relative;
+        position: absolute;
+        height: 100%;
+        width: 100%;
         top: 0;
         opacity: 0.1;
     }
@@ -76,13 +77,13 @@ movie-recommandation {
             padding: 8px;
             border-radius: 65px;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 12px;
             float: right;
             margin-right: 10px;
         }
     
         .good-grade {
-            background-color: #0b630b;
+            background-color: #3d633d;
         }
     
         .bad-grade {

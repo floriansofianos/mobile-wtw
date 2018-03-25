@@ -24,7 +24,7 @@
   <div class="question-block" *ngIf="states[1] && isFirstQuestionnaire">
       <div>{{ 'FIRST_QUESTIONNAIRE.AGE_QUESTION' | translate }}</div>
       <ion-item>
-          <ion-label floating>{{'LOGIN.FORM.PASSWORD' | translate }}</ion-label>
+          <ion-label floating>{{'FORM.YEAR_OF_BIRTH' | translate }}</ion-label>
           <ion-input type="number" min="1900" max="2017" [(ngModel)]="yearOfBirth" name="yearOfBirth"></ion-input>
       </ion-item>
       <ion-list>

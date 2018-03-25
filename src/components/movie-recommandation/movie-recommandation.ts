@@ -142,4 +142,12 @@ export class MovieRecommandationComponent {
         this.nav.push(CastPage, { config: this.config, currentMovieId: this.movie.id, castMember: member, crewType: crewType, job: job });
     }
 
+    getBackgroundImage() {
+        const url = this.config.images.base_url + this.config.images.backdrop_sizes[2] + this.movie.backdrop_path;
+        const style = `background-image: url(${url})`;
+    
+        // sanitize the style expression
+        return this.domSanitizer.bypassSecurityTrustStyle(style);
+      }
+
 }

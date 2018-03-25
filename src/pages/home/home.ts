@@ -6,6 +6,7 @@ import { TimelineServiceProvider } from '../../providers/timeline-service/timeli
 import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
 import { UserServiceProvider } from '../../providers/user-service/user-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { FirstQuestionnairePage } from '../first-questionnaire/first-questionnaire';
 
 @Component({
   selector: 'page-home',
@@ -26,6 +27,8 @@ export class HomePage {
 
     this.lang = this.auth.getCurrentUser().lang;
     this.currentUserId = this.auth.getCurrentUser().id;
+
+    if(!this.auth.getCurrentUser().firstQuestionnaireCompleted) this.navCtrl.setRoot(FirstQuestionnairePage);
 
     let loading = this.loadingController.create();
     loading.present();

@@ -1,0 +1,5 @@
+<ion-content padding>
+  <div class="content-container-welcome" *ngIf="configuration">
+    <questionnaire [isFirstQuestionnaire]="true" [config]="configuration"></questionnaire>
+  </div>
+</ion-content>

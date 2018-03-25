@@ -1,0 +1,36 @@
+page-first-questionnaire {
+    .content-container-welcome {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    ion-item {
+        background-color: #2f3238 !important;
+        color: #fff !important;
+        border-bottom: none !important;
+        padding-left: 0px !important;
+    }
+
+    .flags-container {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .flag-icon {
+        height: 40px;
+        width: 40px;
+    }
+    
+    .flag-container {
+        display: inline-block;
+        margin-right: 50px;
+        cursor: pointer;
+    }
+    
+    .flag-selected {
+        border: 1px solid #fff;
+        border-radius: 5px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+}

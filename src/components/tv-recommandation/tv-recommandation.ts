@@ -39,7 +39,7 @@ export class TvRecommandationComponent {
 
 
     constructor(private domSanitizer: DomSanitizer, private translate: TranslateService, private tvRecommandationService: TvRecommandationServiceProvider,
-         public nav: NavController) { }
+        public nav: NavController) { }
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.movieSeen || changes.wantToWatch) {
@@ -140,6 +140,14 @@ export class TvRecommandationComponent {
 
     goToCast(member: any, crewType: any, job: any) {
         this.nav.push(CastPage, { config: this.config, currentMovieId: this.tv.tvShowInfo.id, castMember: member, crewType: crewType, job: job });
+    }
+
+    getBackgroundImage() {
+        const url = this.config.images.base_url + this.config.images.backdrop_sizes[2] + this.tv.tvShowInfo.backdrop_path;
+        const style = `background-image: url(${url})`;
+
+        // sanitize the style expression
+        return this.domSanitizer.bypassSecurityTrustStyle(style);
     }
 
 }

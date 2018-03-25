@@ -53,6 +53,7 @@ export class QuestionnaireComponent {
     this.movieIndex = -1;
     this.questionAnswered = 0;
     //this.lang = this.translate.currentLang;
+    if(!this.lang) this.lang = 'en';
     if (currentUser.firstQuestionnaireCompleted && this.isFirstQuestionnaire) {
       this.questionAnswered = this.questionsToAnswer;
       this.setStateActive(2);
