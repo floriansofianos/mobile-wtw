@@ -21,7 +21,7 @@
     </ion-row>
     <ion-row *ngIf="moviesFiltered">
       <ion-col>
-        <div class="poster-container" *ngFor="let m of moviesFiltered" (click)="goToMovie(m.id)">
+        <div class="poster-container" *ngFor="let m of moviesFiltered" (click)="goToMovieOrTV(m)">
           <div class="movie-poster-container">
             <img width="110" src="{{ config.images.base_url }}{{ config.images.poster_sizes[3] }}{{ m.poster_path }}" *ngIf="m.poster_path"
             />

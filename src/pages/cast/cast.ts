@@ -7,6 +7,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { MoviePage } from '../movie/movie';
 
 import * as _ from 'underscore';
+import { TvShowPage } from '../tv-show/tv-show';
 
 @Component({
   selector: 'page-cast',
@@ -69,8 +70,13 @@ export class CastPage {
     else return true;
   }
 
-  goToMovie(id) {
-    this.navCtrl.push(MoviePage, { id: id });
+  goToMovieOrTV(m: any) {
+    if(m.media_type == 'movie') {
+      this.navCtrl.push(MoviePage, { id: m.id });
+    }
+    else {
+      this.navCtrl.push(TvShowPage, { id: m.id });
+    }
   }
 
 }
