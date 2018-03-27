@@ -41,8 +41,9 @@ export class LoginPage {
     this.loadingWindow.present();
     this.auth.loginUser(this.credentials).subscribe(token => {
       if (token) {
-        this.auth.setUserInSession(token.token);
-        this.putUserInMemoryAndRedirect();
+        this.auth.setUserInSession(token.token).then(c => {
+          this.putUserInMemoryAndRedirect();
+        });
       } else {
         this.showError("Access Denied");
       }

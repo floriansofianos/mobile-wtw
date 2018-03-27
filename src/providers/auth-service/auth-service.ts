@@ -26,7 +26,7 @@ export class AuthServiceProvider {
   }
 
   setUserInSession(token: string) {
-    this.storage.set('token', token);
+    return this.storage.set('token', token);
   }
 
   getAuthToken() {
