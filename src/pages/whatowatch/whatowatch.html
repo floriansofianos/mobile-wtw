@@ -98,7 +98,7 @@
                     <ion-item>
                         <ion-label>{{ 'WTW.FRIEND' | translate }}</ion-label>
                         <ion-select [(ngModel)]="formWTW.withFriend">
-                            <ion-option *ngFor="let f of friends" [value]="f.id">{{ c.username }}</ion-option>
+                            <ion-option *ngFor="let f of friends" [value]="f.id">{{ f.username }}</ion-option>
                         </ion-select>
                     </ion-item>
                 </div>
@@ -191,7 +191,7 @@
                     <ion-item>
                         <ion-label>{{ 'WTW.FRIEND' | translate }}</ion-label>
                         <ion-select [(ngModel)]="formTVWTW.withFriend">
-                            <ion-option *ngFor="let f of friends" [value]="f.id">{{ c.username }}</ion-option>
+                            <ion-option *ngFor="let f of friends" [value]="f.id">{{ f.username }}</ion-option>
                         </ion-select>
                     </ion-item>
                 </div>
