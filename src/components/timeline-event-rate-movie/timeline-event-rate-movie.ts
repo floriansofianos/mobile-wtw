@@ -5,6 +5,7 @@ import * as _ from 'underscore'
 import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
 import { MoviePage } from '../../pages/movie/movie';
 import { TvShowPage } from '../../pages/tv-show/tv-show';
+import { UserPage } from '../../pages/user/user';
 
 @Component({
     selector: 'timeline-event-rate-movie',
@@ -91,4 +92,7 @@ export class TimelineEventRateMovieComponent {
         else return '19px'; 
     }
 
+    goToUser(id) {
+        this.nav.push(UserPage, { id: id });
+    }
 }

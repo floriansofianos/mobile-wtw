@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import * as _ from 'underscore';
+import { NavController } from 'ionic-angular';
+import { UserPage } from '../../pages/user/user';
 
 @Component({
   selector: 'timeline-event-friend',
@@ -15,6 +17,9 @@ export class TimelineEventFriendComponent {
   @Input() curUsername: string;
   @Input() createdAt: any;
 
+  constructor(private nav: NavController) {
+  }
+
   ngOnInit() {
     if (!this.isFriendUserYou) {
       var curUserId = this.friendUserId;
@@ -24,5 +29,9 @@ export class TimelineEventFriendComponent {
 
   getMonth(createdAt) {
     return (new Date(createdAt)).getMonth();
+  }
+
+  goToUser(id) {
+    this.nav.push(UserPage, { id: id });
   }
 }

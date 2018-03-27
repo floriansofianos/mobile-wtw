@@ -6,13 +6,13 @@
           <div class="date">{{ createdAt | date:'dd' }} {{ 'MONTHS.' + getMonth(createdAt) | translate }} {{ 'TIME.AT' | translate }} {{ createdAt | date:'HH:mm' }}</div> 
           <ion-row>
               <ion-col col-4>
-                    <div class="movie-poster-container" *ngIf="isTV">
+                    <div class="movie-poster-container" (click)="goToTv(movie.tvShowInfo.id)" *ngIf="isTV">
                             <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[2] }}{{ movie.tvShowInfo.poster_path }}" *ngIf="movie.tvShowInfo.poster_path" />
                             <div *ngIf="!movie.tvShowInfo.poster_path" class="movie-poster-placeholder" [style.width.px]="150" [style.height.px]="225">
                                 <i [style.font-size.px]="15" [style.margin-top.px]="30" class="fa fa-film"></i>
                             </div>
                         </div>
-                        <div class="movie-poster-container" *ngIf="!isTV">
+                        <div class="movie-poster-container" (click)="goToMovie(movie.id)" *ngIf="!isTV">
                                 <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[2] }}{{ movie.poster_path }}" *ngIf="movie.poster_path" />
                                 <div *ngIf="!movie.poster_path" class="movie-poster-placeholder" [style.width.px]="150" [style.height.px]="225">
                                     <i [style.font-size.px]="15" [style.margin-top.px]="30" class="fa fa-film"></i>
@@ -25,7 +25,7 @@
                             <span class="movie-title-container" *ngIf="isTV" (click)="goToTv(movie.tvShowInfo.id)" [style.font-size]="getFontSize(movie.tvShowInfo.name)" [style.line-height]="getLineHeight(movie.tvShowInfo.name)">{{ movie.tvShowInfo.name }}</span>
                             <div class="movie-rating-container">
                                 <span *ngIf="isCurUserYou">{{ 'TIMELINE.YOU' | translate }}</span>
-                                <span *ngIf="!isCurUserYou">{{ curUsername }}</span>
+                                <span *ngIf="!isCurUserYou" (click)="goToUser(curUserId)">{{ curUsername }}</span>
                                 <span *ngIf="questionnaire.isSeen">
                                     <span *ngIf="isCurUserYou && !isTV">{{ 'TIMELINE.BODY_YOU_RATE_MOVIE' | translate }}</span>
                                     <span *ngIf="!isCurUserYou && !isTV">{{ 'TIMELINE.BODY_RATE_MOVIE' | translate }}</span>

@@ -2,8 +2,8 @@
     <div class="card-content">
         <div class="date">{{ createdAt | date:'dd' }} {{ 'MONTHS.' + getMonth(createdAt) | translate }} {{ 'TIME.AT' | translate }} {{ createdAt | date:'HH:mm' }}</div> 
         <span class="card-text" *ngIf="isCurUserYou">{{ 'TIMELINE.YOU' | translate }}{{ 'TIMELINE.ARE_FRIEND' | translate }}</span>
-        <span class="card-text" *ngIf="!isCurUserYou">{{ curUsername }} {{ 'TIMELINE.IS_FRIEND' | translate }}</span>
+        <span class="card-text" (click)="goToUser(curUserId)" *ngIf="!isCurUserYou">{{ curUsername }} {{ 'TIMELINE.IS_FRIEND' | translate }}</span>
         <span class="card-text" *ngIf="isFriendUserYou">{{ 'TIMELINE.YOU_LOWER_FRIEND' | translate }}</span>
-        <span class="card-text" *ngIf="!isFriendUserYou">{{ friendUsername }}</span>
+        <span class="card-text" (click)="goToUser(friendUserId)" *ngIf="!isFriendUserYou">{{ friendUsername }}</span>
     </div>
 </div>
