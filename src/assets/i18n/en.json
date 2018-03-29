@@ -42,7 +42,9 @@
             "EMAIL_TAKEN": "This email address is already used.",
             "USERNAME_TAKEN": "This username has already been taken.",
             "PASSWORD_NOT_STRONG": "Your password should be at least 8 characters long"
-        }
+        },
+        "SUCCESS": "Sign Up Successful",
+        "EMAIL_VALIDATION": "A validation email has been sent to you. Please validate your email before logging in."
     },
     "FIRST_QUESTIONNAIRE": {
         "LANGUAGE_QUESTION": "Let's start with the language you want to use:",

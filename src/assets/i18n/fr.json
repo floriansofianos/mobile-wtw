@@ -42,7 +42,9 @@
             "EMAIL_TAKEN": "Cette adresse email est déjà utilisée.",
             "USERNAME_TAKEN": "Ce pseudo est déjà utilisé.",
             "PASSWORD_NOT_STRONG": "Votre mot de passe doit faire au moins 8 caractères."            
-        }
+        },
+        "SUCCESS": "Inscription Réussie",
+        "EMAIL_VALIDATION": "Un mail de validation vous a été envoyé, merci de valider votre adresse email avant de vous connecter."
     },
     "FIRST_QUESTIONNAIRE": {
         "LANGUAGE_QUESTION": "Commencez par choisir votre langue par défaut:",

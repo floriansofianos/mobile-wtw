@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { TranslateService } from '@ngx-translate/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -7,18 +7,18 @@ import { CustomValidators } from 'ng2-validation';
 import { LoginPage } from '../login/login';
 
 @Component({
-  selector: 'page-sign-up',
-  templateUrl: 'sign-up.html',
+    selector: 'page-sign-up',
+    templateUrl: 'sign-up.html',
 })
 export class SignUpPage {
 
-  signupForm: FormGroup;
+    signupForm: FormGroup;
     passwordGroup: FormGroup;
     backendError: string;
     showSpinner: boolean;
     isSubmitted: boolean;
 
-    constructor(private navCtrl: NavController, private authService: AuthServiceProvider, private translate: TranslateService) { }
+    constructor(private navCtrl: NavController, private authService: AuthServiceProvider, private translate: TranslateService, private alertCtrl: AlertController) { }
 
     ngOnInit(): void {
         this.passwordGroup = new FormGroup({
@@ -46,8 +46,19 @@ export class SignUpPage {
             formValues.lang = 'en';
             this.authService.signUp(formValues).subscribe(response => {
                 // We do not want to login the user since he needs to click on the accept link in the email
-                //this.authService.setCurrentUser(response.json());
-                this.navCtrl.setRoot(LoginPage);
+                this.translate.get('SIGNUP.SUCCESS').subscribe(successString => {
+                    this.translate.get('SIGNUP.EMAIL_VALIDATION').subscribe(emailValidationString => {
+                        let alert = this.alertCtrl.create({
+                            title: successString,
+                            subTitle: emailValidationString,
+                            buttons: ['OK']
+                        });
+                        alert.present().then(a => {
+                            this.navCtrl.setRoot(LoginPage);
+                        });
+                    });
+                });
+
             },
                 error => {
                     this.backendError = error;
