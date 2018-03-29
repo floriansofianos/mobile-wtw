@@ -73,6 +73,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { DirectivesModule } from '../directives/directives.module';
 import { FirstQuestionnairePage } from '../pages/first-questionnaire/first-questionnaire';
+import { NotificationsPage } from '../pages/notifications/notifications';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -97,6 +98,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserPage,
     SignUpPage,
     ForgotPasswordPage,
+    NotificationsPage,
     TvPage,
     TvShowPage,
     TvQuestionnairesPage,
@@ -141,6 +143,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomePage,
     MoviesPage,
     SignUpPage,
+    NotificationsPage,
     CastPage,
     UserPage,
     WhatowatchPage,
