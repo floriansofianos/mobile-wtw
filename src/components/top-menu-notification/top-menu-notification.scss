@@ -1,0 +1,23 @@
+top-menu-notification {
+    .notifications-container {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        color: #fff;
+        font-size: 25px;
+      }
+      .notifications-count-container {
+        font-size: 10px;
+        vertical-align: top;
+        margin-left: 2px;
+        border: 1px solid #DE5E60;
+        border-radius: 15px;
+        color: #DE5E60;
+        padding-left: 4px;
+        padding-right: 4px;
+        position: absolute;
+        top: -5px;
+        line-height: normal;
+        left: 10px;
+    }
+}

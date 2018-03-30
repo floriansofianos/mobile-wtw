@@ -1,0 +1,4 @@
+<div class="notifications-container" (click)="goToNotifications()">
+  <ion-icon name="notifications"></ion-icon>
+  <span class="notifications-count-container" *ngIf="notificationCount && notificationCount > 0">{{ notificationCount }}</span>
+</div>

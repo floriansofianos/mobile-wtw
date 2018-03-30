@@ -74,6 +74,8 @@ import { Camera } from '@ionic-native/camera';
 import { DirectivesModule } from '../directives/directives.module';
 import { FirstQuestionnairePage } from '../pages/first-questionnaire/first-questionnaire';
 import { NotificationsPage } from '../pages/notifications/notifications';
+import { TopMenuNotificationComponent } from '../components/top-menu-notification/top-menu-notification';
+import { NotificationServiceProvider } from '../providers/notification-service/notification-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -112,6 +114,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MovieQuestionnaireComponent,
     QuestionnaireComponent,
     ProgressBarComponent,
+    TopMenuNotificationComponent,
     TVWallComponent,
     TVWallElementComponent,
     MovieWallComponent,
@@ -149,6 +152,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WhatowatchPage,
     MoviesWatchlistPage,
     MyProfilePage,
+    TopMenuNotificationComponent,
     ForgotPasswordPage,
     FirstQuestionnairePage,
     MoviePage,
@@ -186,7 +190,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CountriesServiceProvider,
     TvUserQuestionnaireServiceProvider,
     LanguagesServiceProvider,
-    SocialServiceProvider
+    SocialServiceProvider,
+    NotificationServiceProvider
   ]
 })
 export class AppModule {}

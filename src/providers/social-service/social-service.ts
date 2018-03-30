@@ -80,6 +80,11 @@ export class SocialServiceProvider {
       .catch(this.handleErrors);
   }
 
+  refuseFriend(id: number, notificationId: number): Observable<any> {
+    return this.http.post(this.baseUrl + 'api/friend/refuse/' + id, { notificationId: notificationId })
+      .catch(this.handleErrors);
+  }
+
   handleErrors(error: Response) {
     return Observable.throw(error.status);
   }
