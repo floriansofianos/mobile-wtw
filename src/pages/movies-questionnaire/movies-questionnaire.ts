@@ -6,6 +6,7 @@ import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-d
 
 import * as _ from 'underscore';
 import { MoviePage } from '../movie/movie';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'page-movies-questionnaire',
@@ -18,6 +19,7 @@ export class MoviesQuestionnairePage {
   categoriesNotLoaded: boolean
   configuration: any;
   lang: string;
+  parentSubject:Subject<any> = new Subject();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider,
     private loading: LoadingController, private movieQuestionnaireService: MovieQuestionnaireServiceProvider,
@@ -66,6 +68,10 @@ export class MoviesQuestionnairePage {
 
   startNewQuestionnaire() {
     this.startNewClicked = true;
+  }
+
+  ionViewWillEnter() {
+    this.parentSubject.next('reload');
   }
 
 }

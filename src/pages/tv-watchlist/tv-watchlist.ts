@@ -6,6 +6,7 @@ import { TvQuestionnaireServiceProvider } from '../../providers/tv-questionnaire
 
 import * as _ from 'underscore';
 import { TvShowPage } from '../tv-show/tv-show';
+import { Subject } from 'rxjs';
 
 /**
  * Generated class for the TvWatchlistPage page.
@@ -24,6 +25,7 @@ export class TvWatchlistPage {
   lang: string;
   configuration: any;
   movieIds: any;
+  parentSubject:Subject<any> = new Subject();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loading: LoadingController, 
     private movieDBService: MovieDBServiceProvider, private auth: AuthServiceProvider, private tvQuestionnaireService: TvQuestionnaireServiceProvider) {
@@ -56,5 +58,7 @@ export class TvWatchlistPage {
     }
   }
 
-
+  ionViewWillEnter() {
+    this.parentSubject.next('reload');
+  }
 }

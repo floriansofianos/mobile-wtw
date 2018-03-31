@@ -3,6 +3,7 @@ import { NavController, NavParams, Loading, LoadingController } from 'ionic-angu
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { SocialServiceProvider } from '../../providers/social-service/social-service';
 import { UserPage } from '../user/user';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'page-social',
@@ -18,6 +19,7 @@ export class SocialPage {
   currentUser: any;
   lang: any;
   loadingWindow: Loading;
+  parentSubject:Subject<any> = new Subject();
 
   constructor(private authService: AuthServiceProvider, private socialService: SocialServiceProvider, private navCtrl: NavController, private loading: LoadingController) { }
 
@@ -51,6 +53,10 @@ export class SocialPage {
       // Enter pressed
       this.clickSearch();
     }
+  }
+
+  ionViewWillEnter() {
+    this.parentSubject.next('reload');
   }
 
 }

@@ -5,6 +5,7 @@ import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-d
 import { TvQuestionnaireServiceProvider } from '../../providers/tv-questionnaire-service/tv-questionnaire-service';
 import * as _ from 'underscore';
 import { TvShowPage } from '../tv-show/tv-show';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'page-tv-questionnaires',
@@ -17,6 +18,7 @@ export class TvQuestionnairesPage {
   categoriesNotLoaded: boolean
   configuration: any;
   lang: string;
+  parentSubject:Subject<any> = new Subject();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider,
     private loading: LoadingController, private tvQuestionnaireService: TvQuestionnaireServiceProvider,
@@ -64,5 +66,9 @@ export class TvQuestionnairesPage {
 
   startNewQuestionnaire() {
     this.startNewClicked = true;
+  }
+
+  ionViewWillEnter() {
+    this.parentSubject.next('reload');
   }
 }

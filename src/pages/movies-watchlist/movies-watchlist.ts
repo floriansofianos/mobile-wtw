@@ -6,6 +6,7 @@ import { MovieQuestionnaireServiceProvider } from '../../providers/movie-questio
 
 import * as _ from 'underscore';
 import { MoviePage } from '../movie/movie';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'page-movies-watchlist',
@@ -17,6 +18,7 @@ export class MoviesWatchlistPage {
   lang: string;
   configuration: any;
   movieIds: any;
+  parentSubject:Subject<any> = new Subject();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loading: LoadingController, 
     private movieDBService: MovieDBServiceProvider, private auth: AuthServiceProvider, private movieQuestionnaireService: MovieQuestionnaireServiceProvider) {
@@ -49,6 +51,8 @@ export class MoviesWatchlistPage {
     }
   }
 
-
+  ionViewWillEnter() {
+    this.parentSubject.next('reload');
+  }
 
 }

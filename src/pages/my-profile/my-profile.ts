@@ -7,6 +7,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { CountriesServiceProvider } from '../../providers/countries-service/countries-service';
 import { UserServiceProvider } from '../../providers/user-service/user-service';
+import { Subject } from 'rxjs';
 
 declare var cordova: any;
 
@@ -25,6 +26,7 @@ export class MyProfilePage {
   countriesList: any;
   profileForm: any;
   photoData: any;
+  parentSubject:Subject<any> = new Subject();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private transfer: Transfer,
     public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, private file: File,
@@ -231,6 +233,10 @@ export class MyProfilePage {
       });
     });
 
+  }
+
+  ionViewWillEnter() {
+    this.parentSubject.next('reload');
   }
 
 }

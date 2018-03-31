@@ -3,6 +3,7 @@ import { NavController, NavParams, Loading, LoadingController } from 'ionic-angu
 import { NotificationServiceProvider } from '../../providers/notification-service/notification-service';
 import * as _ from 'underscore';
 import { SocialServiceProvider } from '../../providers/social-service/social-service';
+import { UserPage } from '../user/user';
 
 @Component({
   selector: 'page-notifications',
@@ -63,6 +64,10 @@ export class NotificationsPage {
 
   getMonth(createdAt) {
     return (new Date(createdAt)).getMonth();
+  }
+
+  goToUser(id) {
+    this.navCtrl.push(UserPage, {id: id});
   }
 
 }

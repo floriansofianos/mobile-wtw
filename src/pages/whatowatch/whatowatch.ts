@@ -10,6 +10,7 @@ import { SocialServiceProvider } from '../../providers/social-service/social-ser
 import { MoviePage } from '../movie/movie';
 import { TvShowPage } from '../tv-show/tv-show';
 import * as _ from 'underscore';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'page-whatowatch',
@@ -43,6 +44,7 @@ export class WhatowatchPage {
   recommandationTVIds: Array<any>;
   noTVReco: boolean;
   isMovie: boolean;
+  parentSubject:Subject<any> = new Subject();
 
   constructor(private authService: AuthServiceProvider, private movieDBService: MovieDBServiceProvider, private movieRecommandation: MovieRecommandationServiceProvider,
     private tvRecommandation: TvRecommandationServiceProvider, private movieQuestionnaireService: MovieQuestionnaireServiceProvider,
@@ -171,6 +173,10 @@ export class WhatowatchPage {
     else {
       this.notValidTVReleaseDates = true;
     }
+  }
+
+  ionViewWillEnter() {
+    this.parentSubject.next('reload');
   }
 
 }

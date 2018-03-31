@@ -4,6 +4,7 @@ import { NotificationServiceProvider } from '../../providers/notification-servic
 import * as _ from 'underscore';
 import { NavController, LoadingController, Loading } from 'ionic-angular';
 import { NotificationsPage } from '../../pages/notifications/notifications';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'top-menu-notification',
@@ -13,10 +14,18 @@ export class TopMenuNotificationComponent {
 
   notificationCount: number;
   loadingWindow: Loading;
+  @Input() parentSubject: Subject<any>;
 
   constructor(private notificationService: NotificationServiceProvider, private nav: NavController, private loading: LoadingController) { }
 
   ngOnInit() {
+    this.parentSubject.subscribe(event => {
+      this.updateNotificationsCount();
+    });
+    this.updateNotificationsCount();
+  }
+
+  updateNotificationsCount() {
     this.notificationService.get().subscribe(response => {
       let allNotifications = response;
       // Show the non-read ones first
@@ -39,6 +48,6 @@ export class TopMenuNotificationComponent {
       error => {
         console.log(error);
       });
-    
+
   }
 }

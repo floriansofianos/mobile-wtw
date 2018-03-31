@@ -183,10 +183,10 @@
         "PEOPLE_ALSO_LIKE": "People that also liked:"
     },
     "NOTIFICATION": {
-        "FOLLOW": "<a href=\"/user/{{userId}}\">{{username}}</a> is now following you.",
-        "FRIEND_REQUEST": "<a href=\"/user/{{userId}}\">{{username}}</a> wants to add you as a friend.",
-        "FRIEND_REQUEST_ACCEPTED": "Your friend request to <a href=\"/user/{{userId}}\">{{username}}</a> has been accepted.",
-        "FRIEND_REQUEST_REFUSED": "Your friend request to <a href=\"/user/{{userId}}\">{{username}}</a> has been refused."
+        "FOLLOW": "<a>{{username}}</a> is now following you.",
+        "FRIEND_REQUEST": "<a>{{username}}</a> wants to add you as a friend.",
+        "FRIEND_REQUEST_ACCEPTED": "Your friend request to <a>{{username}}</a> has been accepted.",
+        "FRIEND_REQUEST_REFUSED": "Your friend request to <a>{{username}}</a> has been refused."
     },
     "SOCIAL": {
         "ACCEPT_FRIEND": "Accept",

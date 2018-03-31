@@ -181,10 +181,10 @@
         "PEOPLE_ALSO_LIKE": "Utilisateurs ayant également aimé:"
     },
     "NOTIFICATION": {
-        "FOLLOW": "<a href=\"/user/{{userId}}\">{{username}}</a> suit désormais votre activité.",
-        "FRIEND_REQUEST": "<a href=\"/user/{{userId}}\">{{username}}</a> veut vous ajouter à sa liste d'amis.",
-        "FRIEND_REQUEST_ACCEPTED": "<a href=\"/user/{{userId}}\">{{username}}</a> a accepté votre demande d'ami.",
-        "FRIEND_REQUEST_REFUSED": "<a href=\"/user/{{userId}}\">{{username}}</a> a refusé votre demande d'ami."
+        "FOLLOW": "<a>{{username}}</a> suit désormais votre activité.",
+        "FRIEND_REQUEST": "<a>{{username}}</a> veut vous ajouter à sa liste d'amis.",
+        "FRIEND_REQUEST_ACCEPTED": "<a>{{username}}</a> a accepté votre demande d'ami.",
+        "FRIEND_REQUEST_REFUSED": "<a>{{username}}</a> a refusé votre demande d'ami."
     },
     "SOCIAL": {
         "ACCEPT_FRIEND": "Accepter",

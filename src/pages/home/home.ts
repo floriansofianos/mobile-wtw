@@ -7,6 +7,7 @@ import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-d
 import { UserServiceProvider } from '../../providers/user-service/user-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { FirstQuestionnairePage } from '../first-questionnaire/first-questionnaire';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'page-home',
@@ -18,6 +19,7 @@ export class HomePage {
   allFriends: any;
   lang: any;
   currentUserId: any;
+  parentSubject:Subject<any> = new Subject();
 
   constructor(public navCtrl: NavController, private timelineService: TimelineServiceProvider, private statusBar: StatusBar,
     private loadingController: LoadingController, private movieDBService: MovieDBServiceProvider, private userService: UserServiceProvider,
@@ -59,6 +61,8 @@ export class HomePage {
       });
   }
 
-
+  ionViewWillEnter() {
+    this.parentSubject.next('reload');
+  }
 
 }

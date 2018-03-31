@@ -3,6 +3,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
 import { MoviePage } from '../movie/movie';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'page-movies',
@@ -14,6 +15,7 @@ export class MoviesPage {
   searchResults: Array<any>;
   lang: string;
   loadingWindow: any;
+  parentSubject:Subject<any> = new Subject();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider, private movieDBService: MovieDBServiceProvider, private loading: LoadingController) {
     this.loadingWindow = this.loading.create();
@@ -56,6 +58,10 @@ export class MoviesPage {
       // Enter pressed
       this.search();
     }
+  }
+
+  ionViewWillEnter() {
+    this.parentSubject.next('reload');
   }
 
 }
