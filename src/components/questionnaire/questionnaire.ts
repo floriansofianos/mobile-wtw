@@ -2,7 +2,7 @@ import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MovieQuestionnaireServiceProvider } from '../../providers/movie-questionnaire-service/movie-questionnaire-service';
 import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
-import { Loading, LoadingController, NavController } from 'ionic-angular';
+import { Loading, LoadingController, NavController, Events } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { QuestionnaireServiceProvider } from '../../providers/questionnaire-service/questionnaire-service';
 import { UserQuestionnaireServiceProvider } from '../../providers/user-questionnaire-service/user-questionnaire-service';
@@ -35,7 +35,7 @@ export class QuestionnaireComponent {
   loadingWindow: Loading;
 
   constructor(private translate: TranslateService, private firstQuestionnaireService: QuestionnaireServiceProvider, 
-    private movieQuestionnaireService: MovieQuestionnaireServiceProvider,
+    private movieQuestionnaireService: MovieQuestionnaireServiceProvider, private events: Events,
     private movieDBService: MovieDBServiceProvider, private userQuestionnaireService: UserQuestionnaireServiceProvider, 
     private countriesService: CountriesServiceProvider, private loading: LoadingController,
     private authService: AuthServiceProvider, private ref: ChangeDetectorRef,
@@ -52,8 +52,7 @@ export class QuestionnaireComponent {
     this.welcomeMessage = true;
     this.movieIndex = -1;
     this.questionAnswered = 0;
-    //this.lang = this.translate.currentLang;
-    if(!this.lang) this.lang = 'en';
+    if(!this.lang) this.lang = this.translate.currentLang;
     if (currentUser.firstQuestionnaireCompleted && this.isFirstQuestionnaire) {
       this.questionAnswered = this.questionsToAnswer;
       this.setStateActive(2);
@@ -71,6 +70,7 @@ export class QuestionnaireComponent {
 
   setTranslation(lang: string) {
     this.translate.use(lang);
+    this.events.publish('lang:changed');
     this.lang = lang;
   }
 

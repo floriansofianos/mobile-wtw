@@ -76,6 +76,7 @@ import { FirstQuestionnairePage } from '../pages/first-questionnaire/first-quest
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { TopMenuNotificationComponent } from '../components/top-menu-notification/top-menu-notification';
 import { NotificationServiceProvider } from '../providers/notification-service/notification-service';
+import { Globalization } from '@ionic-native/globalization';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -166,6 +167,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     StatusBar,
+    Globalization,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { 

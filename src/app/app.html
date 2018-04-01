@@ -5,7 +5,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <side-menu-content [settings]="sideMenuSettings" [options]="options" (selectOption)="selectOption($event)"></side-menu-content>
+    <side-menu-content *ngIf="options && options.length > 0" [settings]="sideMenuSettings" [options]="options" (selectOption)="selectOption($event)"></side-menu-content>
   </ion-content>
 </ion-menu>
 

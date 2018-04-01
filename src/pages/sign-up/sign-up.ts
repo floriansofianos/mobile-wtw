@@ -43,7 +43,7 @@ export class SignUpPage {
         this.isSubmitted = true;
         if (this.signupForm.valid) {
             this.showSpinner = true;
-            formValues.lang = 'en';
+            formValues.lang = this.translate.currentLang;
             this.authService.signUp(formValues).subscribe(response => {
                 // We do not want to login the user since he needs to click on the accept link in the email
                 this.translate.get('SIGNUP.SUCCESS').subscribe(successString => {
