@@ -15,8 +15,8 @@
                                 tooltip="{{ 'WTW.GRADE_HELP' | translate }}" positionH="left">
                                 {{ gradeRelevant ? grade + '%' : '?' }}
                             </div>
-                            <div *ngIf="!gradeLoaded">
-                                Loading....
+                            <div class="reco-grading-container" *ngIf="!gradeLoaded">
+                                <spinner></spinner>
                             </div>
                             <div class="grade-reasons" *ngIf="gradeComments?.length > 0">
                                 <div [ngClass]="{ 'good-reason': c.isGood, 'bad-reason': !c.isGood }" *ngFor="let c of gradeComments">

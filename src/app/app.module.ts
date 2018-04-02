@@ -9,6 +9,7 @@ import { VirtualScrollModule } from 'angular2-virtual-scroll';
 import { TooltipsModule } from 'ionic-tooltips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StarRatingModule } from 'angular-star-rating';
+import { SpinnerModule } from 'angular2-spinner';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -123,6 +124,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    SpinnerModule,
     HttpClientModule,
     DirectivesModule,
     VirtualScrollModule,

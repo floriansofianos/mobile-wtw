@@ -2,6 +2,7 @@ timeline-event-rate-movie {
     .card-container {
         position: relative;
         min-height: 170px;
+        background-color: #26292e;
     }
     .background-img {
         position: absolute;
@@ -29,7 +30,7 @@ timeline-event-rate-movie {
     .movie-poster {
         height: 120px;
         width: auto;
-        box-shadow: 2px 2px 1px #716e6e;
+        box-shadow: 2px 2px 1px #0e0e0e;
         margin-left: 8px;
         margin-top: 8px;
     }
@@ -37,6 +38,7 @@ timeline-event-rate-movie {
     .movie-right-container {
         white-space: normal;
         margin-top: 42px;
+        color: #fff;
     }
 
     .movie-title-container {
@@ -56,5 +58,12 @@ timeline-event-rate-movie {
         .rating {
             align-items: left;
         }
+    }
+
+    .spinner-container {
+        height: 100%;
+        position: absolute;
+        top: 40%;
+        left: 50%;
     }
 }

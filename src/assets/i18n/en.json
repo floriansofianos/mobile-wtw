@@ -246,5 +246,8 @@
         "NOT_ENOUGH_PROFILES": "We do not have enough information to give you appropriate recommandations.",
         "GO_TO_QUESTIONNAIRES": "Please answer more questionnaires."
     },
-    "NOTIFICATIONS": "Notifications"
+    "NOTIFICATIONS": "Notifications",
+    "MYPROFILE": {
+        "CONFIRM_DELETE": "Are you sure you want to delete your profile picture?"
+    }
 }

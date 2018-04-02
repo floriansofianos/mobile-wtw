@@ -1,59 +1,66 @@
 <div class="card-container">
-<div *ngIf="!isLoading">
-        <img class="background-img" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[1] }}{{ movie.backdrop_path }}" *ngIf="!isTV && movie.backdrop_path" />
-        <img class="background-img" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[1] }}{{ movie.tvShowInfo.backdrop_path }}" *ngIf="isTV && movie.tvShowInfo.backdrop_path" />
+    <div *ngIf="!isLoading">
+        <img class="background-img" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[1] }}{{ movie.backdrop_path }}"
+            *ngIf="!isTV && movie.backdrop_path" />
+        <img class="background-img" src="{{ config.images.base_url }}{{ config.images.backdrop_sizes[1] }}{{ movie.tvShowInfo.backdrop_path }}"
+            *ngIf="isTV && movie.tvShowInfo.backdrop_path" />
         <div class="card-content">
-          <div class="date">{{ createdAt | date:'dd' }} {{ 'MONTHS.' + getMonth(createdAt) | translate }} {{ 'TIME.AT' | translate }} {{ createdAt | date:'HH:mm' }}</div> 
-          <ion-row>
-              <ion-col col-4>
+            <div class="date">{{ createdAt | date:'dd' }} {{ 'MONTHS.' + getMonth(createdAt) | translate }} {{ 'TIME.AT' | translate }} {{
+                createdAt | date:'HH:mm' }}</div>
+            <ion-row>
+                <ion-col col-4>
                     <div class="movie-poster-container" (click)="goToTv(movie.tvShowInfo.id)" *ngIf="isTV">
-                            <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[2] }}{{ movie.tvShowInfo.poster_path }}" *ngIf="movie.tvShowInfo.poster_path" />
-                            <div *ngIf="!movie.tvShowInfo.poster_path" class="movie-poster-placeholder" [style.width.px]="150" [style.height.px]="225">
-                                <i [style.font-size.px]="15" [style.margin-top.px]="30" class="fa fa-film"></i>
-                            </div>
+                        <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[2] }}{{ movie.tvShowInfo.poster_path }}"
+                            *ngIf="movie.tvShowInfo.poster_path" />
+                        <div *ngIf="!movie.tvShowInfo.poster_path" class="movie-poster-placeholder" [style.width.px]="150" [style.height.px]="225">
+                            <ion-icon [style.font-size.px]="15" [style.margin-top.px]="30" name="film"></ion-icon>
                         </div>
-                        <div class="movie-poster-container" (click)="goToMovie(movie.id)" *ngIf="!isTV">
-                                <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[2] }}{{ movie.poster_path }}" *ngIf="movie.poster_path" />
-                                <div *ngIf="!movie.poster_path" class="movie-poster-placeholder" [style.width.px]="150" [style.height.px]="225">
-                                    <i [style.font-size.px]="15" [style.margin-top.px]="30" class="fa fa-film"></i>
-                                </div>
-                            </div>
-              </ion-col>
-              <ion-col col-8>
+                    </div>
+                    <div class="movie-poster-container" (click)="goToMovie(movie.id)" *ngIf="!isTV">
+                        <img class="movie-poster" src="{{ config.images.base_url }}{{ config.images.poster_sizes[2] }}{{ movie.poster_path }}" *ngIf="movie.poster_path"
+                        />
+                        <div *ngIf="!movie.poster_path" class="movie-poster-placeholder" [style.width.px]="150" [style.height.px]="225">
+                            <ion-icon [style.font-size.px]="15" [style.margin-top.px]="30" name="film"></ion-icon>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col col-8>
                     <div class="movie-right-container">
-                            <span class="movie-title-container" *ngIf="!isTV" (click)="goToMovie(movie.id)" [style.font-size]="getFontSize(movie.title)" [style.line-height]="getLineHeight(movie.title)">{{ movie.title }}</span>
-                            <span class="movie-title-container" *ngIf="isTV" (click)="goToTv(movie.tvShowInfo.id)" [style.font-size]="getFontSize(movie.tvShowInfo.name)" [style.line-height]="getLineHeight(movie.tvShowInfo.name)">{{ movie.tvShowInfo.name }}</span>
-                            <div class="movie-rating-container">
-                                <span *ngIf="isCurUserYou">{{ 'TIMELINE.YOU' | translate }}</span>
-                                <span *ngIf="!isCurUserYou" (click)="goToUser(curUserId)">{{ curUsername }}</span>
-                                <span *ngIf="questionnaire.isSeen">
-                                    <span *ngIf="isCurUserYou && !isTV">{{ 'TIMELINE.BODY_YOU_RATE_MOVIE' | translate }}</span>
-                                    <span *ngIf="!isCurUserYou && !isTV">{{ 'TIMELINE.BODY_RATE_MOVIE' | translate }}</span>
-                                    <span *ngIf="isCurUserYou && isTV">{{ 'TIMELINE.BODY_YOU_RATE_TV' | translate }}</span>
-                                    <span *ngIf="!isCurUserYou && isTV">{{ 'TIMELINE.BODY_RATE_TV' | translate }}</span>
-                                    <star-rating-comp [rating]="questionnaire.rating" [readOnly]="true" [step]="1" [starType]="'icon'" [numOfStars]="5" [labelPosition]="'bottom'" [size]="'medium'"></star-rating-comp>
-                                </span>
-                                <span *ngIf="!questionnaire.isSeen && questionnaire.wantToSee">
-                                    <span *ngIf="isCurUserYou && !isTV">{{ 'TIMELINE.BODY_MOVIE_YOU_ADDED_TO_WATCHLIST' | translate }}</span>
-                                    <span *ngIf="!isCurUserYou && !isTV">{{ 'TIMELINE.BODY_MOVIE_ADDED_TO_WATCHLIST' | translate }}</span>
-                                    <span *ngIf="isCurUserYou && isTV">{{ 'TIMELINE.BODY_TV_YOU_ADDED_TO_WATCHLIST' | translate }}</span>
-                                    <span *ngIf="!isCurUserYou && isTV">{{ 'TIMELINE.BODY_TV_ADDED_TO_WATCHLIST' | translate }}</span>
-                                </span>
-                                <span *ngIf="!questionnaire.isSeen && !questionnaire.wantToSee">
-                                    <span *ngIf="isCurUserYou && !isTV">{{ 'TIMELINE.BODY_MOVIE_YOU_NOT_SEE' | translate }}</span>
-                                    <span *ngIf="!isCurUserYou && !isTV">{{ 'TIMELINE.BODY_MOVIE_USER_NOT_SEE' | translate }}</span>
-                                    <span *ngIf="isCurUserYou && isTV">{{ 'TIMELINE.BODY_TV_YOU_NOT_SEE' | translate }}</span>
-                                    <span *ngIf="!isCurUserYou && isTV">{{ 'TIMELINE.BODY_TV_USER_NOT_SEE' | translate }}</span>
-                                </span>
-                            </div>
+                        <span class="movie-title-container" *ngIf="!isTV" (click)="goToMovie(movie.id)" [style.font-size]="getFontSize(movie.title)"
+                            [style.line-height]="getLineHeight(movie.title)">{{ movie.title }}</span>
+                        <span class="movie-title-container" *ngIf="isTV" (click)="goToTv(movie.tvShowInfo.id)" [style.font-size]="getFontSize(movie.tvShowInfo.name)"
+                            [style.line-height]="getLineHeight(movie.tvShowInfo.name)">{{ movie.tvShowInfo.name }}</span>
+                        <div class="movie-rating-container">
+                            <span *ngIf="isCurUserYou">{{ 'TIMELINE.YOU' | translate }}</span>
+                            <span *ngIf="!isCurUserYou" (click)="goToUser(curUserId)">{{ curUsername }}</span>
+                            <span *ngIf="questionnaire.isSeen">
+                                <span *ngIf="isCurUserYou && !isTV">{{ 'TIMELINE.BODY_YOU_RATE_MOVIE' | translate }}</span>
+                                <span *ngIf="!isCurUserYou && !isTV">{{ 'TIMELINE.BODY_RATE_MOVIE' | translate }}</span>
+                                <span *ngIf="isCurUserYou && isTV">{{ 'TIMELINE.BODY_YOU_RATE_TV' | translate }}</span>
+                                <span *ngIf="!isCurUserYou && isTV">{{ 'TIMELINE.BODY_RATE_TV' | translate }}</span>
+                                <star-rating-comp [rating]="questionnaire.rating" [readOnly]="true" [step]="1" [starType]="'icon'" [numOfStars]="5" [labelPosition]="'bottom'"
+                                    [size]="'medium'"></star-rating-comp>
+                            </span>
+                            <span *ngIf="!questionnaire.isSeen && questionnaire.wantToSee">
+                                <span *ngIf="isCurUserYou && !isTV">{{ 'TIMELINE.BODY_MOVIE_YOU_ADDED_TO_WATCHLIST' | translate }}</span>
+                                <span *ngIf="!isCurUserYou && !isTV">{{ 'TIMELINE.BODY_MOVIE_ADDED_TO_WATCHLIST' | translate }}</span>
+                                <span *ngIf="isCurUserYou && isTV">{{ 'TIMELINE.BODY_TV_YOU_ADDED_TO_WATCHLIST' | translate }}</span>
+                                <span *ngIf="!isCurUserYou && isTV">{{ 'TIMELINE.BODY_TV_ADDED_TO_WATCHLIST' | translate }}</span>
+                            </span>
+                            <span *ngIf="!questionnaire.isSeen && !questionnaire.wantToSee">
+                                <span *ngIf="isCurUserYou && !isTV">{{ 'TIMELINE.BODY_MOVIE_YOU_NOT_SEE' | translate }}</span>
+                                <span *ngIf="!isCurUserYou && !isTV">{{ 'TIMELINE.BODY_MOVIE_USER_NOT_SEE' | translate }}</span>
+                                <span *ngIf="isCurUserYou && isTV">{{ 'TIMELINE.BODY_TV_YOU_NOT_SEE' | translate }}</span>
+                                <span *ngIf="!isCurUserYou && isTV">{{ 'TIMELINE.BODY_TV_USER_NOT_SEE' | translate }}</span>
+                            </span>
                         </div>
-              </ion-col>
-          </ion-row>
-        </div> 
-</div>
-<div *ngIf="isLoading">
-        Loading....
-      </div>
-      
-</div>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+    <div *ngIf="isLoading" class="spinner-container">
+        <spinner></spinner>
+    </div>
 
+</div>

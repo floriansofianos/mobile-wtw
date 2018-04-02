@@ -14,7 +14,7 @@
         <button ion-button class="submit-btn login-form-btn" (click)="startNewQuestionnaire()">{{ 'QUESTIONNAIRE.START_NEW' | translate }}</button>
         <h2>{{'QUESTIONNAIRE.HISTORY' | translate }}</h2>
         <div class="categories-placeholder" *ngIf="categoriesNotLoaded">
-          Loading...
+          <spinner></spinner>
         </div>
         <div *ngFor="let category of categories" class="category-container">
           <div class="questionnaire-separator"></div>

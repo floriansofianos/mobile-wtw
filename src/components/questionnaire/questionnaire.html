@@ -50,7 +50,7 @@
       </div>
   </div>
   <div class="question-block thank-you-block" *ngIf="states[2] && questionAnswered >= questionsToAnswer">
-      <h1><i class="fa fa-check-circle-o" aria-hidden="true"></i>{{ 'FIRST_QUESTIONNAIRE.DONE' | translate }}</h1>
+      <h1>{{ 'FIRST_QUESTIONNAIRE.DONE' | translate }}</h1>
       <div *ngIf="isFirstQuestionnaire"><button ion-button class="submit-btn login-form-btn" (click)="goToHome()">{{ 'FIRST_QUESTIONNAIRE.GO_TO' | translate }}{{ 'FIRST_QUESTIONNAIRE.HOMEPAGE' | translate }}</button></div>
       <div *ngIf="!isFirstQuestionnaire"><button ion-button class="submit-btn login-form-btn" (click)="refreshPage()">{{ 'FIRST_QUESTIONNAIRE.CONTINUE' | translate }}</button></div>
   </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController, ToastController, Platform, LoadingController, Loading, AlertController } from 'ionic-angular';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
@@ -8,6 +8,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { CountriesServiceProvider } from '../../providers/countries-service/countries-service';
 import { UserServiceProvider } from '../../providers/user-service/user-service';
 import { Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var cordova: any;
 
@@ -26,40 +27,53 @@ export class MyProfilePage {
   countriesList: any;
   profileForm: any;
   photoData: any;
-  parentSubject:Subject<any> = new Subject();
+  parentSubject: Subject<any> = new Subject();
+  confirmLabel: string;
+  yesLabel: string;
+  noLabel: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private transfer: Transfer,
+  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private transfer: Transfer, private translate: TranslateService,
     public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, private file: File,
     private filePath: FilePath, public actionSheetCtrl: ActionSheetController, private authService: AuthServiceProvider,
-    private countriesService: CountriesServiceProvider, private userService: UserServiceProvider) {
+    private countriesService: CountriesServiceProvider, private userService: UserServiceProvider, private alertCtrl: AlertController) {
   }
 
   ngOnInit() {
     this.isLoading = true;
     this.firstLoading = this.loadingCtrl.create();
     this.firstLoading.present();
-    let currentUser = this.authService.getCurrentUser();
-    if (currentUser) {
-      this.user = currentUser;
-      this.username = currentUser.username;
-      this.countriesService.getAll().subscribe(response => {
-        this.countriesList = response.countries;
-        this.profileForm = {
-          firstName: this.user.firstName,
-          lastName: this.user.lastName,
-          yearOfBirth: this.user.yearOfBirth,
-          selectedCountry: this.user.country
-        }
-        this.updatePhoto();
-      },
-        error => {
-          console.log(error);
-        });
+    this.translate.get('MYPROFILE.CONFIRM_DELETE').subscribe(label => {
+      this.confirmLabel = label;
+      this.translate.get('FORM.YES').subscribe(label => {
+        this.yesLabel = label;
+        this.translate.get('FORM.NO').subscribe(label => {
+          this.noLabel = label;
+          let currentUser = this.authService.getCurrentUser();
+          if (currentUser) {
+            this.user = currentUser;
+            this.username = currentUser.username;
+            this.countriesService.getAll().subscribe(response => {
+              this.countriesList = response.countries;
+              this.profileForm = {
+                firstName: this.user.firstName,
+                lastName: this.user.lastName,
+                yearOfBirth: this.user.yearOfBirth,
+                selectedCountry: this.user.country
+              }
+              this.updatePhoto();
+            },
+              error => {
+                console.log(error);
+              });
 
-    }
-    else {
-      console.log('No current user error!!');
-    }
+          }
+          else {
+            console.log('No current user error!!');
+          }
+        });
+      });
+    });
+
   }
 
   updatePhoto() {
@@ -80,13 +94,17 @@ export class MyProfilePage {
   }
 
   delete() {
-    this.userService.deleteAvatar().subscribe(res => {
-      this.updatePhoto();
-    },
-      error => {
-        console.log(error);
+    this.showConfirm().then((result) => {
+      if (result) {
+        this.userService.deleteAvatar().subscribe(res => {
+          this.updatePhoto();
+        },
+          error => {
+            console.log(error);
+          }
+        );
       }
-    );
+    })
   }
 
   save() {
@@ -101,6 +119,24 @@ export class MyProfilePage {
         console.log(error);
       }
     );
+  }
+
+  showConfirm(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      const confirm = this.alertCtrl.create({
+        title: this.confirmLabel,
+        buttons: [
+          {
+            text: this.yesLabel,
+            handler: _ => resolve(true)
+          },
+          {
+            text: this.noLabel,
+            handler: _ => resolve(false)
+          }
+        ]
+      }).present();
+    })
   }
 
   public presentActionSheet() {
@@ -222,11 +258,13 @@ export class MyProfilePage {
 
       // Use the FileTransfer to upload the image
       fileTransfer.upload(targetPath, url, options).then(data => {
-        this.loading.dismissAll();
+        this.loading.dismiss();
         this.presentToast('Image succesful uploaded.');
         this.firstLoading = this.loadingCtrl.create();
         this.firstLoading.present();
-        this.updatePhoto();
+        setTimeout(() => {    //<<<---    using ()=> syntax
+          this.updatePhoto();
+        }, 4000);
       }, err => {
         this.loading.dismissAll()
         this.presentToast('Error while uploading file.');
