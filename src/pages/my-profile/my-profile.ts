@@ -262,9 +262,9 @@ export class MyProfilePage {
         this.presentToast('Image succesful uploaded.');
         this.firstLoading = this.loadingCtrl.create();
         this.firstLoading.present();
-        setTimeout(() => {    //<<<---    using ()=> syntax
+        setTimeout(() => { 
           this.updatePhoto();
-        }, 4000);
+        }, 10000);
       }, err => {
         this.loading.dismissAll()
         this.presentToast('Error while uploading file.');

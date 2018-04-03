@@ -15,7 +15,7 @@
   <div *ngIf="!isLoading" style="padding-top: 10px">
     <div class="profile-picture-container">
       <div class="profile-picture" *ngIf="photoData">
-        <ion-icon name="close" (click)="delete()"></ion-icon>
+        <ion-icon name="trash" (click)="delete()"></ion-icon>
         <img [src]="photoData" style="height: 150px;" />
       </div>
       <div class="no-picture-container" *ngIf="!photoData">
