@@ -78,6 +78,7 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 import { TopMenuNotificationComponent } from '../components/top-menu-notification/top-menu-notification';
 import { NotificationServiceProvider } from '../providers/notification-service/notification-service';
 import { Globalization } from '@ionic-native/globalization';
+import { DonatePage } from '../pages/donate/donate';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -115,6 +116,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TvRecommandationComponent,
     MovieQuestionnaireComponent,
     QuestionnaireComponent,
+    DonatePage,
     ProgressBarComponent,
     TopMenuNotificationComponent,
     TVWallComponent,
@@ -152,6 +154,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotificationsPage,
     CastPage,
     UserPage,
+    DonatePage,
     WhatowatchPage,
     MoviesWatchlistPage,
     MyProfilePage,

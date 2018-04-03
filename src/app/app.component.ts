@@ -20,6 +20,7 @@ import { SideMenuSettings } from '../components/side-menu-content/models/side-me
 import { MenuOptionModel } from '../components/side-menu-content/models/menu-option-model';
 
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { DonatePage } from '../pages/donate/donate';
 
 @Component({
 	templateUrl: 'app.html'
@@ -146,6 +147,12 @@ export class MyApp {
 												iconName: 'person',
 												displayName: userProfileLabel,
 												component: MyProfilePage,
+											});
+
+											this.options.push({
+												iconName: 'card',
+												displayName: 'Donate',
+												component: DonatePage,
 											});
 
 											this.options.push({
