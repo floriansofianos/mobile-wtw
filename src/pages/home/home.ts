@@ -9,6 +9,8 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { FirstQuestionnairePage } from '../first-questionnaire/first-questionnaire';
 import { Subject } from 'rxjs';
 
+import * as _ from 'underscore';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -20,6 +22,7 @@ export class HomePage {
   lang: any;
   currentUserId: any;
   parentSubject:Subject<any> = new Subject();
+  refreshCount = 0;
 
   constructor(public navCtrl: NavController, private timelineService: TimelineServiceProvider, private statusBar: StatusBar,
     private loadingController: LoadingController, private movieDBService: MovieDBServiceProvider, private userService: UserServiceProvider,
@@ -53,7 +56,12 @@ export class HomePage {
 
   doRefresh(refresher) {
     this.timelineService.get(0).subscribe(data => {
-      this.timelineEvents = data;
+      _.each(data, function(d) {
+        if(!_.find(this.timelineEvents, function(e) { return e.id == d.id })) {
+          this.timelineEvents.unshift(d);
+        }
+      }, this);
+      this.refreshCount++;
       refresher.complete();
     },
       error => {

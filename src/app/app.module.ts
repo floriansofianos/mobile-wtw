@@ -79,6 +79,9 @@ import { TopMenuNotificationComponent } from '../components/top-menu-notificatio
 import { NotificationServiceProvider } from '../providers/notification-service/notification-service';
 import { Globalization } from '@ionic-native/globalization';
 import { DonatePage } from '../pages/donate/donate';
+import { TimelineEventRateMovieComponent } from '../components/timeline-event-rate-movie/timeline-event-rate-movie';
+import { TimelineEventFollowComponent } from '../components/timeline-event-follow/timeline-event-follow';
+import { TimelineEventFriendComponent } from '../components/timeline-event-friend/timeline-event-friend';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -115,6 +118,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MovieWallElementComponent,
     TvRecommandationComponent,
     MovieQuestionnaireComponent,
+    TimelineEventRateMovieComponent,
+    TimelineEventFollowComponent,
+    TimelineEventFriendComponent,
     QuestionnaireComponent,
     DonatePage,
     ProgressBarComponent,
@@ -155,6 +161,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CastPage,
     UserPage,
     DonatePage,
+    TimelineEventRateMovieComponent,
+    TimelineEventFollowComponent,
+    TimelineEventFriendComponent,
     WhatowatchPage,
     MoviesWatchlistPage,
     MyProfilePage,

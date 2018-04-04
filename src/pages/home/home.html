@@ -13,6 +13,6 @@
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
   <div *ngIf="timelineEvents">
-    <timeline [timelineEvents]="timelineEvents" [friends]="allFriends" [currentUserId]="currentUserId" [lang]="lang" [config]="config"></timeline>
+    <timeline [timelineEvents]="timelineEvents" [refresh]="refreshCount" [friends]="allFriends" [currentUserId]="currentUserId" [lang]="lang" [config]="config"></timeline>
   </div>
 </ion-content>

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, SimpleChanges } from '@angular/core';
 import { TimelineServiceProvider } from '../../providers/timeline-service/timeline-service';
 
 
@@ -13,6 +13,7 @@ export class TimelineComponent {
   @Input() currentUserId: number;
   @Input() lang: string;
   @Input() config: any;
+  @Input() refresh: any;
   page: number;
   isAllLoaded: boolean;
   isLoading: boolean;
@@ -21,6 +22,10 @@ export class TimelineComponent {
   constructor(private timelineService: TimelineServiceProvider) {
     this.page = 0;
     this.isAllLoaded = false;
+  }
+
+  ngOnChanges(changes: any) {
+    this.scroll.refresh();
   }
 
   doInfinite(infiniteScroll) {
