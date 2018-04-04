@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, Input, ViewChild, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { TimelineServiceProvider } from '../../providers/timeline-service/timeline-service';
 
 
@@ -13,19 +13,15 @@ export class TimelineComponent {
   @Input() currentUserId: number;
   @Input() lang: string;
   @Input() config: any;
-  @Input() refresh: any;
   page: number;
   isAllLoaded: boolean;
   isLoading: boolean;
   @ViewChild('scroll') scroll;
+  @Output() notify: EventEmitter<any> = new EventEmitter();
 
   constructor(private timelineService: TimelineServiceProvider) {
     this.page = 0;
     this.isAllLoaded = false;
-  }
-
-  ngOnChanges(changes: any) {
-    this.scroll.refresh();
   }
 
   doInfinite(infiniteScroll) {
@@ -37,14 +33,22 @@ export class TimelineComponent {
               this.isAllLoaded = true;
           }
           this.timelineEvents = this.timelineEvents.concat(newEvents);
-          //infiniteScroll.complete();
       });
     }
-    //else infiniteScroll.complete();
   }
 
   getMonth(createdAt) {
     return (new Date(createdAt)).getMonth();
+  }
+
+  onScroll(event: any) {
+    let scrollTop = event.target.scrollTop;
+
+    if (scrollTop > 0) {
+      this.notify.emit({ enableRefresh: false });
+    } else {
+      this.notify.emit({ enableRefresh: true });
+    }
   }
 
 }

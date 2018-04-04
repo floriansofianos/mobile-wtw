@@ -1,5 +1,5 @@
 <ion-list> 
-  <virtual-scroll #scroll [items]="timelineEvents" (update)="viewPortItems = $event" [bufferAmount]="6" [childHeight]="170" (end)="doInfinite($event)">
+  <virtual-scroll (scroll)="onScroll($event)" #scroll [items]="timelineEvents" (update)="viewPortItems = $event" [bufferAmount]="6" [childHeight]="170" (end)="doInfinite($event)">
       <ion-item *ngFor="let e of viewPortItems">
           <ion-card>
             <div *ngIf="e.type == 0">

@@ -8,11 +8,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
-  <div *ngIf="timelineEvents">
-    <timeline [timelineEvents]="timelineEvents" [refresh]="refreshCount" [friends]="allFriends" [currentUserId]="currentUserId" [lang]="lang" [config]="config"></timeline>
+<ion-content padding >
+  <div>
+      <ion-refresher (ionRefresh)="doRefresh($event)" [enabled]="enableRefresh">
+          <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
+    <div *ngIf="timelineEvents">
+      <timeline [timelineEvents]="timelineEvents" [friends]="allFriends" [currentUserId]="currentUserId" [lang]="lang" [config]="config" (notify)="onScroll($event)"></timeline>
+    </div>
   </div>
 </ion-content>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -21,8 +21,8 @@ export class HomePage {
   allFriends: any;
   lang: any;
   currentUserId: any;
-  parentSubject:Subject<any> = new Subject();
-  refreshCount = 0;
+  parentSubject: Subject<any> = new Subject();
+  enableRefresh: boolean = true; 
 
   constructor(public navCtrl: NavController, private timelineService: TimelineServiceProvider, private statusBar: StatusBar,
     private loadingController: LoadingController, private movieDBService: MovieDBServiceProvider, private userService: UserServiceProvider,
@@ -33,7 +33,7 @@ export class HomePage {
     this.lang = this.auth.getCurrentUser().lang;
     this.currentUserId = this.auth.getCurrentUser().id;
 
-    if(!this.auth.getCurrentUser().firstQuestionnaireCompleted) this.navCtrl.setRoot(FirstQuestionnairePage);
+    if (!this.auth.getCurrentUser().firstQuestionnaireCompleted) this.navCtrl.setRoot(FirstQuestionnairePage);
 
     let loading = this.loadingController.create();
     loading.present();
@@ -54,14 +54,14 @@ export class HomePage {
 
   }
 
+  onScroll(event: any) {
+    this.enableRefresh = event.enableRefresh;
+  }
+
   doRefresh(refresher) {
+    this.timelineEvents = null;
     this.timelineService.get(0).subscribe(data => {
-      _.each(data, function(d) {
-        if(!_.find(this.timelineEvents, function(e) { return e.id == d.id })) {
-          this.timelineEvents.unshift(d);
-        }
-      }, this);
-      this.refreshCount++;
+      this.timelineEvents = data;
       refresher.complete();
     },
       error => {
