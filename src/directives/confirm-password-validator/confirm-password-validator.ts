@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { Validator, FormGroup, NG_VALIDATORS } from '@angular/forms';
+import { FormGroup, NG_VALIDATORS } from '@angular/forms';
 
 @Directive({
   selector: '[validateConfirmPassword]',

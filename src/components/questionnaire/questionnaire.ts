@@ -1,7 +1,6 @@
 import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MovieQuestionnaireServiceProvider } from '../../providers/movie-questionnaire-service/movie-questionnaire-service';
-import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
 import { Loading, LoadingController, NavController, Events } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { QuestionnaireServiceProvider } from '../../providers/questionnaire-service/questionnaire-service';
@@ -36,7 +35,7 @@ export class QuestionnaireComponent {
 
   constructor(private translate: TranslateService, private firstQuestionnaireService: QuestionnaireServiceProvider, 
     private movieQuestionnaireService: MovieQuestionnaireServiceProvider, private events: Events,
-    private movieDBService: MovieDBServiceProvider, private userQuestionnaireService: UserQuestionnaireServiceProvider, 
+    private userQuestionnaireService: UserQuestionnaireServiceProvider, 
     private countriesService: CountriesServiceProvider, private loading: LoadingController,
     private authService: AuthServiceProvider, private ref: ChangeDetectorRef,
   private navCtrl: NavController) {

@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { Validator, FormControl, NG_VALIDATORS } from '@angular/forms';
+import { FormControl, NG_VALIDATORS } from '@angular/forms';
 
 /**
  * Generated class for the PasswordValidatorDirective directive.

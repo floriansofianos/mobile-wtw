@@ -71,7 +71,7 @@ export class AlsoLikeComponent {
                     console.log(error);
                   });
           }
-          for (var i = 1; i <= this.numberOfElements; i++) {
+          for (var j = 1; j <= this.numberOfElements; j++) {
               this.socialService.getUsersThatAlsoTVLiked().subscribe(data => {
                   if (data) {
                       data = data;

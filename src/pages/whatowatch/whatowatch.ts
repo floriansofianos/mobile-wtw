@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
+import { NavController, Loading, LoadingController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
 import { MovieRecommandationServiceProvider } from '../../providers/movie-recommandation-service/movie-recommandation-service';
 import { TvRecommandationServiceProvider } from '../../providers/tv-recommandation-service/tv-recommandation-service';
-import { MovieQuestionnaireServiceProvider } from '../../providers/movie-questionnaire-service/movie-questionnaire-service';
 import { LanguagesServiceProvider } from '../../providers/languages-service/languages-service';
 import { SocialServiceProvider } from '../../providers/social-service/social-service';
 import { MoviePage } from '../movie/movie';
@@ -47,8 +46,8 @@ export class WhatowatchPage {
   parentSubject:Subject<any> = new Subject();
 
   constructor(private authService: AuthServiceProvider, private movieDBService: MovieDBServiceProvider, private movieRecommandation: MovieRecommandationServiceProvider,
-    private tvRecommandation: TvRecommandationServiceProvider, private movieQuestionnaireService: MovieQuestionnaireServiceProvider,
-    private languagesService: LanguagesServiceProvider, private socialService: SocialServiceProvider, private navCtrl: NavController, private loading: LoadingController) { }
+    private tvRecommandation: TvRecommandationServiceProvider, private languagesService: LanguagesServiceProvider, 
+    private socialService: SocialServiceProvider, private navCtrl: NavController, private loading: LoadingController) { }
 
   ngOnInit() {
     this.formWTW = {};

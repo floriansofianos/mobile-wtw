@@ -50,7 +50,7 @@ export class MyApp {
 		private menuCtrl: MenuController, private auth: AuthServiceProvider, private events: Events) {
 		this.translate.setDefaultLang('en');
 		this.initializeApp();
-		events.subscribe('lang:changed', () => {
+		this.events.subscribe('lang:changed', () => {
 			this.initializeOptions();
 		});
 	}

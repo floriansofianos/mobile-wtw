@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -8,8 +8,6 @@ import { UserServiceProvider } from '../../providers/user-service/user-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { FirstQuestionnairePage } from '../first-questionnaire/first-questionnaire';
 import { Subject } from 'rxjs';
-
-import * as _ from 'underscore';
 
 @Component({
   selector: 'page-home',

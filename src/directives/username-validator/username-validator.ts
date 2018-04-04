@@ -1,6 +1,5 @@
 import { Directive } from '@angular/core';
 import { FormControl, NG_ASYNC_VALIDATORS } from '@angular/forms';
-import { Observable } from "rxjs/Rx";
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @Directive({

@@ -1,9 +1,6 @@
 import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { Loading, LoadingController, NavController } from 'ionic-angular';
-import { TranslateService } from '@ngx-translate/core';
 import { TvQuestionnaireServiceProvider } from '../../providers/tv-questionnaire-service/tv-questionnaire-service';
-import { MovieDBServiceProvider } from '../../providers/movie-db-service/movie-db-service';
-import { CountriesServiceProvider } from '../../providers/countries-service/countries-service';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { TvUserQuestionnaireServiceProvider } from '../../providers/tv-user-questionnaire-service/tv-user-questionnaire-service';
 import { HomePage } from '../../pages/home/home';
@@ -31,9 +28,8 @@ export class TvQuestionnaireComponent {
   age: number;
   loadingWindow: Loading;
 
-  constructor(private translate: TranslateService, 
-    private tvQuestionnaireService: TvQuestionnaireServiceProvider,
-    private movieDBService: MovieDBServiceProvider, private userQuestionnaireService: TvUserQuestionnaireServiceProvider,
+  constructor(private tvQuestionnaireService: TvQuestionnaireServiceProvider,
+    private userQuestionnaireService: TvUserQuestionnaireServiceProvider,
     private loading: LoadingController, private authService: AuthServiceProvider, private ref: ChangeDetectorRef,
   private navCtrl: NavController) {
 

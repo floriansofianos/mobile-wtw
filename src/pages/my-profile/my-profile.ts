@@ -123,7 +123,7 @@ export class MyProfilePage {
 
   showConfirm(): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      const confirm = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: this.confirmLabel,
         buttons: [
           {

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { TimelineServiceProvider } from '../../providers/timeline-service/timeline-service';
 
 
