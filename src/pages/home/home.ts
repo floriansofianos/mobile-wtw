@@ -45,7 +45,7 @@ export class HomePage {
           loading.dismiss();
         },
           error => {
-            console.log(error);
+            throw new Error(error);
           });
       });
     });
@@ -63,7 +63,7 @@ export class HomePage {
       refresher.complete();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 

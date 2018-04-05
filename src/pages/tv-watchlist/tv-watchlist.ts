@@ -42,13 +42,13 @@ export class TvWatchlistPage {
         
     },
         error => {
-            console.log(error);
+          throw new Error(error);
         }
     );
 
     },
     error => {
-      console.log(error);
+      throw new Error(error);
     });
   }
 

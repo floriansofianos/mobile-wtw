@@ -36,7 +36,7 @@ export class MoviePage {
                     this.availableOnPlex = response.available;
                 },
                     error => {
-                        console.log(error);
+                        throw new Error(error);
                     });
             }
 
@@ -50,19 +50,19 @@ export class MoviePage {
                             this.loadingWindow.dismiss();
                         },
                         error => {
-                            console.log(error);
+                            throw new Error(error);
                         }
                     );
                 },
                 error => {
-                    console.log(error);
+                    throw new Error(error);
                 }
             );
 
 
         },
             error => {
-                console.log(error);
+                throw new Error(error);
             });
 
     }
@@ -87,7 +87,7 @@ export class MoviePage {
             this.back();
         },
             error => {
-                console.log(error);
+                throw new Error(error);
             });
     }
 

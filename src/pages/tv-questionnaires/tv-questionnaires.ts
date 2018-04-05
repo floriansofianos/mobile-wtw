@@ -48,13 +48,13 @@ export class TvQuestionnairesPage {
 
       },
         error => {
-          console.log(error);
+          throw new Error(error);
         }
       );
 
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 

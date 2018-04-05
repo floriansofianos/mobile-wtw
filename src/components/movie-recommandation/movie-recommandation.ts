@@ -72,7 +72,7 @@ export class MovieRecommandationComponent {
             this.gradeLoaded = true;
         },
             error => {
-                console.log(error);
+                throw new Error(error);
             });
         this.onChange();
     }

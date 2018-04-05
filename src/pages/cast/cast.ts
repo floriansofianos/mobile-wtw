@@ -42,7 +42,7 @@ export class CastPage {
       this.loadingWindow.dismiss();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 

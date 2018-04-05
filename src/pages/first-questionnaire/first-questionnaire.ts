@@ -22,7 +22,7 @@ export class FirstQuestionnairePage {
       this.loadingWindow.dismiss();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 

@@ -26,7 +26,7 @@ export class MoviesPage {
       this.loadingWindow.dismiss();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -43,7 +43,7 @@ export class MoviesPage {
           this.loadingWindow.dismiss();
         },
         error => {
-          console.log(error);
+          throw new Error(error);
         }
       );
     }

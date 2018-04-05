@@ -100,7 +100,7 @@ export class TvQuestionnaireComponent {
       else this.showMovieFromAPIResponse(response);
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -123,7 +123,7 @@ export class TvQuestionnaireComponent {
       this.showNextMovie();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -158,7 +158,7 @@ export class TvQuestionnaireComponent {
       }
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
 
   }

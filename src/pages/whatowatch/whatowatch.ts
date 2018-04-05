@@ -64,7 +64,7 @@ export class WhatowatchPage {
       this.configuration = response;
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
     this.lang = currentUser.lang;
     this.formWTW.isRuntimeChecked = false;
@@ -76,12 +76,12 @@ export class WhatowatchPage {
           this.friends = response.users;
         },
           error => {
-            console.log(error);
+            throw new Error(error);
           });
       }
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
     this.movieDBService.getAllGenres().subscribe(response => {
       this.genres = response;
@@ -94,7 +94,7 @@ export class WhatowatchPage {
           else this.noReco = true;
         },
           error => {
-            console.log(error);
+            throw new Error(error);
           });
         this.tvRecommandation.getAll().subscribe(response => {
           if (response.length > 0) {
@@ -103,15 +103,15 @@ export class WhatowatchPage {
           else this.noTVReco = true;
         },
           error => {
-            console.log(error);
+            throw new Error(error);
           });
       },
         error => {
-          console.log(error);
+          throw new Error(error);
         });
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
 
   }
@@ -144,7 +144,7 @@ export class WhatowatchPage {
         }
       },
         error => {
-          console.log(error);
+          throw new Error(error);
         });
     }
     else {
@@ -166,7 +166,7 @@ export class WhatowatchPage {
         }
       },
         error => {
-          console.log(error);
+          throw new Error(error);
         });
     }
     else {

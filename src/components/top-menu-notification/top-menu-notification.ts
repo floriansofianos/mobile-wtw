@@ -33,7 +33,7 @@ export class TopMenuNotificationComponent {
       this.notificationCount = _.size(unreadNotifications);
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -46,7 +46,7 @@ export class TopMenuNotificationComponent {
       this.nav.push(NotificationsPage);
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
 
   }

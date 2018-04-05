@@ -34,7 +34,7 @@ export class NotificationsPage {
       this.loadingWindow.dismiss();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -46,7 +46,7 @@ export class NotificationsPage {
       this.updateNotifications();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -58,7 +58,7 @@ export class NotificationsPage {
       this.updateNotifications();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 

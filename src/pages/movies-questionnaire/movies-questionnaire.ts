@@ -49,13 +49,13 @@ export class MoviesQuestionnairePage {
 
       },
         error => {
-          console.log(error);
+          throw new Error(error);
         }
       );
 
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 

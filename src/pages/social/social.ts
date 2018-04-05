@@ -40,10 +40,10 @@ export class SocialPage {
         }
         else this.navCtrl.push(UserPage, { id: data.id });
       }
-      else console.log('error!');
+      else throw new Error('error!');
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       }
     );
   }

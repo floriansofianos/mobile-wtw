@@ -67,13 +67,13 @@ export class UserPage {
             this.updateFriendStatus();
           },
             error => {
-              console.log(error);
+              throw new Error(error);
             });
         }
-        else console.log('error!!');
+        else throw new Error('error!!');
       },
         error => {
-          console.log(error);
+          throw new Error(error);
         }
       );
       if (!this.isCurrentUser) {
@@ -81,16 +81,16 @@ export class UserPage {
           if (data) {
             this.updateDistance(data);
           }
-          else console.log('error!!');
+          else throw new Error('error!!');
         },
           error => {
-            console.log(error);
+            throw new Error(error);
           }
         );
       }
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
 
   }
@@ -106,7 +106,7 @@ export class UserPage {
       this.isLoading = false;
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       }
     );
   }
@@ -139,14 +139,14 @@ export class UserPage {
 
           },
             error => {
-              console.log(error);
+              throw new Error(error);
             })
         }
       }
-      else console.log('error!!');
+      else throw new Error('error!!');
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -156,10 +156,10 @@ export class UserPage {
       if (data) {
         this.updateFriendStatus();
       }
-      else console.log('error!!');
+      else throw new Error('error!!');
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -169,10 +169,10 @@ export class UserPage {
       if (data) {
         this.updateFriendStatus();
       }
-      else console.log('error!!');
+      else throw new Error('error!!');
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -182,10 +182,10 @@ export class UserPage {
       if (data) {
         this.updateFriendStatus();
       }
-      else console.log('error!!');
+      else throw new Error('error!!');
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -195,10 +195,10 @@ export class UserPage {
       if (data) {
         this.updateFriendStatus();
       }
-      else console.log('error!!');
+      else throw new Error('error!!');
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -208,10 +208,10 @@ export class UserPage {
       if (data) {
         this.updateFriendStatus();
       }
-      else console.log('error!!');
+      else throw new Error('error!!');
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 

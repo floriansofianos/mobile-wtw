@@ -27,7 +27,7 @@ export class MovieWallComponent {
       this.dataLoaded = true;
     },
       err => {
-        console.log(err);
+        throw new Error(err);
       });
   }
 

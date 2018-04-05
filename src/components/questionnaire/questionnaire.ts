@@ -98,11 +98,11 @@ export class QuestionnaireComponent {
         this.questionAnswered++;
       },
         error => {
-          console.log(error);
+          throw new Error(error);
         });
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -121,7 +121,7 @@ export class QuestionnaireComponent {
         this.getNextAgeStep();
       },
         error => {
-          console.log(error);
+          throw new Error(error);
         });
       else {
         this.loadingWindow.dismiss();
@@ -129,7 +129,7 @@ export class QuestionnaireComponent {
       }
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -179,7 +179,7 @@ export class QuestionnaireComponent {
           this.showMovieFromAPIResponse(response);
         },
           error => {
-            console.log(error);
+            throw new Error(error);
           });
       }
       else {
@@ -199,7 +199,7 @@ export class QuestionnaireComponent {
       else this.showMovieFromAPIResponse(response);
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -222,7 +222,7 @@ export class QuestionnaireComponent {
       this.showNextMovie();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 
@@ -254,7 +254,7 @@ export class QuestionnaireComponent {
             this.loadingWindow.dismiss();
           },
             error => {
-              console.log(error);
+              throw new Error(error);
             });
         }
         else {
@@ -267,7 +267,7 @@ export class QuestionnaireComponent {
       }
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
 
   }

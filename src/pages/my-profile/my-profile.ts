@@ -63,12 +63,12 @@ export class MyProfilePage {
               this.updatePhoto();
             },
               error => {
-                console.log(error);
+                throw new Error(error);
               });
 
           }
           else {
-            console.log('No current user error!!');
+            throw new Error('No current user error!!');
           }
         });
       });
@@ -88,7 +88,7 @@ export class MyProfilePage {
       this.firstLoading.dismiss();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       }
     );
   }
@@ -100,7 +100,7 @@ export class MyProfilePage {
           this.updatePhoto();
         },
           error => {
-            console.log(error);
+            throw new Error(error);
           }
         );
       }
@@ -116,7 +116,7 @@ export class MyProfilePage {
       this.firstLoading.dismiss();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       }
     );
   }

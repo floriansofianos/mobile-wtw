@@ -39,7 +39,7 @@ export class TimelineEventRateMovieComponent {
                 this.isLoading = false;
             },
                 err => {
-                    console.log(err);
+                    throw new Error(err);
                 });
         }
         else {
@@ -48,7 +48,7 @@ export class TimelineEventRateMovieComponent {
                 this.isLoading = false;
             },
                 err => {
-                    console.log(err);
+                    throw new Error(err);
                 });
         }
 

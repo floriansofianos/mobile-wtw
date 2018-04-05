@@ -100,7 +100,7 @@ export class LoginPage {
       this.showSendWelcomeEmail = false;
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 

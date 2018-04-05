@@ -59,16 +59,16 @@ export class AlsoLikeComponent {
                                   this.isLoadingMovies = false;
                                   this.checkLoading();
                               }
-                              else console.log('error!');
+                              else throw new Error('I am a bug...');
                           },
                               error => {
-                                  console.log(error);
+                                throw new Error(error);
                               });
                       }
                   }
               },
                   error => {
-                    console.log(error);
+                    throw new Error(error);
                   });
           }
           for (var j = 1; j <= this.numberOfElements; j++) {
@@ -100,21 +100,21 @@ export class AlsoLikeComponent {
                                   this.isLoadingTVShows = false;
                                   this.checkLoading();
                               }
-                              else console.log('error');
+                              else throw new Error('error');
                           },
                               error => {
-                                console.log(error);
+                                throw new Error(error);
                               });
                       }
                   }
               },
                   error => {
-                    console.log(error);
+                    throw new Error(error);
                   });
           }
       },
           error => {
-            console.log(error);
+            throw new Error(error);
           });
   }
 

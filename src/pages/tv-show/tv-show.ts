@@ -44,7 +44,7 @@ export class TvShowPage {
           this.availableOnPlex = response.available;
         },
           error => {
-            console.log(error);
+            throw new Error(error);
           });
       }
 
@@ -63,19 +63,19 @@ export class TvShowPage {
               this.loadingWindow.dismiss();
             },
             error => {
-              console.log(error);
+              throw new Error(error);
             }
           );
         },
         error => {
-          console.log(error);
+          throw new Error(error);
         }
       );
 
 
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
 
   }
@@ -100,7 +100,7 @@ export class TvShowPage {
       this.back();
     },
       error => {
-        console.log(error);
+        throw new Error(error);
       });
   }
 

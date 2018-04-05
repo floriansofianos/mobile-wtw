@@ -82,6 +82,7 @@ import { DonatePage } from '../pages/donate/donate';
 import { TimelineEventRateMovieComponent } from '../components/timeline-event-rate-movie/timeline-event-rate-movie';
 import { TimelineEventFollowComponent } from '../components/timeline-event-follow/timeline-event-follow';
 import { TimelineEventFriendComponent } from '../components/timeline-event-friend/timeline-event-friend';
+import { SentryErrorHandler } from '../services/sentry-errorhandler';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -181,6 +182,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     StatusBar,
+    {provide: ErrorHandler, useClass: SentryErrorHandler},
     Globalization,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
