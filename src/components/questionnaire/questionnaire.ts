@@ -32,13 +32,14 @@ export class QuestionnaireComponent {
   states: string[] = ['active', null, null];
   age: number;
   loadingWindow: Loading;
+  showNoResults: boolean;
 
-  constructor(private translate: TranslateService, private firstQuestionnaireService: QuestionnaireServiceProvider, 
+  constructor(private translate: TranslateService, private firstQuestionnaireService: QuestionnaireServiceProvider,
     private movieQuestionnaireService: MovieQuestionnaireServiceProvider, private events: Events,
-    private userQuestionnaireService: UserQuestionnaireServiceProvider, 
+    private userQuestionnaireService: UserQuestionnaireServiceProvider,
     private countriesService: CountriesServiceProvider, private loading: LoadingController,
     private authService: AuthServiceProvider, private ref: ChangeDetectorRef,
-  private navCtrl: NavController) {
+    private navCtrl: NavController) {
 
   }
 
@@ -51,7 +52,7 @@ export class QuestionnaireComponent {
     this.welcomeMessage = true;
     this.movieIndex = -1;
     this.questionAnswered = 0;
-    if(!this.lang) this.lang = this.translate.currentLang;
+    if (!this.lang) this.lang = this.translate.currentLang;
     if (currentUser.firstQuestionnaireCompleted && this.isFirstQuestionnaire) {
       this.questionAnswered = this.questionsToAnswer;
       this.setStateActive(2);
@@ -195,6 +196,10 @@ export class QuestionnaireComponent {
       this.loadingWindow.dismiss();
       if (response.reload) {
         this.getMovieQuestionnaireFromUserQuestionnaire();
+      }
+      else if (response.noResult) {
+        this.showNoResults = true;
+        //this.loadingWindow.dismiss();
       }
       else this.showMovieFromAPIResponse(response);
     },
