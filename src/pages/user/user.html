@@ -19,7 +19,7 @@
             <div class="profile-information-container">
                 <h2>{{ user.username }}</h2>
                 <div class="grade-column" *ngIf="averageDistance && !isCurrentUser">
-                    <ion-badge class="reco-grading-container" [ngClass]="{ 'good-grade': averageDistance > 60, 'bad-grade': averageDistance < 60 }" tooltip="{{ 'WTW.GRADE_HELP' | translate }}">
+                    <ion-badge class="reco-grading-container" [ngClass]="{ 'good-grade': averageDistance > 60, 'bad-grade': averageDistance < 60 }" tooltip="{{ 'WTW.GRADE_USER_HELP' | translate }}">
                         {{averageDistance | number:'1.0-1'}} %
                     </ion-badge>
                 </div>
