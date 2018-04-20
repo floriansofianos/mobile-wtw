@@ -82,7 +82,6 @@ import { DonatePage } from '../pages/donate/donate';
 import { TimelineEventRateMovieComponent } from '../components/timeline-event-rate-movie/timeline-event-rate-movie';
 import { TimelineEventFollowComponent } from '../components/timeline-event-follow/timeline-event-follow';
 import { TimelineEventFriendComponent } from '../components/timeline-event-friend/timeline-event-friend';
-import { SentryErrorHandler } from '../services/sentry-errorhandler';
 import { WtwErrorHandlerProvider } from '../providers/wtw-error-handler/wtw-error-handler';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -183,7 +182,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     StatusBar,
-    {provide: ErrorHandler, useClass: SentryErrorHandler},
+    {provide: ErrorHandler, useClass: WtwErrorHandlerProvider},
     Globalization,
     SplashScreen,
     { 

@@ -26,6 +26,7 @@ export class MoviesQuestionnairePage {
     private movieDBService: MovieDBServiceProvider) {
     this.loadingWindow = this.loading.create();
     this.loadingWindow.present();
+    
 
     this.movieDBService.getMovieDBConfiguration().subscribe(response => {
       this.categoriesNotLoaded = true;
@@ -46,7 +47,6 @@ export class MoviesQuestionnairePage {
           name: 'QUESTIONNAIRE.NOT_WANT_TO_SEE', type: 'text', values: _.map(_.filter(movieQuestionnaires, (m) => { return !m.isSeen && !m.wantToSee }), 'movieDBId')
         });
         this.categoriesNotLoaded = false;
-
       },
         error => {
           throw new Error(error);
