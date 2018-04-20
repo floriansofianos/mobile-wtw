@@ -45,7 +45,7 @@
                     <ion-item>
                         <ion-label>{{ 'WTW.LANGUAGE' | translate }}</ion-label>
                         <ion-select [(ngModel)]="formWTW.countrySelectValue">
-                            <ion-option *ngFor="let c of languages" [value]="c.code">{{ c.code }}</ion-option>
+                            <ion-option *ngFor="let c of languages" [value]="c.code">{{ c[lang] }}</ion-option>
                         </ion-select>
                     </ion-item>
                 </div>
@@ -144,7 +144,7 @@
                     <ion-item>
                         <ion-label>{{ 'WTW.LANGUAGE' | translate }}</ion-label>
                         <ion-select [(ngModel)]="formTVWTW.countrySelectValue">
-                            <ion-option *ngFor="let c of languages" [value]="c.code">{{ c.code }}</ion-option>
+                            <ion-option *ngFor="let c of languages" [value]="c.code">{{ c[lang] }}</ion-option>
                         </ion-select>
                     </ion-item>
                 </div>
