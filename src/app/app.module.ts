@@ -186,7 +186,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     {provide: ErrorHandler, useClass: SentryErrorHandler},
     Globalization,
     SplashScreen,
-    {provide: ErrorHandler, useClass: WtwErrorHandlerProvider},
     { 
       provide: HTTP_INTERCEPTORS, 
       useClass: JwtHttpInterceptor, 
