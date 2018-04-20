@@ -83,6 +83,7 @@ import { TimelineEventRateMovieComponent } from '../components/timeline-event-ra
 import { TimelineEventFollowComponent } from '../components/timeline-event-follow/timeline-event-follow';
 import { TimelineEventFriendComponent } from '../components/timeline-event-friend/timeline-event-friend';
 import { SentryErrorHandler } from '../services/sentry-errorhandler';
+import { WtwErrorHandlerProvider } from '../providers/wtw-error-handler/wtw-error-handler';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -185,7 +186,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     {provide: ErrorHandler, useClass: SentryErrorHandler},
     Globalization,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: ErrorHandler, useClass: WtwErrorHandlerProvider},
     { 
       provide: HTTP_INTERCEPTORS, 
       useClass: JwtHttpInterceptor, 
