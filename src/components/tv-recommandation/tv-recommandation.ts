@@ -19,6 +19,7 @@ export class TvRecommandationComponent {
     @Input() config: any;
     @Input() lang: string;
     @Input() availableOnPlex: boolean;
+    @Input() availableOnNetflix: boolean;
     @Output() notify: EventEmitter<any> = new EventEmitter<any>();
     @Output() notifySave: EventEmitter<any> = new EventEmitter<any>();
     trailerUrl: any;

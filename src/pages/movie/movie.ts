@@ -16,6 +16,7 @@ export class MoviePage {
     id: number;
     lang: any;
     availableOnPlex: boolean;
+    availableOnNetflix: boolean;
     movieQuestionnaireInit: any;
     movie: any;
     movieQuestionnaire: any;
@@ -34,6 +35,15 @@ export class MoviePage {
             if (this.auth.getCurrentUser().plexServerId) {
                 this.movieDBService.availableOnPlex(this.id).subscribe(response => {
                     this.availableOnPlex = response.available;
+                },
+                    error => {
+                        throw new Error(error);
+                    });
+            }
+
+            if (this.auth.getCurrentUser().country) {
+                this.movieDBService.availableOnNetflix(this.id).subscribe(response => {
+                    this.availableOnNetflix = response.available;
                 },
                     error => {
                         throw new Error(error);

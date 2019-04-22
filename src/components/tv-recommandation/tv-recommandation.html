@@ -11,6 +11,7 @@
                     <ion-row>
                         <div class="top-right-container">
                             <div *ngIf="availableOnPlex" class="plex-available-container">{{ 'MOVIE_QUESTIONNAIRE.AVAILABLE_ON_PLEX' | translate }}</div>
+                            <div *ngIf="availableOnNetflix" class="plex-available-container">{{ 'MOVIE_QUESTIONNAIRE.AVAILABLE_ON_NETFLIX' | translate }}</div>
                             <div class="reco-grading-container" *ngIf="gradeLoaded" [ngClass]="{ 'grade-unknown': !gradeRelevant, 'good-grade': gradeRelevant && grade > 60, 'bad-grade': gradeRelevant && grade < 60 }"
                                 tooltip="{{ 'WTW.GRADE_HELP' | translate }}" positionH="left">
                                 {{ gradeRelevant ? grade + '%' : '?' }}

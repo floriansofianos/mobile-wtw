@@ -87,6 +87,7 @@
     "MOVIE_QUESTIONNAIRE": {
         "CAST": "Casting",
         "AVAILABLE_ON_PLEX": "Disponible sur Plex",
+        "AVAILABLE_ON_NETFLIX": "Disponible sur Netflix",
         "DIRECTOR": "Réalisateur",
         "WRITER": "Scénariste",
         "CREATOR": "Producteur Executif",

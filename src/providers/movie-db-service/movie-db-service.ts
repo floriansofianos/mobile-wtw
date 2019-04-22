@@ -38,6 +38,11 @@ export class MovieDBServiceProvider {
       .catch(this.handleErrors);
   }
 
+  availableOnNetflix(id: number) {
+    return this.http.get(this.baseUrl + 'api/movie/netflix', { params: { id: id.toString() } })
+      .catch(this.handleErrors);
+  }
+
   getMovies(movieIds: Array<any>, lang: string) {
     return this.http.get(this.baseUrl + 'api/movie', { params: { movieIds: movieIds, lang: lang } })
       .catch(this.handleErrors);
@@ -59,6 +64,11 @@ export class MovieDBServiceProvider {
 
   tvAvailableOnPlex(id: number) {
     return this.http.get(this.baseUrl + 'api/tvshow/plex', { params: { id: id.toString() } })
+      .catch(this.handleErrors);
+  }
+
+  tvAvailableOnNetflix(id: number) {
+    return this.http.get(this.baseUrl + 'api/tvshow/netflix', { params: { id: id.toString() } })
       .catch(this.handleErrors);
   }
 
