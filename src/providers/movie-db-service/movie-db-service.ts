@@ -13,10 +13,45 @@ export class MovieDBServiceProvider {
       .catch(this.handleErrors);
   }
 
-  getMovie(id: number, lang: string) {
-    return this.http.get(this.baseUrl + 'api/movie', { params: { id: id.toString(), lang: lang } })
+  getMovie(id: number) {
+    return this.http.get(this.baseUrl + 'api/movie', { params: { id: id.toString() } })
       .catch(this.handleErrors);
   }
+
+  getMovieActors(id: number) {
+    return this.http.get(this.baseUrl + '/api/movieActors', { params: { id: id.toString() } })
+        .catch(this.handleErrors);
+}
+
+getMovieDirectors(id: number) {
+    return this.http.get(this.baseUrl + '/api/movieDirectors', { params: { id: id.toString() } })
+        .catch(this.handleErrors);
+}
+
+getMovieWriters(id: number) {
+    return this.http.get(this.baseUrl + '/api/movieWriters', { params: { id: id.toString() } })
+        .catch(this.handleErrors);
+}
+
+getMovieGenres(id: number) {
+    return this.http.get(this.baseUrl + '/api/movieGenres', { params: { id: id.toString() } })
+        .catch(this.handleErrors);
+}
+
+getMovieTitle(id: number, lang: string) {
+    return this.http.get(this.baseUrl + '/api/movieTitle', { params: { id: id.toString(), lang: lang } })
+        .catch(this.handleErrors);
+}
+
+getMovieOverview(id: number, lang: string) {
+    return this.http.get(this.baseUrl + '/api/movieOverview', { params: { id: id.toString(), lang: lang } })
+        .catch(this.handleErrors);
+}
+
+getMovieVideo(id: number, lang: string) {
+    return this.http.get(this.baseUrl + '/api/movieVideo', { params: { id: id.toString(), lang: lang } })
+        .catch(this.handleErrors);
+}
 
   search(s: string, lang: string) {
     return this.http.get(this.baseUrl + 'api/movieDBSearch', { params: { search: s, lang: lang } })
@@ -72,7 +107,7 @@ export class MovieDBServiceProvider {
       .catch(this.handleErrors);
   }
 
-  wtw(lang: string, genreId: number, useWatchlist: boolean, useRuntimeLimit: boolean, runtimeLimit: number, minRelease: number, maxRelease: number, nowPlaying: boolean, languageSelected: boolean, friendId: number, usePlex: boolean) {
+  wtw(lang: string, genreId: number, useWatchlist: boolean, useRuntimeLimit: boolean, runtimeLimit: number, minRelease: number, maxRelease: number, nowPlaying: boolean, languageSelected: boolean, friendId: number, usePlex: boolean, useNetflix: boolean) {
     let params:any = {
       lang: lang
     }
@@ -87,12 +122,13 @@ export class MovieDBServiceProvider {
     if(languageSelected) params.languageSelected = languageSelected.toString();
     if(friendId) params.friendId = friendId.toString();
     if(usePlex) params.usePlex = usePlex.toString();
+    if(useNetflix) params.useNetflix = useNetflix.toString();
     
     return this.http.get(this.baseUrl + 'api/movieDBSearch/wtw', { params: params })
       .catch(this.handleErrors);
   }
 
-  wtwTV(lang: string, genreId: number, useWatchlist: boolean, useRuntimeLimit: boolean, runtimeLimit: number, minRelease: number, maxRelease: number, languageSelected: boolean, friendId: number, usePlex: boolean) {
+  wtwTV(lang: string, genreId: number, useWatchlist: boolean, useRuntimeLimit: boolean, runtimeLimit: number, minRelease: number, maxRelease: number, languageSelected: boolean, friendId: number, usePlex: boolean, useNetflix: boolean) {
     let params:any = {
       lang: lang
     }
@@ -106,6 +142,7 @@ export class MovieDBServiceProvider {
     if(languageSelected) params.languageSelected = languageSelected.toString();
     if(friendId) params.friendId = friendId.toString();
     if(usePlex) params.usePlex = usePlex.toString();
+    if(useNetflix) params.useNetflix = useNetflix.toString();
     
     return this.http.get(this.baseUrl + 'api/movieDBSearchTV/wtw', { params: params })
       .catch(this.handleErrors);

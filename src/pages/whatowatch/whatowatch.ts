@@ -134,7 +134,7 @@ export class WhatowatchPage {
       this.loadingWindow.present();
       this.movieDBService.wtw(this.lang, this.formWTW.genreSelectValue, this.formWTW.isWatchlistChecked, 
         this.formWTW.isRuntimeChecked, this.formWTW.runtimeLimit, this.formWTW.minRelease, this.formWTW.maxRelease, 
-        this.formWTW.isNowPlayingChecked, this.formWTW.countrySelectValue, this.formWTW.withFriend, this.formWTW.usePlex).subscribe(response => {
+        this.formWTW.isNowPlayingChecked, this.formWTW.countrySelectValue, this.formWTW.withFriend, this.formWTW.usePlex, this.formWTW.useNetflix).subscribe(response => {
         // load existing data regarding this movie for the current user
         this.loadingWindow.dismiss();
         var id = response.id;
@@ -156,7 +156,7 @@ export class WhatowatchPage {
     if (this.formTVWTW.minRelease <= this.formTVWTW.maxRelease && this.formTVWTW.maxRelease <= new Date().getFullYear()) {
       this.loadingWindow = this.loading.create();
       this.loadingWindow.present();
-      this.movieDBService.wtwTV(this.lang, this.formTVWTW.genreSelectValue, this.formTVWTW.isWatchlistChecked, this.formTVWTW.isRuntimeChecked, this.formTVWTW.runtimeLimit, this.formTVWTW.minRelease, this.formTVWTW.maxRelease, this.formTVWTW.countrySelectValue, this.formTVWTW.withFriend, this.formTVWTW.usePlex).subscribe(response => {
+      this.movieDBService.wtwTV(this.lang, this.formTVWTW.genreSelectValue, this.formTVWTW.isWatchlistChecked, this.formTVWTW.isRuntimeChecked, this.formTVWTW.runtimeLimit, this.formTVWTW.minRelease, this.formTVWTW.maxRelease, this.formTVWTW.countrySelectValue, this.formTVWTW.withFriend, this.formTVWTW.usePlex, this.formTVWTW.useNetflix).subscribe(response => {
         // load existing data regarding this movie for the current user
         this.loadingWindow.dismiss();
         var id = response.id;

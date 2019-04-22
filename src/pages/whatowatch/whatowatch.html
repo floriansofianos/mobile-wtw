@@ -89,6 +89,12 @@
                         <ion-checkbox [(ngModel)]="formWTW.usePlex"></ion-checkbox>
                     </ion-item>
                 </div>
+                <div class="wtw-form-field-container">
+                    <ion-item>
+                        <ion-label>{{ 'WTW.ONLY_NETFLIX_MOVIES' | translate }}</ion-label>
+                        <ion-checkbox [(ngModel)]="formWTW.useNetflix"></ion-checkbox>
+                    </ion-item>
+                </div>
                 <div class="wtw-form-field-container" *ngIf="friends">
                     <ion-item>
                         <ion-label>{{ 'WTW.WATCH_WITH_FRIEND' | translate }}</ion-label>
@@ -181,6 +187,12 @@
                         <ion-label>{{ 'WTW.ONLY_PLEX_TV' | translate }}</ion-label>
                         <ion-checkbox [(ngModel)]="formTVWTW.usePlex"></ion-checkbox>
                     </ion-item>
+                </div>
+                <div class="wtw-form-field-container">
+                        <ion-item>
+                            <ion-label>{{ 'WTW.ONLY_NETFLIX_TV' | translate }}</ion-label>
+                            <ion-checkbox [(ngModel)]="formTVWTW.useNetflix"></ion-checkbox>
+                        </ion-item>
                 </div>
                 <div class="wtw-form-field-container" *ngIf="friends">
                     <ion-item>
